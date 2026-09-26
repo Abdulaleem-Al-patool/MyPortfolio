@@ -48,7 +48,7 @@ export const projects = [
     results: [
       { metric: "Exact Match (Full Path)", value: "95.70%", note: "On the evaluated test set" },
       { metric: "Main Category Accuracy", value: "97.40%", note: "On the evaluated test set" },
-      { metric: "Dataset Size", value: "~250,000", note: "Cleaned Arabic articles across sources" },
+      { metric: "Dataset Size", value: "~250K", note: "Cleaned Arabic articles across sources" },
       { metric: "Hierarchy Depth", value: "3 Levels", note: "Main → Subcategory → Fine-grained" },
     ],
     challenges:

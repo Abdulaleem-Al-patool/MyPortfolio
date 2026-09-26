@@ -2,18 +2,31 @@ import React from 'react';
 import SectionHeader from '../components/SectionHeader.jsx';
 import StatCard from '../components/StatCard.jsx';
 import { Database, Filter, GitBranch, Cpu, CheckCircle2, Server } from 'lucide-react';
+import { projects } from '../data/projects.js';
+import './ResearchSection.css';
 
 export default function ResearchSection() {
+  const nlpProject = projects.find(
+    (p) => p.id === 'arabic-news-hierarchical-classifier'
+  );
+
+  const exactMatchMetric =
+    nlpProject?.results?.find((r) => r.metric.includes('Exact Match'))?.value || '95.70%';
+  const mainCatMetric =
+    nlpProject?.results?.find((r) => r.metric.includes('Main Category'))?.value || '97.40%';
+  const datasetMetric =
+    nlpProject?.results?.find((r) => r.metric.includes('Dataset Size'))?.value || '~250K';
+
   const pipelineStages = [
     {
       step: '01',
-      title: 'Data Collection',
+      title: 'Corpus Collection & Synthesis',
       icon: Database,
-      desc: 'Extracted ~250K raw articles from multi-source Arabic news publications, targeting broad topical diversity.',
+      desc: 'Aggregated ~250,000 articles across varied Arabic news portals, normalizing heterogeneous schemas.',
     },
     {
       step: '02',
-      title: 'Cleaning & Normalization',
+      title: 'Morphological Preprocessing',
       icon: Filter,
       desc: 'Rule-based text cleansing: removal of HTML artifacts, diacritic stripping, alef/hamza normalization, and deduplication.',
     },
@@ -44,8 +57,8 @@ export default function ResearchSection() {
   ];
 
   return (
-    <section id="research" className="py-16 sm:py-24 border-t border-[var(--border-subtle)]">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+    <section id="research" className="research-section">
+      <div className="container">
         <SectionHeader
           number="03"
           title="AI & Research: Arabic Hierarchical NLP"
@@ -53,65 +66,65 @@ export default function ResearchSection() {
         />
 
         {/* Technical Rationale Card */}
-        <div className="rounded-[8px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-6 sm:p-8">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-2xl">
-              <span className="font-mono text-xs text-[var(--accent)] font-semibold tracking-wider">
+        <div className="research-rationale-card reveal-on-scroll">
+          <div className="research-rationale-top">
+            <div className="research-rationale-content">
+              <span className="research-rationale-tag">
                 Research Rationale
               </span>
-              <h3 className="mt-1 font-heading text-xl font-bold text-[var(--text-primary)]">
+              <h3 className="research-rationale-title">
                 Why Hierarchical Generation with AraT5?
               </h3>
-              <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed font-body">
+              <p className="research-rationale-text">
                 Arabic news carries dense, topically nested information. Flat multi-class classifiers force arbitrary single-label decisions, losing the contextual parent category, while cascaded binary classifiers suffer from exponential error accumulation down the decision tree.
               </p>
-              <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed font-body">
-                By conditioning an encoder-decoder Transformer (<code className="font-mono text-[var(--text-primary)]">UBC-NLP/AraT5-base</code>) to autoregressively generate structured classification paths, the model learns relational taxonomy dependencies natively in its representation space.
+              <p className="research-rationale-text">
+                By conditioning an encoder-decoder Transformer (<code className="font-mono" style={{ color: 'var(--text-primary)' }}>UBC-NLP/AraT5-base</code>) to autoregressively generate structured classification paths, the model learns relational taxonomy dependencies natively in its representation space.
               </p>
             </div>
 
             {/* Arabic Taxonomy Sample Callout */}
-            <div className="rounded-[6px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 font-mono text-xs text-left min-w-[240px]">
-              <div className="text-[var(--text-secondary)] text-[11px] mb-1">
+            <div className="research-sample-callout">
+              <div className="research-sample-label">
                 Sample Generated Path
               </div>
-              <div className="text-[var(--text-primary)] font-bold text-sm">
+              <div className="research-sample-path">
                 اقتصاد &gt; أسواق مالية &gt; أسهم
               </div>
-              <div className="mt-1 text-[11px] text-[var(--text-secondary)]">
+              <div className="research-sample-translation">
                 Economy &gt; Financial Markets &gt; Equities
               </div>
-              <div className="mt-3 border-t border-[var(--border-subtle)] pt-2 flex items-center justify-between text-[10px]">
-                <span className="text-[var(--accent)]">UBC-NLP/AraT5-base</span>
-                <span className="text-[var(--success)]">Exact Match</span>
+              <div className="research-sample-footer">
+                <span style={{ color: 'var(--accent)' }}>UBC-NLP/AraT5-base</span>
+                <span style={{ color: 'var(--success)' }}>Exact Match</span>
               </div>
             </div>
           </div>
 
           {/* Explicitly Labeled Test-Set Results */}
-          <div className="mt-8 border-t border-[var(--border-subtle)] pt-6">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="font-mono text-xs font-semibold text-[var(--text-primary)] tracking-wide">
+          <div className="research-benchmarks-wrap">
+            <div className="research-benchmarks-header">
+              <h4 className="research-benchmarks-title">
                 Reported Test-Set Benchmarks
               </h4>
-              <span className="font-mono text-[11px] text-[var(--accent)]">
+              <span className="research-benchmarks-sub">
                 Evaluated on Test Dataset
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="research-benchmarks-grid">
               <StatCard
-                value="95.70%"
+                value={exactMatchMetric}
                 label="Exact Match"
                 subtext="Full taxonomy path"
               />
               <StatCard
-                value="97.40%"
+                value={mainCatMetric}
                 label="Main Category"
                 subtext="Top-level accuracy"
               />
               <StatCard
-                value="~250K"
+                value={datasetMetric}
                 label="Articles Curated"
                 subtext="Cleaned Arabic corpus"
               />
@@ -125,28 +138,28 @@ export default function ResearchSection() {
         </div>
 
         {/* Research Stages Grid */}
-        <div className="mt-10">
-          <h3 className="font-heading text-lg font-bold text-[var(--text-primary)] mb-4">
+        <div className="reveal-on-scroll">
+          <h3 className="research-stages-heading">
             Research & Methodology Lifecycle
           </h3>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="research-stages-grid">
             {pipelineStages.map((stage) => {
               const Icon = stage.icon;
               return (
                 <div
                   key={stage.step}
-                  className="group rounded-[8px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-4 sm:p-5 transition-all duration-300 hover:border-[var(--accent)] hover:shadow-[0_6px_20px_rgba(79,189,186,0.14)] hover:-translate-y-0.5"
+                  className="research-stage-card"
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-xs font-bold text-[var(--accent)]">
+                  <div className="research-stage-header">
+                    <span className="research-stage-num">
                       STAGE_{stage.step}
                     </span>
-                    <Icon className="h-4 w-4 text-[var(--accent)] transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="research-stage-icon" />
                   </div>
-                  <div className="font-heading text-sm font-semibold text-[var(--text-primary)]">
+                  <div className="research-stage-title">
                     {stage.title}
                   </div>
-                  <div className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed font-body">
+                  <div className="research-stage-desc">
                     {stage.desc}
                   </div>
                 </div>

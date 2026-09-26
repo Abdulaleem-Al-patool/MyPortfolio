@@ -16,18 +16,23 @@ import SkillGroup from './components/SkillGroup.jsx';
 import HowIBuildSection from './sections/HowIBuildSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import Footer from './components/Footer.jsx';
+import { useScrollReveal } from './hooks/useScrollReveal.js';
+import './App.css';
 
 export default function App() {
+  // Initialize lightweight viewport scroll reveals
+  useScrollReveal();
+
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
-        {/* Tier 1 Ambient Background (Opacity <= 0.06, faint grid, no purple) */}
+      <div className="app-wrapper">
+        {/* Tier 1 Ambient Background (slow organic drift, calm, dark teal/cyan) */}
         <AnimatedBackground />
 
         {/* 3-Zone Sticky Navigation Bar */}
         <Navbar />
 
-        <main className="relative z-10">
+        <main className="app-main">
           {/* Asymmetric Hero Section */}
           <Hero />
 
@@ -35,8 +40,8 @@ export default function App() {
           <AboutSection />
 
           {/* Section 02: Featured Projects */}
-          <section id="projects" className="py-16 sm:py-24 border-t border-[var(--border-subtle)]">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <section id="projects" className="app-section">
+            <div className="container">
               <SectionHeader
                 number="02"
                 title="Featured Engineering Projects"
@@ -53,8 +58,8 @@ export default function App() {
           <HowIBuildSection />
 
           {/* Section 05: Technical Skills (No percentage bars) */}
-          <section id="skills" className="py-16 sm:py-24 border-t border-[var(--border-subtle)]">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <section id="skills" className="app-section">
+            <div className="container">
               <SectionHeader
                 number="05"
                 title="Technical Competencies"

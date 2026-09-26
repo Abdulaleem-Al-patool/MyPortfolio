@@ -1,0 +1,102 @@
+/* Ambient Background with subtle, slow, organic drift */
+.ambient-background-root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ambient-grid-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.035;
+}
+
+/* Primary floating aurora orb */
+.ambient-glow-orb-1 {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  width: 800px;
+  height: 600px;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: radial-gradient(ellipse at center, var(--accent) 0%, rgba(79, 189, 186, 0.2) 40%, transparent 70%);
+  opacity: 0.045;
+  filter: blur(140px);
+  animation: ambientDrift1 45s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Secondary floating orb for gentle depth */
+.ambient-glow-orb-2 {
+  position: absolute;
+  top: 45%;
+  right: -10%;
+  width: 650px;
+  height: 550px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, var(--accent-dim) 0%, rgba(53, 133, 139, 0.15) 45%, transparent 70%);
+  opacity: 0.035;
+  filter: blur(150px);
+  animation: ambientDrift2 55s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Tertiary lower orb */
+.ambient-glow-orb-3 {
+  position: absolute;
+  bottom: -10%;
+  left: 10%;
+  width: 600px;
+  height: 500px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, var(--brand-blue) 0%, rgba(79, 189, 186, 0.1) 40%, transparent 70%);
+  opacity: 0.03;
+  filter: blur(130px);
+  animation: ambientDrift1 50s ease-in-out infinite alternate-reverse;
+  will-change: transform, opacity;
+}
+
+@keyframes ambientDrift1 {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.045;
+  }
+  50% {
+    transform: translate(-42%, 40px) scale(1.08);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translate(-58%, -30px) scale(0.95);
+    opacity: 0.035;
+  }
+}
+
+@keyframes ambientDrift2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.035;
+  }
+  50% {
+    transform: translate(-50px, -60px) scale(1.1);
+    opacity: 0.055;
+  }
+  100% {
+    transform: translate(30px, 40px) scale(0.92);
+    opacity: 0.03;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow-orb-1,
+  .ambient-glow-orb-2,
+  .ambient-glow-orb-3 {
+    animation: none;
+    transform: translate(-50%, 0);
+  }
+}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Menu, X } from 'lucide-react';
 import { profileData } from '../data/profile.js';
 import DownloadCVButton from './DownloadCVButton.jsx';
+import ThemeSwitcher from './ThemeSwitcher.jsx';
+import './Navbar.css';
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
@@ -32,33 +34,31 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 h-16 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]/90 backdrop-blur-sm">
-      <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-4 sm:px-6">
-        {/* Zone 1: Single text element wordmark (Top Bar Contract) */}
+    <header className="navbar-header">
+      <div className="navbar-container">
+        {/* Zone 1: Single text element wordmark */}
         <a
           href="#home"
-          className="font-heading text-base font-bold tracking-tight text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="navbar-brand"
         >
           {profileData.name}
         </a>
 
-        {/* Zone 2: 4-6 text navigation links with subtle underline indicator (NO filled pills) */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[var(--text-secondary)]">
+        {/* Zone 2: 4-6 text navigation links with subtle underline indicator */}
+        <nav className="navbar-nav">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
               <a
                 key={link.id}
                 href={link.href}
-                className={`relative py-1 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
-                  isActive ? 'text-[var(--accent)] font-semibold' : ''
-                }`}
+                className={`nav-link ${isActive ? 'is-active' : ''}`}
               >
                 {link.label}
                 {isActive && (
                   <span
                     aria-hidden="true"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--accent)] rounded-full"
+                    className="nav-link-indicator"
                   />
                 )}
               </a>
@@ -66,79 +66,83 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Zone 3: 1-2 primary actions (GitHub, LinkedIn, CV) */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Zone 3: Actions (Theme, GitHub, LinkedIn, CV) */}
+        <div className="navbar-actions">
+          <ThemeSwitcher />
+
           <a
             href={profileData.contact.github}
             target="_blank"
             rel="noreferrer noopener"
             aria-label="GitHub Profile"
-            className="hidden sm:inline-flex p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-[4px]"
+            className="navbar-social-link"
           >
-            <Github className="h-4 w-4" />
+            <Github style={{ width: '1rem', height: '1rem' }} />
           </a>
           <a
             href={profileData.contact.linkedin}
             target="_blank"
             rel="noreferrer noopener"
             aria-label="LinkedIn Profile"
-            className="hidden sm:inline-flex p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-[4px]"
+            className="navbar-social-link"
           >
-            <Linkedin className="h-4 w-4" />
+            <Linkedin style={{ width: '1rem', height: '1rem' }} />
           </a>
 
-          <DownloadCVButton className="hidden sm:inline-flex text-xs py-1.5 px-3" />
+          <DownloadCVButton className="navbar-cv-btn" />
 
           {/* Mobile hamburger menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-[4px]"
+            className="navbar-menu-toggle"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X style={{ width: '1.25rem', height: '1.25rem' }} />
+            ) : (
+              <Menu style={{ width: '1.25rem', height: '1.25rem' }} />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-4 space-y-3">
+        <div className="navbar-mobile-menu">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className={`block py-1.5 text-sm ${
-                activeSection === link.id
-                  ? 'text-[var(--accent)] font-semibold'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              className={`navbar-mobile-link ${
+                activeSection === link.id ? 'is-active' : ''
               }`}
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="navbar-mobile-footer">
+            <div className="navbar-mobile-socials">
               <a
                 href={profileData.contact.github}
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="GitHub"
-                className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
+                className="navbar-mobile-social-link"
               >
-                <Github className="h-4 w-4" />
+                <Github style={{ width: '1rem', height: '1rem' }} />
               </a>
               <a
                 href={profileData.contact.linkedin}
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="LinkedIn"
-                className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
+                className="navbar-mobile-social-link"
               >
-                <Linkedin className="h-4 w-4" />
+                <Linkedin style={{ width: '1rem', height: '1rem' }} />
               </a>
             </div>
-            <DownloadCVButton className="text-xs py-1.5 px-3" />
+            <DownloadCVButton style={{ fontSize: '0.75rem', padding: '0.375rem 0.75rem' }} />
           </div>
         </div>
       )}

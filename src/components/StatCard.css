@@ -1,0 +1,50 @@
+.stat-card-root {
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-elevated);
+  padding: 1.25rem;
+  text-align: left;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.stat-card-root:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(79, 189, 186, 0.16);
+  transform: translateY(-3px);
+}
+
+.stat-card-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.18s ease;
+}
+
+@media (min-width: 640px) {
+  .stat-card-value {
+    font-size: 1.875rem;
+  }
+}
+
+.stat-card-root:hover .stat-card-value {
+  color: var(--text-primary);
+}
+
+.stat-card-label {
+  margin-top: 0.25rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stat-card-subtext {
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+}

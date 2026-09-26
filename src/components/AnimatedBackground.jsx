@@ -1,19 +1,20 @@
 import React from 'react';
+import './AnimatedBackground.css';
 
 /**
  * Ambient background - Tier 1 Motion
  * Opacity <= 0.06 relative to background.
- * GPU-cheap CSS-only transform/opacity, disabled under prefers-reduced-motion.
+ * GPU-friendly CSS-only transform/opacity, disabled under prefers-reduced-motion.
  */
 export default function AnimatedBackground() {
   return (
     <div
       aria-hidden="true"
-      className="ambient-bg pointer-events-none fixed inset-0 z-0 overflow-hidden select-none"
+      className="ambient-background-root ambient-bg"
     >
       {/* Muted technical grid pattern */}
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.04]"
+        className="ambient-grid-svg"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -36,13 +37,10 @@ export default function AnimatedBackground() {
         <rect width="100%" height="100%" fill="url(#portfolio-grid)" />
       </svg>
 
-      {/* Subtle single-axis ambient gradient drift with <= 8% lightness difference */}
-      <div
-        className="absolute -top-[300px] left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full opacity-[0.03] blur-[120px]"
-        style={{
-          background: 'radial-gradient(ellipse at center, var(--accent) 0%, var(--bg-primary) 70%)',
-        }}
-      />
+      {/* Subtle organic ambient gradient orbs with slow drift */}
+      <div className="ambient-glow-orb-1" />
+      <div className="ambient-glow-orb-2" />
+      <div className="ambient-glow-orb-3" />
     </div>
   );
 }

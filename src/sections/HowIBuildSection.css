@@ -1,0 +1,65 @@
+.how-i-build-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 640px) {
+  .how-i-build-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.principles-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .principles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.principle-card {
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-elevated);
+  padding: 1.5rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.principle-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(79, 189, 186, 0.14);
+  transform: translateY(-3px);
+}
+
+.principle-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.principle-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color 0.18s ease;
+}
+
+.principle-card:hover .principle-title {
+  color: var(--accent);
+}
+
+.principle-desc {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.625;
+}

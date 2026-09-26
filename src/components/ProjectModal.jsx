@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, ExternalLink, Github, FileText, Cpu, CheckCircle2, AlertCircle } from 'lucide-react';
+import './ProjectModal.css';
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -24,29 +25,29 @@ export default function ProjectModal({ project, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-sm"
+      className="project-modal-backdrop"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-3xl rounded-[8px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] my-8 max-h-[90vh] overflow-y-auto">
+      <div className="project-modal-window">
         {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Close project modal"
-          className="absolute right-4 top-4 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-2 text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="project-modal-close-btn"
         >
-          <X className="h-4 w-4" />
+          <X style={{ width: '1rem', height: '1rem' }} />
         </button>
 
         {/* Header */}
-        <div className="pr-10">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[var(--accent)]">
+        <div className="project-modal-header">
+          <div className="project-modal-categories">
             <span>{project.category}</span>
             {project.categories && project.categories.length > 1 && (
               <>
-                <span aria-hidden="true" className="text-[var(--text-secondary)]">·</span>
-                <span className="text-[var(--text-secondary)]">
+                <span aria-hidden="true" style={{ color: 'var(--text-secondary)' }}>·</span>
+                <span style={{ color: 'var(--text-secondary)' }}>
                   {project.categories.filter((c) => c !== project.category).join(' · ')}
                 </span>
               </>
@@ -54,28 +55,28 @@ export default function ProjectModal({ project, onClose }) {
           </div>
           <h2
             id="modal-title"
-            className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]"
+            className="project-modal-title"
           >
             {project.title}
           </h2>
-          <p className="mt-3 text-base text-[var(--text-secondary)] leading-relaxed">
+          <p className="project-modal-desc">
             {project.description}
           </p>
         </div>
 
         {/* Links bar */}
-        <div className="mt-6 flex flex-wrap items-center gap-3 border-y border-[var(--border-subtle)] py-3">
+        <div className="project-modal-links">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-1.5 text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent-dim)] hover:text-[var(--accent)] transition-colors"
+              className="project-modal-link-item"
             >
-              <Github className="h-3.5 w-3.5" />
+              <Github style={{ width: '0.875rem', height: '0.875rem' }} />
               <span>Source Repository</span>
               {project.github === '#' && (
-                <span className="text-[10px] text-[var(--text-secondary)]">(Pending release)</span>
+                <span style={{ fontSize: '0.625rem', color: 'var(--text-secondary)' }}>(Pending release)</span>
               )}
             </a>
           )}
@@ -84,12 +85,12 @@ export default function ProjectModal({ project, onClose }) {
               href={project.huggingFace}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-1.5 text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent-dim)] hover:text-[var(--accent)] transition-colors"
+              className="project-modal-link-item"
             >
-              <Cpu className="h-3.5 w-3.5" />
+              <Cpu style={{ width: '0.875rem', height: '0.875rem' }} />
               <span>Hugging Face Checkpoint</span>
               {project.huggingFace === '#' && (
-                <span className="text-[10px] text-[var(--text-secondary)]">(Checkpoint)</span>
+                <span style={{ fontSize: '0.625rem', color: 'var(--text-secondary)' }}>(Checkpoint)</span>
               )}
             </a>
           )}
@@ -98,9 +99,9 @@ export default function ProjectModal({ project, onClose }) {
               href={project.paper}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-1.5 text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent-dim)] hover:text-[var(--accent)] transition-colors"
+              className="project-modal-link-item"
             >
-              <FileText className="h-3.5 w-3.5" />
+              <FileText style={{ width: '0.875rem', height: '0.875rem' }} />
               <span>Technical Report</span>
             </a>
           )}
@@ -109,34 +110,34 @@ export default function ProjectModal({ project, onClose }) {
               href={project.demo}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-1.5 text-xs font-mono text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+              className="project-modal-link-item link-accent"
             >
-              <ExternalLink className="h-3.5 w-3.5" />
+              <ExternalLink style={{ width: '0.875rem', height: '0.875rem' }} />
               <span>Interactive Demo</span>
             </a>
           )}
         </div>
 
         {/* Technical Deep Dive Sections */}
-        <div className="mt-6 space-y-6 text-sm">
+        <div className="project-modal-deepdive">
           {/* Problem & Approach */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-[6px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4">
-              <div className="flex items-center gap-2 font-mono text-xs font-medium text-[var(--warning)]">
-                <AlertCircle className="h-3.5 w-3.5" />
+          <div className="project-modal-problem-grid">
+            <div className="project-modal-box">
+              <div className="project-modal-box-header" style={{ color: 'var(--warning)' }}>
+                <AlertCircle style={{ width: '0.875rem', height: '0.875rem' }} />
                 <span>The Problem</span>
               </div>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+              <p className="project-modal-box-desc">
                 {project.problem}
               </p>
             </div>
 
-            <div className="rounded-[6px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4">
-              <div className="flex items-center gap-2 font-mono text-xs font-medium text-[var(--accent)]">
-                <CheckCircle2 className="h-3.5 w-3.5" />
+            <div className="project-modal-box">
+              <div className="project-modal-box-header" style={{ color: 'var(--accent)' }}>
+                <CheckCircle2 style={{ width: '0.875rem', height: '0.875rem' }} />
                 <span>Engineering Approach</span>
               </div>
-              <p className="mt-2 text-xs text-[var(--text-secondary)] leading-relaxed">
+              <p className="project-modal-box-desc">
                 {project.approach}
               </p>
             </div>
@@ -144,10 +145,19 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Architecture */}
           <div>
-            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+            <h3 className="project-modal-section-title">
               Architecture & System Flow
             </h3>
-            <p className="mt-2 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-3.5 font-body text-xs text-[var(--text-primary)] leading-relaxed">
+            <p style={{
+              marginTop: '0.5rem',
+              borderRadius: '4px',
+              border: '1px solid var(--border-subtle)',
+              backgroundColor: 'var(--bg-surface)',
+              padding: '0.875rem',
+              fontSize: '0.75rem',
+              color: 'var(--text-primary)',
+              lineHeight: 1.6,
+            }}>
               {project.architecture}
             </p>
           </div>
@@ -155,19 +165,21 @@ export default function ProjectModal({ project, onClose }) {
           {/* Pipeline Steps if present */}
           {project.pipelineSteps && (
             <div>
-              <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+              <h3 className="project-modal-section-title">
                 Pipeline Execution Stages
               </h3>
-              <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
+              <div className="project-modal-pipeline-grid">
                 {project.pipelineSteps.map((st) => (
                   <div
                     key={st.step}
-                    className="flex gap-3 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-2.5 text-xs"
+                    className="project-modal-pipeline-card"
                   >
-                    <span className="font-mono font-bold text-[var(--accent)]">{st.step}</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--accent)' }}>
+                      {st.step}
+                    </span>
                     <div>
-                      <div className="font-semibold text-[var(--text-primary)]">{st.name}</div>
-                      <div className="mt-0.5 text-[11px] text-[var(--text-secondary)] leading-normal">
+                      <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{st.name}</div>
+                      <div style={{ marginTop: '0.125rem', fontSize: '0.6875rem', color: 'var(--text-secondary)' }}>
                         {st.desc}
                       </div>
                     </div>
@@ -177,30 +189,30 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           )}
 
-          {/* Reported Results (Explicitly labeled) */}
+          {/* Reported Results */}
           {project.results && project.results.length > 0 && (
             <div>
-              <div className="flex items-center justify-between">
-                <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h3 className="project-modal-section-title">
                   Evaluation & Verification Metrics
                 </h3>
-                <span className="font-mono text-[10px] text-[var(--accent)]">
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--accent)' }}>
                   Evaluated Test-Set Benchmarks
                 </span>
               </div>
-              <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <div className="project-modal-metrics-grid">
                 {project.results.map((res) => (
                   <div
                     key={res.metric}
-                    className="rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-3 text-center"
+                    className="project-modal-metric-card"
                   >
-                    <div className="font-mono text-lg font-bold text-[var(--text-primary)] tabular-nums">
+                    <div className="project-modal-metric-val">
                       {res.value}
                     </div>
-                    <div className="mt-1 font-body text-xs font-medium text-[var(--text-primary)]">
+                    <div className="project-modal-metric-lbl">
                       {res.metric}
                     </div>
-                    <div className="mt-0.5 text-[10px] text-[var(--text-secondary)]">
+                    <div className="project-modal-metric-note">
                       {res.note}
                     </div>
                   </div>
@@ -211,15 +223,24 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Technologies */}
           <div>
-            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+            <h3 className="project-modal-section-title">
               Technologies & Frameworks
             </h3>
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs text-[var(--text-secondary)]">
+            <div style={{
+              marginTop: '0.5rem',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              gap: '0.375rem 0.75rem',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              color: 'var(--text-secondary)',
+            }}>
               {project.technologies.map((t, idx) => (
                 <React.Fragment key={t}>
-                  <span className="text-[var(--text-primary)]">{t}</span>
+                  <span style={{ color: 'var(--text-primary)' }}>{t}</span>
                   {idx < project.technologies.length - 1 && (
-                    <span aria-hidden="true" className="text-[var(--border-subtle)]">·</span>
+                    <span aria-hidden="true" style={{ color: 'var(--border-subtle)' }}>·</span>
                   )}
                 </React.Fragment>
               ))}
@@ -228,11 +249,11 @@ export default function ProjectModal({ project, onClose }) {
 
           {/* Technical Challenges */}
           {project.challenges && (
-            <div className="border-t border-[var(--border-subtle)] pt-4">
-              <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem' }}>
+              <h3 className="project-modal-section-title">
                 Key Engineering Challenges Overcome
               </h3>
-              <p className="mt-1.5 text-xs text-[var(--text-secondary)] leading-relaxed">
+              <p style={{ marginTop: '0.375rem', fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 {project.challenges}
               </p>
             </div>

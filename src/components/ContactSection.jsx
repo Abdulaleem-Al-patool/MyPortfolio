@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Copy, Check, Send } from 'lucide-react';
 import { profileData } from '../data/profile.js';
 import SectionHeader from './SectionHeader.jsx';
+import './ContactSection.css';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -33,30 +34,30 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 border-t border-[var(--border-subtle)]">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+    <section id="contact" className="contact-section">
+      <div className="container">
         <SectionHeader
-          number="05"
+          number="06"
           title="Let's Build Something"
           subtitle="Interested in software engineering, AI, Arabic NLP, or building a technical project together?"
         />
 
-        <div className="grid gap-8 lg:grid-cols-12">
+        <div className="contact-layout-grid reveal-on-scroll">
           {/* Left Column: Direct Coordinates */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="rounded-[8px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-6">
-              <h3 className="font-heading text-lg font-bold text-[var(--text-primary)]">
+          <div className="contact-coords-col">
+            <div className="contact-card">
+              <h3 className="contact-card-title">
                 Direct Contact
               </h3>
-              <p className="mt-1 text-xs text-[var(--text-secondary)]">
+              <p className="contact-card-desc">
                 Open for technical collaboration, research discussions, and software engineering opportunities.
               </p>
 
               {/* Email Card with Copy button */}
-              <div className="mt-5 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-3 flex items-center justify-between">
-                <div className="flex items-center gap-2.5 overflow-hidden">
-                  <Mail className="h-4 w-4 shrink-0 text-[var(--accent)]" />
-                  <span className="font-mono text-xs text-[var(--text-primary)] truncate">
+              <div className="contact-email-box">
+                <div className="contact-email-content">
+                  <Mail style={{ width: '1rem', height: '1rem', flexShrink: 0, color: 'var(--accent)' }} />
+                  <span className="contact-email-text">
                     {profileData.contact.email}
                   </span>
                 </div>
@@ -64,85 +65,85 @@ export default function ContactSection() {
                   type="button"
                   onClick={handleCopyEmail}
                   aria-label="Copy email address"
-                  className="rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] shrink-0 ml-2"
+                  className="contact-copy-btn"
                 >
                   {copied ? (
-                    <Check className="h-3.5 w-3.5 text-[var(--success)]" />
+                    <Check style={{ width: '0.875rem', height: '0.875rem', color: 'var(--success)' }} />
                   ) : (
-                    <Copy className="h-3.5 w-3.5" />
+                    <Copy style={{ width: '0.875rem', height: '0.875rem' }} />
                   )}
                 </button>
               </div>
 
               {/* Social Channels */}
-              <div className="mt-6 space-y-2">
+              <div className="contact-socials-list">
                 <a
                   href={profileData.contact.github}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="flex items-center justify-between rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-3 text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent-dim)] hover:text-[var(--accent)] transition-colors"
+                  className="contact-social-btn"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Github className="h-4 w-4" />
+                  <div className="contact-social-inner">
+                    <Github style={{ width: '1rem', height: '1rem' }} />
                     <span>GitHub Profile</span>
                   </div>
-                  <span className="text-[11px] text-[var(--text-secondary)]">@ahmed-mufeed</span>
+                  <span className="contact-social-handle">@ahmed-mufeed</span>
                 </a>
 
                 <a
                   href={profileData.contact.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="flex items-center justify-between rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-3 text-xs font-mono text-[var(--text-primary)] hover:border-[var(--accent-dim)] hover:text-[var(--accent)] transition-colors"
+                  className="contact-social-btn"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Linkedin className="h-4 w-4" />
+                  <div className="contact-social-inner">
+                    <Linkedin style={{ width: '1rem', height: '1rem' }} />
                     <span>LinkedIn Profile</span>
                   </div>
-                  <span className="text-[11px] text-[var(--text-secondary)]">in/ahmed-mufeed</span>
+                  <span className="contact-social-handle">in/ahmed-mufeed</span>
                 </a>
               </div>
 
               {/* Academic Location Note */}
-              <div className="mt-6 border-t border-[var(--border-subtle)] pt-4 text-xs font-mono text-[var(--text-secondary)]">
+              <div className="contact-affiliation-box">
                 <div>Academic Affiliation:</div>
-                <div className="text-[var(--text-primary)] mt-0.5">{profileData.status}</div>
+                <div className="contact-affiliation-val">{profileData.status}</div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Interactive Message Form */}
-          <div className="lg:col-span-7">
-            <div className="rounded-[8px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] p-6 sm:p-7">
-              <h3 className="font-heading text-lg font-bold text-[var(--text-primary)]">
+          <div className="contact-form-col">
+            <div className="contact-card contact-form-card">
+              <h3 className="contact-card-title">
                 Send a Message
               </h3>
-              <p className="mt-1 text-xs text-[var(--text-secondary)]">
+              <p className="contact-card-desc">
                 Leave a project brief or research inquiry. The form dispatches directly to your local mail client.
               </p>
 
               {formSubmitted ? (
-                <div className="mt-6 rounded-[4px] border border-[var(--success)]/40 bg-[var(--bg-surface)] p-6 text-center">
-                  <div className="font-mono text-sm font-semibold text-[var(--success)]">
+                <div className="contact-form-success">
+                  <div className="contact-form-success-title">
                     Email Client Triggered
                   </div>
-                  <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                  <p className="contact-form-success-text">
                     Thank you. Your message draft has been prepared for dispatch to {profileData.contact.email}.
                   </p>
                   <button
                     onClick={() => setFormSubmitted(false)}
-                    className="mt-4 rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 py-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+                    className="contact-form-reset-btn"
                   >
                     Send Another Note
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <div className="contact-form-row">
                     <div>
                       <label
                         htmlFor="sender-name"
-                        className="block font-mono text-xs text-[var(--text-secondary)] mb-1.5"
+                        className="contact-form-label"
                       >
                         Your Name *
                       </label>
@@ -153,14 +154,14 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Sarah Jenkins"
-                        className="w-full rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                        className="contact-form-input"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="sender-email"
-                        className="block font-mono text-xs text-[var(--text-secondary)] mb-1.5"
+                        className="contact-form-label"
                       >
                         Your Email *
                       </label>
@@ -171,7 +172,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. sarah@example.com"
-                        className="w-full rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                        className="contact-form-input"
                       />
                     </div>
                   </div>
@@ -179,7 +180,7 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="inquiry-topic"
-                      className="block font-mono text-xs text-[var(--text-secondary)] mb-1.5"
+                      className="contact-form-label"
                     >
                       Inquiry Topic
                     </label>
@@ -187,7 +188,7 @@ export default function ContactSection() {
                       id="inquiry-topic"
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="w-full rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                      className="contact-form-select"
                     >
                       <option value="Software Engineering Project">Software Engineering Project</option>
                       <option value="Arabic NLP / AraT5 Research">Arabic NLP / AraT5 Research</option>
@@ -200,7 +201,7 @@ export default function ContactSection() {
                   <div>
                     <label
                       htmlFor="inquiry-message"
-                      className="block font-mono text-xs text-[var(--text-secondary)] mb-1.5"
+                      className="contact-form-label"
                     >
                       Message *
                     </label>
@@ -211,15 +212,15 @@ export default function ContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Outline your project scope, technical question, or collaboration idea..."
-                      className="w-full rounded-[4px] border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                      className="contact-form-textarea"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-[4px] bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-[var(--bg-primary)] hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                    className="contact-form-submit-btn"
                   >
-                    <Send className="h-4 w-4" />
+                    <Send style={{ width: '1rem', height: '1rem' }} />
                     <span>Send Inquiry</span>
                   </button>
                 </form>
