@@ -37,6 +37,10 @@ export default function AnimatedBackground() {
         <rect width="100%" height="100%" fill="url(#portfolio-grid)" />
       </svg>
 
+      {/* Slow-drifting vertical line layers (black, ultra-subtle, blended) */}
+      <div className="ambient-vlines-layer ambient-vlines-layer-1" />
+      <div className="ambient-vlines-layer ambient-vlines-layer-2" />
+
       {/* Subtle organic ambient gradient orbs with slow drift */}
       <div className="ambient-glow-orb-1" />
       <div className="ambient-glow-orb-2" />

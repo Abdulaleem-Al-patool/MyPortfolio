@@ -8,8 +8,9 @@ export const profileData = {
   role: "Software Developer & AI Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
-  tagline: "Building complete software systems around models, not just the models themselves.",
-  
+  tagline:
+    "Building complete software systems around models, not just the models themselves.",
+
   // Hero summary
   heroBio:
     "I build practical software systems and intelligent applications, with a particular focus on Arabic NLP, machine learning, and modern software engineering.",
@@ -34,8 +35,8 @@ export const profileData = {
 
   // Asset paths
   assets: {
-    photo: "/assets/profile.svg",
-    photoFallback: "/assets/profile.svg",
+    photo: "/assets/image.png",
+    photoFallback: "/assets/image.png",
     cv: "/assets/Ahmed-Mufeed-Al-Taweel-CV.pdf",
     cvFilename: "Ahmed-Mufeed-Al-Taweel-CV.pdf",
   },
