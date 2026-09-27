@@ -1,10 +1,11 @@
 import React from 'react';
 import {
   Code,
-  BrainCircuit,
+  Globe,
+  Server,
   Layers,
-  Database,
   Terminal,
+  Cpu,
 } from 'lucide-react';
 import { skillGroups } from '../data/skills.js';
 import './SkillGroup.css';
@@ -12,18 +13,18 @@ import './SkillGroup.css';
 export default function SkillGroup() {
   const getCategoryIcon = (id) => {
     switch (id) {
-      case 'programming':
-        return <Code style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
-      case 'ai-ml':
-        return <BrainCircuit style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
-      case 'software-engineering':
-        return <Layers style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
-      case 'data':
-        return <Database style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
+      case 'frontend':
+        return <Globe style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+      case 'backend':
+        return <Server style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+      case 'architecture':
+        return <Layers style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+      case 'languages':
+        return <Code style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
       case 'tools':
-        return <Terminal style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
+        return <Terminal style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
       default:
-        return <Code style={{ width: '1rem', height: '1rem', color: 'var(--accent)' }} />;
+        return <Cpu style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
     }
   };
 

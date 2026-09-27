@@ -1,4 +1,4 @@
-/* Ambient Background with subtle, slow, organic drift */
+/* Software Engineering Background Styling */
 .ambient-background-root {
   position: fixed;
   inset: 0;
@@ -6,149 +6,97 @@
   overflow: hidden;
   pointer-events: none;
   user-select: none;
+  background-color: var(--bg-primary, #000000);
 }
 
-.ambient-grid-svg {
+/* Engineering Blueprint Dot Matrix & Coordinate Grid */
+.dev-blueprint-grid {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.035;
+  background-image: 
+    radial-gradient(circle, rgba(64, 162, 216, 0.16) 1px, transparent 1px),
+    linear-gradient(to right, rgba(64, 162, 216, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(64, 162, 216, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px, 140px 140px, 140px 140px;
+  background-position: 0 0, 0 0, 0 0;
+  opacity: 0.85;
 }
 
-/* Primary floating aurora orb */
+/* Subtle code tokens drifting in the background */
+.dev-code-tokens {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.dev-syntax-token {
+  position: absolute;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--main_color, #40A2D8);
+  opacity: 0.16;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(64, 162, 216, 0.1);
+  background: rgba(11, 96, 176, 0.06);
+  white-space: nowrap;
+  animation: tokenFloat 16s ease-in-out infinite alternate;
+}
+
+@keyframes tokenFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.03);
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0.14;
+  }
+}
+
+/* Subtle glowing ambient accents */
 .ambient-glow-orb-1 {
   position: absolute;
-  top: -15%;
-  left: 50%;
-  width: 800px;
-  height: 600px;
-  transform: translateX(-50%);
-  border-radius: 9999px;
-  background: radial-gradient(ellipse at center, var(--accent) 0%, rgba(79, 189, 186, 0.2) 40%, transparent 70%);
-  opacity: 0.045;
-  filter: blur(140px);
-  animation: ambientDrift1 45s ease-in-out infinite alternate;
-  will-change: transform, opacity;
-}
-
-/* Secondary floating orb for gentle depth */
-.ambient-glow-orb-2 {
-  position: absolute;
-  top: 45%;
-  right: -10%;
-  width: 650px;
-  height: 550px;
-  border-radius: 9999px;
-  background: radial-gradient(circle at center, var(--accent-dim) 0%, rgba(53, 133, 139, 0.15) 45%, transparent 70%);
-  opacity: 0.035;
-  filter: blur(150px);
-  animation: ambientDrift2 55s ease-in-out infinite alternate;
-  will-change: transform, opacity;
-}
-
-/* Tertiary lower orb */
-.ambient-glow-orb-3 {
-  position: absolute;
-  bottom: -10%;
-  left: 10%;
+  top: -12%;
+  right: 10%;
   width: 600px;
   height: 500px;
   border-radius: 9999px;
-  background: radial-gradient(circle at center, var(--brand-blue) 0%, rgba(79, 189, 186, 0.1) 40%, transparent 70%);
-  opacity: 0.03;
-  filter: blur(130px);
-  animation: ambientDrift1 50s ease-in-out infinite alternate-reverse;
-  will-change: transform, opacity;
+  background: radial-gradient(circle at center, var(--accent, #40A2D8) 0%, rgba(64, 162, 216, 0.18) 35%, transparent 70%);
+  opacity: 0.14;
+  filter: blur(140px);
+  animation: orbFloat 25s ease-in-out infinite alternate;
 }
 
-@keyframes ambientDrift1 {
-  0% {
-    transform: translate(-50%, 0) scale(1);
-    opacity: 0.045;
-  }
-  50% {
-    transform: translate(-42%, 40px) scale(1.08);
-    opacity: 0.06;
-  }
-  100% {
-    transform: translate(-58%, -30px) scale(0.95);
-    opacity: 0.035;
-  }
-}
-
-@keyframes ambientDrift2 {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.035;
-  }
-  50% {
-    transform: translate(-50px, -60px) scale(1.1);
-    opacity: 0.055;
-  }
-  100% {
-    transform: translate(30px, 40px) scale(0.92);
-    opacity: 0.03;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ambient-glow-orb-1,
-  .ambient-glow-orb-2,
-  .ambient-glow-orb-3 {
-    animation: none;
-    transform: translate(-50%, 0);
-  }
-}
-
-
-.ambient-vlines-layer {
+.ambient-glow-orb-2 {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  mix-blend-mode: overlay; /* darkens as thin black bands regardless of active theme */
-  will-change: background-position;
+  bottom: 8%;
+  left: 5%;
+  width: 550px;
+  height: 450px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, var(--brand-cobalt, #0B60B0) 0%, rgba(11, 96, 176, 0.3) 45%, transparent 70%);
+  opacity: 0.18;
+  filter: blur(150px);
+  animation: orbFloat 30s ease-in-out infinite alternate-reverse;
 }
 
-.ambient-vlines-layer-1 {
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.877) 0px,
-    rgb(0, 0, 0) 1px,
-    transparent 1px,
-    transparent 72px
-  );
-  opacity: 0.5;
-  animation: ambientLinesDrift1 60s linear infinite;
-}
-
-.ambient-vlines-layer-2 {
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.368) 0px,
-    rgba(0, 0, 0, 0.44) 1px,
-    transparent 1px,
-    transparent 128px
-  );
-  opacity: 0.03;
-  animation: ambientLinesDrift2 95s linear infinite reverse;
-}
-
-@keyframes ambientLinesDrift1 {
-  from { background-position-x: 0; }
-  to { background-position-x: 300px; }
-}
-
-@keyframes ambientLinesDrift2 {
-  from { background-position-x: 0; }
-  to { background-position-x: -128px; }
+@keyframes orbFloat {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -40px); }
+  100% { transform: translate(-20px, 30px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ambient-vlines-layer-1,
-  .ambient-vlines-layer-2 {
-    animation: none;
+  .dev-syntax-token,
+  .ambient-glow-orb-1,
+  .ambient-glow-orb-2 {
+    animation: none !important;
   }
 }

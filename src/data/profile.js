@@ -1,10 +1,11 @@
 /**
  * Profile Configuration & Personal Positioning Data
- * Placeholders are marked explicitly. All changes here automatically propagate across the portfolio.
+ * Loaded with authentic contact details & profile for Ahmed Al-Taweel.
  */
 
 export const profileData = {
-  name: "Ahmed Mufeed Al-Taweel",
+  name: "Ahmed Al-Taweel",
+  FullName:"Ahmed Mufeed Al-Taweel",
   role: "Software Developer & AI Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
@@ -26,11 +27,11 @@ export const profileData = {
   // Contact & Social links (Placeholders - edit here)
   contact: {
     // PLACEHOLDER: Replace with verified contact email
-    email: "contact@ahmedmufeed.dev",
+    email: "ahmedaltweel58@gmail.com",
     // PLACEHOLDER: Replace with verified GitHub profile
-    github: "https://github.com/ahmed-mufeed",
+    github: "https://github.com/ahmed-altaweel",
     // PLACEHOLDER: Replace with verified LinkedIn profile
-    linkedin: "https://linkedin.com/in/ahmed-mufeed",
+    linkedin: "https://www.linkedin.com/in/ahmed-altaweel-5906293a8",
   },
 
   // Asset paths
@@ -41,35 +42,35 @@ export const profileData = {
     cvFilename: "Ahmed-Mufeed-Al-Taweel-CV.pdf",
   },
 
-  // Core engineering principles (Section 6.8: How I Build)
+  // Core engineering principles (Section: How I Build)
   principles: [
     {
-      id: "understand",
+      id: "systems-around-models",
       number: "01",
-      title: "Understand before implementing",
+      title: "Systems around models, not just models",
       description:
-        "The problem statement, algorithm constraints, and architecture design come before writing code. Rushing to code before clarifying requirements leads to fragile systems.",
+        "Building production-grade AI means robust data ingestion pipelines, verified backend inference services, and clean UI orchestration rather than standalone notebooks.",
     },
     {
-      id: "systems",
+      id: "arabic-nlp-rigor",
       number: "02",
-      title: "Build complete systems",
+      title: "Rigor in Arabic NLP & Transformers",
       description:
-        "The pipeline surrounding a model — ingestion, cleaning, tokenization, evaluation, inference APIs, and user interfaces — matters just as much as the model weights.",
+        "Tackling morphological complexity, dialectal variance, and sequence modeling with structured tokenization, reproducible evaluations, and verified test-set metrics.",
     },
     {
-      id: "metrics",
+      id: "clean-architecture",
       number: "03",
-      title: "Prefer measurable results",
+      title: "Decoupled Clean Architecture",
       description:
-        "Technical credibility comes from concrete evaluation metrics and repeatable benchmarks on defined test sets, never from vague or exaggerated claims.",
+        "Separating domain logic, data models, presentation layers, and external providers ensures systems remain resilient, testable, and maintainable over time.",
     },
     {
-      id: "maintainable",
+      id: "reproducible-workflows",
       number: "04",
-      title: "Keep systems maintainable",
+      title: "Reproducible workflows & reliability",
       description:
-        "Strict separation of concerns, reusable component architectures, predictable data flows, and readable code make software durable and easy to extend.",
+        "Clear specifications, deterministic builds, and systematic validation guarantee dependable behavior from local development to production deployment.",
     },
   ],
 };

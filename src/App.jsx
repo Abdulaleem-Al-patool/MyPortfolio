@@ -4,15 +4,13 @@
  */
 
 import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import AnimatedBackground from './components/AnimatedBackground.jsx';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import AboutSection from './sections/AboutSection.jsx';
+import ServicesSection from './sections/ServicesSection.jsx';
 import ProjectGrid from './components/ProjectGrid.jsx';
-import SectionHeader from './components/SectionHeader.jsx';
-import ResearchSection from './sections/ResearchSection.jsx';
 import SkillGroup from './components/SkillGroup.jsx';
 import HowIBuildSection from './sections/HowIBuildSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
@@ -27,57 +25,62 @@ export default function App() {
   return (
     <ThemeProvider>
       <div className="app-wrapper">
-        {/* Tier 1 Ambient Background (slow organic drift, calm, dark teal/cyan) */}
+        {/* Animated Background with the 9 signature vertical lines from uploaded design */}
         <AnimatedBackground />
 
-        {/* 3-Zone Sticky Navigation Bar */}
+        {/* Fixed Active Navigation Bar */}
         <Navbar />
 
         <main className="app-main">
-          {/* Asymmetric Hero Section */}
+          {/* Hero Section with Personal Identity & Interactive CLI */}
           <Hero />
 
-          {/* Section 01: About & Engineering Focus */}
+          {/* Section: About Me & Personal Journey */}
           <AboutSection />
 
-          {/* Section 02: Featured Projects */}
+          {/* Section: Specialized Engineering Services */}
+          <ServicesSection />
+
+          {/* Section: Popular Projects (with alternating layout & circular 45-degree arrow links) */}
           <section id="projects" className="app-section">
             <div className="container">
-              <SectionHeader
-                number="02"
-                title="Featured Engineering Projects"
-                subtitle="Production systems, research pipelines, and clean architecture implementations. Each project is data-driven and includes technical problem statements, approaches, and evaluation metrics."
-              />
+              <div className="top_section reveal-on-scroll">
+                <h2>
+                  Explore my Popular <span className="text-accent">Projects</span>
+                </h2>
+                <p>
+                  Production systems, clean architecture implementations, and desktop visualizers. Each project includes technical problem statements, approaches, and evaluation metrics.
+                </p>
+              </div>
               <ProjectGrid />
             </div>
           </section>
 
-          {/* Section 03: AI & Research (AraT5 Hierarchical Classifier) */}
-          <ResearchSection />
-
-          {/* Section 04: Engineering Principles (How I Build) */}
+          {/* Section: Engineering Principles (How I Build) */}
           <HowIBuildSection />
 
-          {/* Section 05: Technical Skills (No percentage bars) */}
+          {/* Section: Technical Skills */}
           <section id="skills" className="app-section">
             <div className="container">
-              <SectionHeader
-                number="05"
-                title="Technical Competencies"
-                subtitle="Core programming languages, AI/ML frameworks, systems engineering practices, and developer tooling."
-              />
+              <div className="top_section reveal-on-scroll">
+                <h2>
+                  Technical <span className="text-accent">Competencies</span>
+                </h2>
+                <p>
+                  Core programming languages, full-stack frameworks, systems engineering practices, and developer tooling.
+                </p>
+              </div>
               <SkillGroup />
             </div>
           </section>
 
-          {/* Section 06: Contact Section */}
+          {/* Section: Contact Me */}
           <ContactSection />
         </main>
 
         {/* Footer */}
         <Footer />
       </div>
-      <Analytics />
     </ThemeProvider>
   );
 }

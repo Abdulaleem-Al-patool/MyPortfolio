@@ -1,231 +1,237 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Copy, Check, Send } from 'lucide-react';
+import { Mail, Phone, Facebook, Instagram, Github, Linkedin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { profileData } from '../data/profile.js';
-import SectionHeader from './SectionHeader.jsx';
 import './ContactSection.css';
 
 export default function ContactSection() {
-  const [copied, setCopied] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    topic: 'Software Engineering Project',
+    Full_name: '',
+    Email: '',
+    Mobile_number: '',
+    Subject: '',
     message: '',
   });
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profileData.contact.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: null,
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    
-    // Construct mailto link as resilient client action
-    const subject = encodeURIComponent(`[Portfolio Inquiry: ${formData.topic}] from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.topic}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:${profileData.contact.email}?subject=${subject}&body=${body}`;
-    setFormSubmitted(true);
+    if (!formData.Full_name || !formData.Email || !formData.message) return;
+
+    setStatus({ submitting: true, submitted: false, error: null });
+
+    try {
+      const response = await fetch(profileData.contact.sheetMonkeyFormUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus({ submitting: false, submitted: true, error: null });
+        setFormData({
+          Full_name: '',
+          Email: '',
+          Mobile_number: '',
+          Subject: '',
+          message: '',
+        });
+      } else {
+        // Fallback or sheet error
+        setStatus({ submitting: false, submitted: true, error: null });
+      }
+    } catch (err) {
+      // If network fails (e.g. adblock or CORS), trigger mailto fallback gracefully
+      const mailSubject = encodeURIComponent(formData.Subject || `Inquiry from ${formData.Full_name}`);
+      const mailBody = encodeURIComponent(
+        `Name: ${formData.Full_name}\nEmail: ${formData.Email}\nPhone: ${formData.Mobile_number}\n\nMessage:\n${formData.message}`
+      );
+      window.location.href = `mailto:${profileData.contact.email}?subject=${mailSubject}&body=${mailBody}`;
+      setStatus({ submitting: false, submitted: true, error: null });
+    }
   };
 
   return (
-    <section id="contact" className="contact-section">
+    <section className="contact app-section" id="contact">
       <div className="container">
-        <SectionHeader
-          number="06"
-          title="Let's Build Something"
-          subtitle="Interested in software engineering, AI, Arabic NLP, or building a technical project together?"
-        />
+        <div className="top_section reveal-on-scroll">
+          <h2>
+            Contact <span className="text-accent">Me</span>
+          </h2>
+          <p>
+            Have a project in mind, need an AI system or full-stack application, or want to discuss research? Let's connect!
+          </p>
+        </div>
 
-        <div className="contact-layout-grid reveal-on-scroll">
-          {/* Left Column: Direct Coordinates */}
-          <div className="contact-coords-col">
-            <div className="contact-card">
-              <h3 className="contact-card-title">
-                Direct Contact
-              </h3>
-              <p className="contact-card-desc">
-                Open for technical collaboration, research discussions, and software engineering opportunities.
-              </p>
-
-              {/* Email Card with Copy button */}
-              <div className="contact-email-box">
-                <div className="contact-email-content">
-                  <Mail style={{ width: '1rem', height: '1rem', flexShrink: 0, color: 'var(--accent)' }} />
-                  <span className="contact-email-text">
-                    {profileData.contact.email}
+        <div className="contact-main-grid reveal-on-scroll">
+          {/* Left Column: Follow Me Social Contacts */}
+          <div className="soial_contact">
+            <h2>Follow Me</h2>
+            <div className="links">
+              {profileData.contact.email && (
+                <a href={`mailto:${profileData.contact.email}`}>
+                  <span className="icon-badge">
+                    <Mail style={{ width: '1.25rem', height: '1.25rem' }} />
                   </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  aria-label="Copy email address"
-                  className="contact-copy-btn"
-                >
-                  {copied ? (
-                    <Check style={{ width: '0.875rem', height: '0.875rem', color: 'var(--success)' }} />
-                  ) : (
-                    <Copy style={{ width: '0.875rem', height: '0.875rem' }} />
-                  )}
-                </button>
-              </div>
+                  <span>{profileData.contact.email}</span>
+                </a>
+              )}
 
-              {/* Social Channels */}
-              <div className="contact-socials-list">
+              {profileData.contact.github && (
                 <a
                   href={profileData.contact.github}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="contact-social-btn"
                 >
-                  <div className="contact-social-inner">
-                    <Github style={{ width: '1rem', height: '1rem' }} />
-                    <span>GitHub Profile</span>
-                  </div>
-                  <span className="contact-social-handle">@ahmed-mufeed</span>
+                  <span className="icon-badge">
+                    <Github style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </span>
+                  <span>{profileData.contact.github.replace('https://github.com/', '')}</span>
                 </a>
+              )}
 
+              {profileData.contact.linkedin && (
                 <a
                   href={profileData.contact.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="contact-social-btn"
                 >
-                  <div className="contact-social-inner">
-                    <Linkedin style={{ width: '1rem', height: '1rem' }} />
-                    <span>LinkedIn Profile</span>
-                  </div>
-                  <span className="contact-social-handle">in/ahmed-mufeed</span>
+                  <span className="icon-badge">
+                    <Linkedin style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </span>
+                  <span>{profileData.contact.linkedin.replace('https://linkedin.com/in/', 'in/')}</span>
                 </a>
-              </div>
+              )}
 
-              {/* Academic Location Note */}
-              <div className="contact-affiliation-box">
-                <div>Academic Affiliation:</div>
-                <div className="contact-affiliation-val">{profileData.status}</div>
-              </div>
+              {profileData.contact.phone && (
+                <a href={`tel:${profileData.contact.phone.replace(/\s+/g, '')}`}>
+                  <span className="icon-badge">
+                    <Phone style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </span>
+                  <span>{profileData.contact.phone}</span>
+                </a>
+              )}
+
+              {profileData.contact.facebook && (
+                <a
+                  href={profileData.contact.facebook}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span className="icon-badge">
+                    <Facebook style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </span>
+                  <span>Ahmed Altweel</span>
+                </a>
+              )}
+
+              {profileData.contact.instagram && (
+                <a
+                  href={profileData.contact.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span className="icon-badge">
+                    <Instagram style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </span>
+                  <span>_v_al_l</span>
+                </a>
+              )}
             </div>
           </div>
 
-          {/* Right Column: Interactive Message Form */}
-          <div className="contact-form-col">
-            <div className="contact-card contact-form-card">
-              <h3 className="contact-card-title">
-                Send a Message
-              </h3>
-              <p className="contact-card-desc">
-                Leave a project brief or research inquiry. The form dispatches directly to your local mail client.
-              </p>
+          {/* Right Column: Contact Form */}
+          <div className="form-wrapper">
+            {status.submitted ? (
+              <div className="contact-success-box">
+                <CheckCircle2 style={{ width: '3.5rem', height: '3.5rem', color: 'var(--main_color)' }} />
+                <h3>Thank You!</h3>
+                <p>Your message has been sent successfully. I will get back to you shortly.</p>
+                <button
+                  type="button"
+                  className="button"
+                  onClick={() => setStatus({ submitting: false, submitted: false, error: null })}
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="input_form">
+                  <input
+                    type="text"
+                    placeholder="Full Name *"
+                    name="Full_name"
+                    required
+                    value={formData.Full_name}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email *"
+                    name="Email"
+                    required
+                    value={formData.Email}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Mobile Number"
+                    name="Mobile_number"
+                    value={formData.Mobile_number}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Subject"
+                    name="Subject"
+                    value={formData.Subject}
+                    onChange={handleChange}
+                  />
 
-              {formSubmitted ? (
-                <div className="contact-form-success">
-                  <div className="contact-form-success-title">
-                    Email Client Triggered
-                  </div>
-                  <p className="contact-form-success-text">
-                    Thank you. Your message draft has been prepared for dispatch to {profileData.contact.email}.
-                  </p>
-                  <button
-                    onClick={() => setFormSubmitted(false)}
-                    className="contact-form-reset-btn"
-                  >
-                    Send Another Note
-                  </button>
+                  <textarea
+                    name="message"
+                    rows={8}
+                    required
+                    placeholder="Your Message Here *"
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="contact-form-row">
-                    <div>
-                      <label
-                        htmlFor="sender-name"
-                        className="contact-form-label"
-                      >
-                        Your Name *
-                      </label>
-                      <input
-                        id="sender-name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Sarah Jenkins"
-                        className="contact-form-input"
-                      />
-                    </div>
 
-                    <div>
-                      <label
-                        htmlFor="sender-email"
-                        className="contact-form-label"
-                      >
-                        Your Email *
-                      </label>
-                      <input
-                        id="sender-email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="e.g. sarah@example.com"
-                        className="contact-form-input"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="inquiry-topic"
-                      className="contact-form-label"
-                    >
-                      Inquiry Topic
-                    </label>
-                    <select
-                      id="inquiry-topic"
-                      value={formData.topic}
-                      onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="contact-form-select"
-                    >
-                      <option value="Software Engineering Project">Software Engineering Project</option>
-                      <option value="Arabic NLP / AraT5 Research">Arabic NLP / AraT5 Research</option>
-                      <option value="Backend / Systems Architecture">Backend / Systems Architecture</option>
-                      <option value="Technical Collaboration">Technical Collaboration</option>
-                      <option value="General Technical Question">General Technical Question</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="inquiry-message"
-                      className="contact-form-label"
-                    >
-                      Message *
-                    </label>
-                    <textarea
-                      id="inquiry-message"
-                      rows={4}
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Outline your project scope, technical question, or collaboration idea..."
-                      className="contact-form-textarea"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="contact-form-submit-btn"
-                  >
-                    <Send style={{ width: '1rem', height: '1rem' }} />
-                    <span>Send Inquiry</span>
-                  </button>
-                </form>
-              )}
-            </div>
+                <button
+                  type="submit"
+                  disabled={status.submitting}
+                  className="button"
+                >
+                  {status.submitting ? (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                      <Loader2 className="animate-spin" style={{ width: '1.2rem', height: '1.2rem' }} />
+                      Sending...
+                    </span>
+                  ) : (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                      <Send style={{ width: '1.1rem', height: '1.1rem' }} />
+                      Send Message
+                    </span>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

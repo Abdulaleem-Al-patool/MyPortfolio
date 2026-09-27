@@ -1,72 +1,123 @@
-.about-section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  border-top: 1px solid var(--border-subtle);
+/* About Section - Compact & Dense Engineering Style */
+.about {
+  padding: 44px 0;
+  position: relative;
 }
 
-@media (min-width: 640px) {
-  .about-section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-.about-grid {
-  display: grid;
-  gap: 2.5rem;
-}
-
-@media (min-width: 1024px) {
-  .about-grid {
-    grid-template-columns: repeat(12, 1fr);
-    align-items: start;
-  }
-}
-
-.about-narrative {
+.about-card-container {
+  background: #040914;
+  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.28));
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding: 34px 40px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(11, 96, 176, 0.15);
+  gap: 36px;
 }
 
-@media (min-width: 1024px) {
-  .about-narrative {
-    grid-column: span 7;
-  }
+.about .div_text {
+  width: 60%;
 }
 
-.about-lead-paragraph {
-  color: var(--text-primary);
+.about .div_text h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  margin: 4px 0 6px;
+  font-weight: 800;
+  color: var(--white_color, #F0EDCF);
+  line-height: 1.18;
+}
+
+.about .div_text h2 span {
+  color: var(--main_color, #40A2D8);
+}
+
+.about .div_text h4 {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+  color: var(--main_color, #40A2D8);
   font-weight: 500;
+  line-height: 1.35;
 }
 
-.about-academic-box {
-  border-radius: 6px;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--bg-elevated);
-  padding: 1rem;
-  font-family: var(--font-mono);
+.about-p {
+  color: var(--p_color, #9DBFD4);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.about-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.academic-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 2px solid var(--main_color, #40A2D8);
+  padding-left: 14px;
+}
+
+.academic-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white_color, #F0EDCF);
+  font-family: var(--font-heading);
+}
+
+.academic-sub {
+  display: block;
   font-size: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  color: var(--p_color, #9DBFD4);
 }
 
-.about-academic-badge {
-  color: var(--accent);
-  font-weight: 600;
+/* Image Visual Column */
+.about .div_img {
+  width: 36%;
+  display: flex;
+  justify-content: center;
 }
 
-.about-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.3));
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
 }
 
-@media (min-width: 1024px) {
-  .about-stats-grid {
-    grid-column: span 5;
+.about-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .about {
+    padding: 30px 0;
+  }
+  .about-card-container {
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 24px;
+  }
+  .about .div_text {
+    width: 100%;
+  }
+  .about .div_img {
+    width: 100%;
+  }
+  .about-image-wrapper {
+    max-width: 220px;
   }
 }

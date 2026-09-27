@@ -1,58 +1,55 @@
 import React from 'react';
-import SectionHeader from '../components/SectionHeader.jsx';
-import StatCard from '../components/StatCard.jsx';
+import { Download, GraduationCap } from 'lucide-react';
 import { profileData } from '../data/profile.js';
 import './AboutSection.css';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="about-section">
+    <section className="about app-section" id="about">
       <div className="container">
-        <SectionHeader
-          number="01"
-          title="About & Engineering Focus"
-          subtitle="Software Engineering + Practical AI Systems"
-        />
+        <div className="about-card-container reveal-on-scroll">
+          <div className="div_text">
+            <h2>
+              About <span>Me</span>
+            </h2>
+            <h4>{profileData.role}</h4>
 
-        <div className="about-grid reveal-on-scroll">
-          {/* Two-Paragraph Body Copy */}
-          <div className="about-narrative">
-            <p className="about-lead-paragraph">
+            <p className="about-p">
               {profileData.about.paragraph1}
             </p>
-            <p>
+            <p className="about-p">
               {profileData.about.paragraph2}
             </p>
-            <div className="about-academic-box">
-              <span className="about-academic-badge">Academic Foundation: </span>
-              <span>
-                Undergraduate in Information Technology / Computer Science at Ibb University, Yemen, grounding applied machine learning research in rigorous software engineering principles.
-              </span>
+
+            <div className="about-actions-row">
+              <a
+                href={profileData.assets.cv}
+                download={profileData.assets.cvFilename}
+                className="btn"
+              >
+                <Download style={{ width: '1rem', height: '1rem' }} />
+                <span>Download CV</span>
+              </a>
+
+              <div className="academic-badge-item">
+                <GraduationCap style={{ width: '1.35rem', height: '1.35rem', color: 'var(--main_color)' }} />
+                <div>
+                  <span className="academic-title">{profileData.status}</span>
+                  <span className="academic-sub">{profileData.positioning}</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Quick Technical Fact Grid */}
-          <div className="about-stats-grid">
-            <StatCard
-              value="SWE + AI"
-              label="Engineering Focus"
-              subtext="Systems around models"
-            />
-            <StatCard
-              value="AraT5"
-              label="Specialized NLP"
-              subtext="Hierarchical generation"
-            />
-            <StatCard
-              value="Clean"
-              label="Architecture"
-              subtext="Layered & decoupled"
-            />
-            <StatCard
-              value="Ibb Univ"
-              label="Academic Base"
-              subtext="IT / CS Program"
-            />
+          {/* Right Visual Side */}
+          <div className="div_img">
+            <div className="about-image-wrapper">
+              <img
+                src={profileData.assets.photo}
+                alt={profileData.name}
+                className="about-portrait"
+              />
+            </div>
           </div>
         </div>
       </div>

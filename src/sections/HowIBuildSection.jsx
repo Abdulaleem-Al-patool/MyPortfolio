@@ -1,26 +1,28 @@
 import React from 'react';
-import SectionHeader from '../components/SectionHeader.jsx';
 import { profileData } from '../data/profile.js';
 import './HowIBuildSection.css';
 
 export default function HowIBuildSection() {
   return (
-    <section className="how-i-build-section">
+    <section className="how-i-build-section app-section" id="principles">
       <div className="container">
-        <SectionHeader
-          number="04"
-          title="Engineering Principles"
-          subtitle="How I approach building software systems and machine learning workflows."
-        />
+        <div className="top_section reveal-on-scroll">
+          <h2>
+            Engineering <span className="text-accent">Philosophy</span>
+          </h2>
+          <p>
+            The foundational engineering standards I follow to build maintainable, high-impact systems.
+          </p>
+        </div>
 
         <div className="principles-grid reveal-on-scroll">
-          {profileData.principles.map((p) => (
+          {profileData.principles.map((p, idx) => (
             <div
               key={p.id}
-              className="principle-card"
+              className={`principle-card reveal-delay-${(idx % 2) + 1}`}
             >
               <div className="principle-num">
-                Standard 0{p.number}
+                Standard {p.number}
               </div>
               <h3 className="principle-title">
                 {p.title}

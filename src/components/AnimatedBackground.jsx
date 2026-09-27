@@ -2,49 +2,48 @@ import React from 'react';
 import './AnimatedBackground.css';
 
 /**
- * Ambient background - Tier 1 Motion
- * Opacity <= 0.06 relative to background.
- * GPU-friendly CSS-only transform/opacity, disabled under prefers-reduced-motion.
+ * Software Engineering Background
+ * Features an IDE/Blueprint dot-matrix coordinate grid,
+ * subtle drifting code/syntax engineering tokens, and soft cyan-cobalt ambient glow.
  */
 export default function AnimatedBackground() {
+  const codeTokens = [
+    { text: '{ ...props }', top: '12%', left: '8%', delay: '0s' },
+    { text: 'const [state, setState]', top: '28%', right: '10%', delay: '2s' },
+    { text: '</>', top: '45%', left: '5%', delay: '4s' },
+    { text: 'git:main (clean)', top: '65%', right: '7%', delay: '1s' },
+    { text: 'async function resolve()', top: '78%', left: '12%', delay: '3s' },
+    { text: 'REST API 200 OK', top: '88%', right: '14%', delay: '5s' },
+    { text: '=> { return next() }', top: '38%', right: '22%', delay: '3.5s' },
+    { text: '01001100', top: '18%', left: '42%', delay: '1.5s' },
+  ];
+
   return (
-    <div
-      aria-hidden="true"
-      className="ambient-background-root ambient-bg"
-    >
-      {/* Muted technical grid pattern */}
-      <svg
-        className="ambient-grid-svg"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="portfolio-grid"
-            width="48"
-            height="48"
-            patternUnits="userSpaceOnUse"
+    <div aria-hidden="true" className="ambient-background-root">
+      {/* Engineering Blueprint Dot Matrix & Coordinate Grid */}
+      <div className="dev-blueprint-grid" />
+
+      {/* Floating Software Engineering Syntax Tokens */}
+      <div className="dev-code-tokens">
+        {codeTokens.map((token, i) => (
+          <span
+            key={i}
+            className="dev-syntax-token"
+            style={{
+              top: token.top,
+              left: token.left,
+              right: token.right,
+              animationDelay: token.delay,
+            }}
           >
-            <path
-              d="M 48 0 L 0 0 0 48"
-              fill="none"
-              stroke="var(--text-primary)"
-              strokeWidth="0.75"
-            />
-            {/* Fine dot at grid intersection */}
-            <circle cx="0" cy="0" r="1" fill="var(--accent)" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#portfolio-grid)" />
-      </svg>
+            {token.text}
+          </span>
+        ))}
+      </div>
 
-      {/* Slow-drifting vertical line layers (black, ultra-subtle, blended) */}
-      <div className="ambient-vlines-layer ambient-vlines-layer-1" />
-      <div className="ambient-vlines-layer ambient-vlines-layer-2" />
-
-      {/* Subtle organic ambient gradient orbs with slow drift */}
+      {/* Subtle Glowing Ambient Glows */}
       <div className="ambient-glow-orb-1" />
       <div className="ambient-glow-orb-2" />
-      <div className="ambient-glow-orb-3" />
     </div>
   );
 }

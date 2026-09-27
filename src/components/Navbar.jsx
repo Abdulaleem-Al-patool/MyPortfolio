@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Menu, X } from 'lucide-react';
+import { Github, Menu, X, Facebook, Instagram, Terminal } from 'lucide-react';
 import { profileData } from '../data/profile.js';
 import DownloadCVButton from './DownloadCVButton.jsx';
 import ThemeSwitcher from './ThemeSwitcher.jsx';
@@ -8,19 +8,26 @@ import './Navbar.css';
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
     { id: 'home', label: 'Home', href: '#home' },
     { id: 'about', label: 'About', href: '#about' },
+    { id: 'services', label: 'Services', href: '#services' },
     { id: 'projects', label: 'Projects', href: '#projects' },
-    { id: 'research', label: 'AI & Research', href: '#research' },
     { id: 'skills', label: 'Skills', href: '#skills' },
     { id: 'contact', label: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 100;
+      if (window.scrollY >= 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+
+      const scrollPos = window.scrollY + 140;
       for (let i = navLinks.length - 1; i >= 0; i--) {
         const section = document.querySelector(navLinks[i].href);
         if (section && section.offsetTop <= scrollPos) {
@@ -34,17 +41,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="navbar-header">
+    <header className={`navbar-header ${scrolled ? 'active' : ''}`}>
       <div className="navbar-container">
-        {/* Zone 1: Single text element wordmark */}
-        <a
-          href="#home"
-          className="navbar-brand"
-        >
-          {profileData.name}
+        {/* Brand / Logo with Ahmed's custom monogram */}
+        <a href="#home" className="navbar-brand">
+          <span className="brand-monogram">AT</span>
+          <div className="brand-text-wrap">
+            <span className="brand-name">{profileData.name}</span>
+            <span className="brand-title">Software Engineer</span>
+          </div>
         </a>
 
-        {/* Zone 2: 4-6 text navigation links with subtle underline indicator */}
+        {/* Desktop Links */}
         <nav className="navbar-nav">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
@@ -55,40 +63,49 @@ export default function Navbar() {
                 className={`nav-link ${isActive ? 'is-active' : ''}`}
               >
                 {link.label}
-                {isActive && (
-                  <span
-                    aria-hidden="true"
-                    className="nav-link-indicator"
-                  />
-                )}
+                {isActive && <span aria-hidden="true" className="nav-link-indicator" />}
               </a>
             );
           })}
         </nav>
 
-        {/* Zone 3: Actions (Theme, GitHub, LinkedIn, CV) */}
+        {/* Social Icons & Actions */}
         <div className="navbar-actions">
+          <div className="nav-icons-group">
+            {profileData.contact.facebook && (
+              <a
+                href={profileData.contact.facebook}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Facebook Profile"
+                className="navbar-icon-link"
+              >
+                <Facebook style={{ width: '1.1rem', height: '1.1rem' }} />
+              </a>
+            )}
+            {profileData.contact.instagram && (
+              <a
+                href={profileData.contact.instagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Instagram Profile"
+                className="navbar-icon-link"
+              >
+                <Instagram style={{ width: '1.1rem', height: '1.1rem' }} />
+              </a>
+            )}
+            <a
+              href={profileData.contact.github}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="GitHub Profile"
+              className="navbar-icon-link"
+            >
+              <Github style={{ width: '1.1rem', height: '1.1rem' }} />
+            </a>
+          </div>
+
           <ThemeSwitcher />
-
-          <a
-            href={profileData.contact.github}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="GitHub Profile"
-            className="navbar-social-link"
-          >
-            <Github style={{ width: '1rem', height: '1rem' }} />
-          </a>
-          <a
-            href={profileData.contact.linkedin}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="LinkedIn Profile"
-            className="navbar-social-link"
-          >
-            <Linkedin style={{ width: '1rem', height: '1rem' }} />
-          </a>
-
           <DownloadCVButton className="navbar-cv-btn" />
 
           {/* Mobile hamburger menu toggle */}
@@ -98,17 +115,22 @@ export default function Navbar() {
             className="navbar-menu-toggle"
           >
             {mobileMenuOpen ? (
-              <X style={{ width: '1.25rem', height: '1.25rem' }} />
+              <X style={{ width: '1.35rem', height: '1.35rem' }} />
             ) : (
-              <Menu style={{ width: '1.25rem', height: '1.25rem' }} />
+              <Menu style={{ width: '1.35rem', height: '1.35rem' }} />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="navbar-mobile-menu">
+          <div className="navbar-mobile-brand">
+            <span className="brand-monogram">AT</span>
+            <span className="brand-name">{profileData.name}</span>
+          </div>
+
           {navLinks.map((link) => (
             <a
               key={link.id}
@@ -121,28 +143,42 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+
           <div className="navbar-mobile-footer">
             <div className="navbar-mobile-socials">
+              {profileData.contact.facebook && (
+                <a
+                  href={profileData.contact.facebook}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Facebook"
+                  className="navbar-icon-link"
+                >
+                  <Facebook style={{ width: '1.1rem', height: '1.1rem' }} />
+                </a>
+              )}
+              {profileData.contact.instagram && (
+                <a
+                  href={profileData.contact.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="Instagram"
+                  className="navbar-icon-link"
+                >
+                  <Instagram style={{ width: '1.1rem', height: '1.1rem' }} />
+                </a>
+              )}
               <a
                 href={profileData.contact.github}
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="GitHub"
-                className="navbar-mobile-social-link"
+                className="navbar-icon-link"
               >
-                <Github style={{ width: '1rem', height: '1rem' }} />
-              </a>
-              <a
-                href={profileData.contact.linkedin}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn"
-                className="navbar-mobile-social-link"
-              >
-                <Linkedin style={{ width: '1rem', height: '1rem' }} />
+                <Github style={{ width: '1.1rem', height: '1.1rem' }} />
               </a>
             </div>
-            <DownloadCVButton style={{ fontSize: '0.75rem', padding: '0.375rem 0.75rem' }} />
+            <DownloadCVButton style={{ fontSize: '0.8rem', padding: '8px 16px' }} />
           </div>
         </div>
       )}
