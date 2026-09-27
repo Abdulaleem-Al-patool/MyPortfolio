@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import AnimatedBackground from './components/AnimatedBackground.jsx';
 import Navbar from './components/Navbar.jsx';
@@ -76,6 +77,7 @@ export default function App() {
         {/* Footer */}
         <Footer />
       </div>
+      <Analytics />
     </ThemeProvider>
   );
 }
