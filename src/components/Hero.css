@@ -78,7 +78,7 @@
 }
 
 .hero .div_Text h1 {
-  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-size: clamp(2.4rem, 5.5vw, 3.5rem);
   line-height: 1.12;
   margin-bottom: 8px;
   font-weight: 800;
@@ -129,15 +129,15 @@
   border: 1px solid var(--main_color, #40A2D8);
   text-decoration: none;
   font-family: var(--font-heading);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 14px rgba(64, 162, 216, 0.25);
   cursor: pointer;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(64, 162, 216, 0.45);
-  filter: brightness(1.06);
+   background-color:#4fff1e; 
+  box-shadow: 0 0 20px rgba(1, 7, 11, 0.45);
 }
 
 .hero-btn-secondary {
@@ -160,7 +160,7 @@
 
 .hero-btn-secondary:hover {
   border-color: var(--main_color, #40A2D8);
-  color: var(--main_color, #40A2D8);
+  color: var(--main_color) ;
   background-color: rgba(64, 162, 216, 0.12);
   transform: translateY(-2px);
 }

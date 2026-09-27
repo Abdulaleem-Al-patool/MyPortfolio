@@ -49,7 +49,7 @@ export default function Hero() {
                 href="#contact"
                 className="hero-btn-secondary"
               >
-                <Mail style={{ width: '1rem', height: '1rem', color: 'var(--accent, var(--main_color))' }} />
+                <Mail style={{ width: '1rem', height: '1rem' }} />
                 <span>Contact</span>
               </a>
 

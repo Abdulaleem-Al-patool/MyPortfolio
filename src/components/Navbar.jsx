@@ -105,8 +105,8 @@ export default function Navbar() {
             </a>
           </div>
 
-          <ThemeSwitcher />
-          <DownloadCVButton className="navbar-cv-btn" />
+          {/* <ThemeSwitcher /> */}
+          {/* <DownloadCVButton className="navbar-cv-btn" /> */}
 
           {/* Mobile hamburger menu toggle */}
           <button
@@ -178,7 +178,7 @@ export default function Navbar() {
                 <Github style={{ width: '1.1rem', height: '1.1rem' }} />
               </a>
             </div>
-            <DownloadCVButton style={{ fontSize: '0.8rem', padding: '8px 16px' }} />
+           
           </div>
         </div>
       )}

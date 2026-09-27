@@ -29,8 +29,8 @@
 }
 
 .project-filter-btn:hover {
-  color: var(--white_color, #F0EDCF);
-  background-color: var(--brand-cobalt, #0B60B0);
+  color:  #000000;
+  background-color: #19ff80;
 }
 
 .project-filter-btn.is-active {

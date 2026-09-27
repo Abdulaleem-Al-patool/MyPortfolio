@@ -10,7 +10,7 @@ export default function DownloadCVButton({ className = '', variant = 'secondary'
     <a
       href={profileData.assets.cv}
       download={profileData.assets.cvFilename}
-      className={`download-cv-btn ${isPrimary ? 'btn-primary' : 'btn-secondary'} ${className}`}
+      className={`hero-btn-secondary ${isPrimary ? 'btn-primary' : 'btn-secondary'} ${className}`}
       aria-label="Download Ahmed Mufeed Al-Taweel's Curriculum Vitae"
     >
       <Download className="download-cv-btn-icon" aria-hidden="true" />

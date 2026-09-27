@@ -1,49 +1,58 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './AnimatedBackground.css';
 
 /**
- * Software Engineering Background
- * Features an IDE/Blueprint dot-matrix coordinate grid,
- * subtle drifting code/syntax engineering tokens, and soft cyan-cobalt ambient glow.
+ * Background: radial cluster of white circles.
+ * Dense and larger near the center, sparser and smaller toward the edges.
  */
+
+function generateRadialDots(count, size, maxRadius) {
+  const dots = [];
+  const cx = size / 2;
+  const cy = size / 2;
+
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    // Power > 1 biases points toward the center (r = 0)
+    const t = Math.pow(Math.random(), 1.9);
+    const r = t * maxRadius;
+
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+
+    const closeness = 1 - r / maxRadius; // 1 at center, 0 at edge
+    const radius = 0.6 + closeness * 2.4;
+    const opacity = 0.08 + closeness * 0.55;
+
+    dots.push({ id: i, x, y, radius, opacity });
+  }
+  return dots;
+}
+
+const VIEWBOX_SIZE = 1000;
+const RADIAL_DOTS = generateRadialDots(280, VIEWBOX_SIZE, VIEWBOX_SIZE * 0.7);
+
 export default function AnimatedBackground() {
-  const codeTokens = [
-    { text: '{ ...props }', top: '12%', left: '8%', delay: '0s' },
-    { text: 'const [state, setState]', top: '28%', right: '10%', delay: '2s' },
-    { text: '</>', top: '45%', left: '5%', delay: '4s' },
-    { text: 'git:main (clean)', top: '65%', right: '7%', delay: '1s' },
-    { text: 'async function resolve()', top: '78%', left: '12%', delay: '3s' },
-    { text: 'REST API 200 OK', top: '88%', right: '14%', delay: '5s' },
-    { text: '=> { return next() }', top: '38%', right: '22%', delay: '3.5s' },
-    { text: '01001100', top: '18%', left: '42%', delay: '1.5s' },
-  ];
+  const dots = useMemo(() => RADIAL_DOTS, []);
 
   return (
     <div aria-hidden="true" className="ambient-background-root">
-      {/* Engineering Blueprint Dot Matrix & Coordinate Grid */}
-      <div className="dev-blueprint-grid" />
-
-      {/* Floating Software Engineering Syntax Tokens */}
-      <div className="dev-code-tokens">
-        {codeTokens.map((token, i) => (
-          <span
-            key={i}
-            className="dev-syntax-token"
-            style={{
-              top: token.top,
-              left: token.left,
-              right: token.right,
-              animationDelay: token.delay,
-            }}
-          >
-            {token.text}
-          </span>
+      <svg
+        className="radial-dot-field"
+        viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
+        preserveAspectRatio="xMidYMid slice"
+      >
+        {dots.map((d) => (
+          <circle
+            key={d.id}
+            cx={d.x}
+            cy={d.y}
+            r={d.radius}
+            fill="#FFFFFF"
+            opacity={d.opacity}
+          />
         ))}
-      </div>
-
-      {/* Subtle Glowing Ambient Glows */}
-      <div className="ambient-glow-orb-1" />
-      <div className="ambient-glow-orb-2" />
+      </svg>
     </div>
   );
 }

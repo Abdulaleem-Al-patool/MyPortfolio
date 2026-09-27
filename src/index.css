@@ -2,8 +2,8 @@
 
 :root {
   /* Palette: #000000, #0B60B0, #40A2D8, #F0EDCF */
-  --main_color: #40A2D8;
-  --brand-black: #000000;
+  /* --main_color: #40A2D8; */
+  /* --brand-black: #000000;
   --brand-cobalt: #0B60B0;
   --brand-cyan: #40A2D8;
   --brand-cream: #F0EDCF;
@@ -24,7 +24,7 @@
   --accent-dim: #0B60B0;
   --brand-blue: #40A2D8;
   --success: #40A2D8;
-  --warning: #F0EDCF;
+  --warning: #F0EDCF; */
 
   --font-heading: 'DM Sans', 'Plus Jakarta Sans', 'Cairo', sans-serif;
   --font-body: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -135,8 +135,9 @@ button {
 }
 
 .btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 20px rgba(64, 162, 216, 0.45);
+  transform: translateY(-1px);
+   background-color:#37ff00; 
+  box-shadow: 0 0 20px rgba(1, 7, 11, 0.45);
 }
 
 .btn_no_bg {
