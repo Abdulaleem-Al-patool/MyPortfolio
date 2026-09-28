@@ -9,8 +9,8 @@ export default function ServicesSection() {
       icon: Globe,
       title: 'Full-Stack Web Engineering',
       description:
-        'Architecting fast, responsive, and maintainable web applications. Decoupled frontend components, state synchronization with TanStack Query, secure JWT auth, and clean modern user interfaces.',
-      highlights: ['React & TypeScript', 'Modern Responsive UI', 'TanStack Query State Sync', 'Clean SRS Delivery'],
+        'Fast, maintainable web applications with modern UI, robust state management, and secure APIs.',
+      highlights: ['React & TypeScript', 'Modern Responsive UI', 'TanStack State Sync'],
       actionHref: '#projects',
       actionText: 'Explore Projects',
     },
@@ -19,8 +19,8 @@ export default function ServicesSection() {
       icon: Server,
       title: 'Backend Systems & APIs',
       description:
-        'Building reliable server-side systems, RESTful APIs, data validation schemas, database integrations, and structured endpoint architectures built for scale.',
-      highlights: ['RESTful API Design', 'Data Validation & Schemas', 'JWT Authentication Flows', 'Database Modeling'],
+        'High-performance RESTful APIs, clean database modeling, and secure authentication flows.',
+      highlights: ['RESTful API Design', 'Data Validation & Schemas', 'JWT Authentication'],
       actionHref: '#projects',
       actionText: 'View Case Studies',
     },
@@ -29,8 +29,8 @@ export default function ServicesSection() {
       icon: Layers,
       title: 'Software Systems & Architecture',
       description:
-        'Applying Clean Architecture principles with strict separation of concerns (Presentation, Application, Domain, Infrastructure), command-line utilities, and algorithmic visualizers.',
-      highlights: ['Clean Architecture (4 Layers)', 'CLI Tools in Python', 'PySide6 Algorithm Simulators', 'Testable Domain Logic'],
+        'Decoupled Clean Architecture, testable domain logic, and high-reliability systems.',
+      highlights: ['Clean Architecture (4 Layers)', 'Python CLI Utilities', 'PySide6 Simulators'],
       actionHref: '#skills',
       actionText: 'Technical Skills',
     },
@@ -44,7 +44,7 @@ export default function ServicesSection() {
             Specialized <span className="text-accent">Services</span>
           </h2>
           <p>
-            Delivering clean, robust software engineering solutions and modern full-stack web applications.
+            Focused engineering solutions from architecture to production delivery.
           </p>
         </div>
 

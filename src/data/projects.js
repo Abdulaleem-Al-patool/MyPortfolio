@@ -20,7 +20,7 @@ export const projects = [
     visualType: "ledger",
     featured: true,
     shortDescription:
-      "Production-ready React merchant e-wallet interface engineered strictly from a formal Software Requirements Specification (SRS).",
+      "Merchant e-wallet dashboard with TanStack Query server-state sync and decoupled JWT auth.",
     description:
       "A complete merchant e-wallet web application engineered strictly according to a formal Software Requirements Specification (SRS). It provides merchant account overview, provider integrations, multi-source financial transfers, ledger balance tracking, profile settings, and decoupled JWT authentication flow.",
     technologies: [
@@ -56,7 +56,7 @@ export const projects = [
     visualType: "terminal",
     featured: true,
     shortDescription:
-      "Command-line file manipulation utility in Python engineered with layered Clean Architecture (Presentation, Application, Domain, Infrastructure).",
+      "Python command-line file manipulation utility built with 4-layer decoupled Clean Architecture.",
     description:
       "A command-line file manipulation and management utility developed in Python with strict separation of concerns following Clean Architecture principles (Presentation → Application → Domain → Infrastructure). Designed as an exploration of system architecture and Python packaging.",
     technologies: [
@@ -92,7 +92,7 @@ export const projects = [
     visualType: "simulator",
     featured: true,
     shortDescription:
-      "Desktop algorithmic visualization tool in PySide6 with deterministic bidirectional state stepping.",
+      "Interactive algorithm visualizer in PySide6 with deterministic bidirectional step execution.",
     description:
       "An educational desktop visualization tool built with PySide6 for stepping through classic computer science algorithms (GCD, Fibonacci, sorting, searching, and string matching) with interactive Previous/Next control and deterministic seed reproduction.",
     technologies: [
@@ -127,7 +127,7 @@ export const projects = [
     visualType: "pipeline",
     featured: true,
     shortDescription:
-      "Automated pipeline for large-scale Arabic text normalization, hierarchical categorization, and structured JSON output.",
+      "Automated Arabic text normalization and hierarchical classification pipeline.",
     description:
       "An automated pipeline for ingesting, cleansing, and categorizing Arabic textual content. Spans data collection of ~250K articles, normalization of typographical variance, taxonomy mapping, model fine-tuning, and structured JSON inference output.",
     technologies: [

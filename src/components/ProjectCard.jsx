@@ -1,113 +1,155 @@
 import React from 'react';
-import { ArrowUp, Terminal, Activity, Layers, Cpu, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, Terminal, Activity, Layers, Sparkles } from 'lucide-react';
 import './ProjectCard.css';
 
-export default function ProjectCard({ project, onSelect, index }) {
-  // Determine an illustrative graphic mockup/preview based on visualType
+export default function ProjectCard({ project, onSelect }) {
+  // Render high-fidelity, immersive mini-viewport previews
   const renderVisual = () => {
     switch (project.visualType) {
       case 'pipeline':
         return (
-          <div className="project-preview-box pipeline-preview">
-            <div className="preview-top-bar">
-              <span className="dot dot-red" />
-              <span className="dot dot-yellow" />
-              <span className="dot dot-green" />
-              <span className="preview-title">arat5_hierarchical_eval.py</span>
+          <div className="showcase-preview-frame pipeline-preview">
+            <div className="preview-chrome">
+              <div className="chrome-controls">
+                <span className="chrome-dot dot-red" />
+                <span className="chrome-dot dot-yellow" />
+                <span className="chrome-dot dot-green" />
+              </div>
+              <span className="chrome-filename font-mono">arat5_hierarchical_eval.py</span>
+              <span className="chrome-badge font-mono">AraT5-base</span>
             </div>
-            <div className="preview-body font-mono">
+            <div className="preview-canvas font-mono">
               <div className="code-line"><span className="c-blue">from</span> transformers <span className="c-blue">import</span> AutoModelForSeq2SeqLM</div>
               <div className="code-line">model = <span className="c-green">"UBC-NLP/AraT5-base"</span></div>
               <div className="code-line c-dim"># Multi-tier Arabic Taxonomy Path</div>
               <div className="code-line">target = <span className="c-yellow">"اقتصاد &gt; بنوك &gt; نتائج مالية"</span></div>
-              <div className="metric-badge-floating">
-                <span className="badge-value">95.70%</span>
-                <span className="badge-note">Exact Match</span>
+              <div className="preview-metric-chip">
+                <span className="chip-score">95.70%</span>
+                <span className="chip-label">Exact Match · Test Set</span>
               </div>
             </div>
           </div>
         );
+
       case 'ledger':
         return (
-          <div className="project-preview-box ledger-preview">
-            <div className="preview-top-bar">
-              <span className="dot dot-red" />
-              <span className="dot dot-yellow" />
-              <span className="dot dot-green" />
-              <span className="preview-title">FWallet · SRS Merchant Dashboard</span>
+          <div className="showcase-preview-frame ledger-preview">
+            <div className="preview-chrome">
+              <div className="chrome-controls">
+                <span className="chrome-dot dot-red" />
+                <span className="chrome-dot dot-yellow" />
+                <span className="chrome-dot dot-green" />
+              </div>
+              <span className="chrome-filename font-mono">FWallet · SRS Merchant Ledger</span>
+              <span className="chrome-badge font-mono">SRS Compliant</span>
             </div>
-            <div className="ledger-card-demo">
-              <div className="ledger-stat">
-                <span className="l-label">Merchant Balance</span>
-                <span className="l-val">$48,290.00</span>
+            <div className="preview-canvas ledger-canvas">
+              <div className="ledger-balance-block">
+                <span className="ledger-kicker">Merchant Available Balance</span>
+                <div className="ledger-amount font-mono">$48,290.00</div>
               </div>
-              <div className="ledger-row">
-                <span>Provider: Al-Kuraimi</span>
-                <span className="status-ok">Active</span>
-              </div>
-              <div className="ledger-row">
-                <span>Sync Cache</span>
-                <span className="c-yellow">TanStack Query</span>
+              <div className="ledger-meta-row font-mono">
+                <span className="ledger-meta-item">
+                  <span className="status-live-dot" />
+                  Provider: Al-Kuraimi
+                </span>
+                <span className="ledger-meta-tag">TanStack Query</span>
               </div>
             </div>
           </div>
         );
+
       case 'terminal':
         return (
-          <div className="project-preview-box terminal-preview">
-            <div className="preview-top-bar">
-              <Terminal style={{ width: '14px', height: '14px', color: 'var(--main_color)' }} />
-              <span className="preview-title">ftool --clean-architecture</span>
+          <div className="showcase-preview-frame terminal-preview">
+            <div className="preview-chrome">
+              <div className="chrome-controls">
+                <span className="chrome-dot dot-red" />
+                <span className="chrome-dot dot-yellow" />
+                <span className="chrome-dot dot-green" />
+              </div>
+              <span className="chrome-filename font-mono">ftool --clean-architecture</span>
+              <span className="chrome-badge font-mono">Python 3</span>
             </div>
-            <div className="preview-body font-mono">
+            <div className="preview-canvas font-mono terminal-canvas">
               <div className="code-line prompt">$ ftool del --final -r ./build</div>
-              <div className="code-line c-dim">[Domain] Entity validation OK</div>
+              <div className="code-line c-dim">[Domain] Entity validation passed</div>
               <div className="code-line c-dim">[Application] Recursive use case run</div>
-              <div className="code-line"><span className="c-green">✓ Clean Architecture (4 Layers)</span></div>
+              <div className="code-line terminal-success">
+                <span>✓ Clean Architecture (4 Decoupled Layers)</span>
+              </div>
             </div>
           </div>
         );
+
       case 'simulator':
         return (
-          <div className="project-preview-box simulator-preview">
-            <div className="preview-top-bar">
-              <Activity style={{ width: '14px', height: '14px', color: 'var(--main_color)' }} />
-              <span className="preview-title">Algorithm Simulator · PySide6</span>
-            </div>
-            <div className="simulator-graph font-mono">
-              <div className="sim-bars">
-                <div className="bar b1" style={{ height: '30%' }}><span>4</span></div>
-                <div className="bar b2" style={{ height: '75%' }}><span>9</span></div>
-                <div className="bar b3 active" style={{ height: '90%' }}><span>12</span></div>
-                <div className="bar b4" style={{ height: '50%' }}><span>6</span></div>
+          <div className="showcase-preview-frame simulator-preview">
+            <div className="preview-chrome">
+              <div className="chrome-controls">
+                <span className="chrome-dot dot-red" />
+                <span className="chrome-dot dot-yellow" />
+                <span className="chrome-dot dot-green" />
               </div>
-              <div className="sim-step">Step 14/42 · State Machine Bidirectional</div>
+              <span className="chrome-filename font-mono">State Machine Engine</span>
+              <span className="chrome-badge font-mono">PySide6 · Qt</span>
+            </div>
+            <div className="preview-canvas simulator-canvas font-mono">
+              <div className="sim-bars-track">
+                <div className="sim-bar" style={{ height: '36%' }}><span>4</span></div>
+                <div className="sim-bar" style={{ height: '68%' }}><span>9</span></div>
+                <div className="sim-bar active-bar" style={{ height: '94%' }}><span>12</span></div>
+                <div className="sim-bar" style={{ height: '52%' }}><span>6</span></div>
+                <div className="sim-bar" style={{ height: '78%' }}><span>10</span></div>
+              </div>
+              <div className="sim-status-row">
+                <span>Step 14/42 · Bidirectional History</span>
+              </div>
             </div>
           </div>
         );
+
       default:
         return (
-          <div className="project-preview-box default-preview">
-            <Layers style={{ width: '48px', height: '48px', color: 'var(--main_color)' }} />
-            <span>{project.title}</span>
+          <div className="showcase-preview-frame default-preview">
+            <Layers style={{ width: '40px', height: '40px', color: 'var(--main_color)' }} />
+            <span className="font-mono">{project.title}</span>
           </div>
         );
     }
   };
 
   return (
-    <article className="project_box" id={project.id}>
-      {/* Visual Side */}
-      <div className="visual_wrap" onClick={() => onSelect(project)}>
+    <article className="project-showcase-panel" id={project.id}>
+      {/* Immersive Product Preview Window */}
+      <div
+        className="showcase-media-side"
+        onClick={() => onSelect(project)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && onSelect(project)}
+        aria-label={`View interactive preview of ${project.title}`}
+      >
         {renderVisual()}
       </div>
 
-      {/* Text Content Side */}
-      <div className="text">
-        <h4>
+      {/* Editorial Content Breakdown */}
+      <div className="showcase-content-side">
+        {/* Unboxed Metadata & Category Kicker */}
+        <div className="showcase-category-kicker">
           <span>{project.category}</span>
-        </h4>
-        <h3>
+          {project.categories && project.categories.length > 1 && (
+            <>
+              <span aria-hidden="true" className="kicker-separator">·</span>
+              <span className="kicker-secondary">
+                {project.categories.filter((c) => c !== project.category).join(' · ')}
+              </span>
+            </>
+          )}
+        </div>
+
+        {/* Title */}
+        <h3 className="showcase-title">
           <a
             href={`#${project.id}`}
             onClick={(e) => {
@@ -118,33 +160,37 @@ export default function ProjectCard({ project, onSelect, index }) {
             {project.title}
           </a>
         </h3>
-        <p>{project.description || project.shortDescription}</p>
 
-        {/* Technologies List */}
-        <div className="project-tech-tags">
-          {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className="tech-tag">
+        {/* Summary Description */}
+        <p className="showcase-description">
+          {project.shortDescription || project.description}
+        </p>
+
+        {/* Compact Technology Tokens */}
+        <div className="showcase-tech-tokens">
+          {project.technologies.slice(0, 5).map((tech) => (
+            <span key={tech} className="tech-token">
               {tech}
             </span>
           ))}
-          {project.technologies.length > 4 && (
-            <span className="tech-tag-more">+{project.technologies.length - 4} more</span>
+          {project.technologies.length > 5 && (
+            <span className="tech-token-more font-mono">
+              +{project.technologies.length - 5}
+            </span>
           )}
         </div>
 
-        {/* Signature Circular 45-degree arrow button from uploaded design */}
-        <div className="project-action-row">
+        {/* Refined Case Study Action Trigger */}
+        <div className="showcase-action-bar">
           <button
             type="button"
-            className="link"
-            aria-label={`Open details for ${project.title}`}
+            className="showcase-action-btn"
             onClick={() => onSelect(project)}
+            aria-label={`View Architecture & Case Study for ${project.title}`}
           >
-            <ArrowUp style={{ width: '22px', height: '22px' }} />
+            <span>Architecture &amp; Specs</span>
+            <ArrowUpRight className="action-icon" aria-hidden="true" />
           </button>
-          <span className="case-study-label" onClick={() => onSelect(project)}>
-            View Case Study &amp; Architecture
-          </span>
         </div>
       </div>
     </article>

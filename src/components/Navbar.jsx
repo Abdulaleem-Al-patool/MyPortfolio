@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Menu, X, Facebook, Instagram, Terminal } from 'lucide-react';
+import { Github, Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { profileData } from '../data/profile.js';
-import DownloadCVButton from './DownloadCVButton.jsx';
-import ThemeSwitcher from './ThemeSwitcher.jsx';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -21,7 +19,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 40) {
+      if (window.scrollY >= 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -41,9 +39,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`navbar-header ${scrolled ? 'active' : ''}`}>
+    <header className={`navbar-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="navbar-container">
-        {/* Brand / Logo with Ahmed's custom monogram */}
+        {/* Brand / Logo */}
         <a href="#home" className="navbar-brand">
           <span className="brand-monogram">AT</span>
           <div className="brand-text-wrap">
@@ -53,7 +51,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Links */}
-        <nav className="navbar-nav">
+        <nav className="navbar-nav" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -62,7 +60,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`nav-link ${isActive ? 'is-active' : ''}`}
               >
-                {link.label}
+                <span>{link.label}</span>
                 {isActive && <span aria-hidden="true" className="nav-link-indicator" />}
               </a>
             );
@@ -72,6 +70,17 @@ export default function Navbar() {
         {/* Social Icons & Actions */}
         <div className="navbar-actions">
           <div className="nav-icons-group">
+            {profileData.contact.linkedin && (
+              <a
+                href={profileData.contact.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="LinkedIn Profile"
+                className="navbar-icon-link"
+              >
+                <Linkedin style={{ width: '1.05rem', height: '1.05rem' }} />
+              </a>
+            )}
             {profileData.contact.facebook && (
               <a
                 href={profileData.contact.facebook}
@@ -80,7 +89,7 @@ export default function Navbar() {
                 aria-label="Facebook Profile"
                 className="navbar-icon-link"
               >
-                <Facebook style={{ width: '1.1rem', height: '1.1rem' }} />
+                <Facebook style={{ width: '1.05rem', height: '1.05rem' }} />
               </a>
             )}
             {profileData.contact.instagram && (
@@ -91,33 +100,33 @@ export default function Navbar() {
                 aria-label="Instagram Profile"
                 className="navbar-icon-link"
               >
-                <Instagram style={{ width: '1.1rem', height: '1.1rem' }} />
+                <Instagram style={{ width: '1.05rem', height: '1.05rem' }} />
               </a>
             )}
-            <a
-              href={profileData.contact.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="GitHub Profile"
-              className="navbar-icon-link"
-            >
-              <Github style={{ width: '1.1rem', height: '1.1rem' }} />
-            </a>
+            {profileData.contact.github && (
+              <a
+                href={profileData.contact.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="GitHub Profile"
+                className="navbar-icon-link"
+              >
+                <Github style={{ width: '1.05rem', height: '1.05rem' }} />
+              </a>
+            )}
           </div>
-
-          {/* <ThemeSwitcher /> */}
-          {/* <DownloadCVButton className="navbar-cv-btn" /> */}
 
           {/* Mobile hamburger menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
             className="navbar-menu-toggle"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
-              <X style={{ width: '1.35rem', height: '1.35rem' }} />
+              <X style={{ width: '1.25rem', height: '1.25rem' }} />
             ) : (
-              <Menu style={{ width: '1.35rem', height: '1.35rem' }} />
+              <Menu style={{ width: '1.25rem', height: '1.25rem' }} />
             )}
           </button>
         </div>
@@ -131,21 +140,34 @@ export default function Navbar() {
             <span className="brand-name">{profileData.name}</span>
           </div>
 
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`navbar-mobile-link ${
-                activeSection === link.id ? 'is-active' : ''
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          <div className="navbar-mobile-links">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`navbar-mobile-link ${
+                  activeSection === link.id ? 'is-active' : ''
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
           <div className="navbar-mobile-footer">
             <div className="navbar-mobile-socials">
+              {profileData.contact.linkedin && (
+                <a
+                  href={profileData.contact.linkedin}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="LinkedIn"
+                  className="navbar-icon-link"
+                >
+                  <Linkedin style={{ width: '1.05rem', height: '1.05rem' }} />
+                </a>
+              )}
               {profileData.contact.facebook && (
                 <a
                   href={profileData.contact.facebook}
@@ -154,7 +176,7 @@ export default function Navbar() {
                   aria-label="Facebook"
                   className="navbar-icon-link"
                 >
-                  <Facebook style={{ width: '1.1rem', height: '1.1rem' }} />
+                  <Facebook style={{ width: '1.05rem', height: '1.05rem' }} />
                 </a>
               )}
               {profileData.contact.instagram && (
@@ -165,20 +187,21 @@ export default function Navbar() {
                   aria-label="Instagram"
                   className="navbar-icon-link"
                 >
-                  <Instagram style={{ width: '1.1rem', height: '1.1rem' }} />
+                  <Instagram style={{ width: '1.05rem', height: '1.05rem' }} />
                 </a>
               )}
-              <a
-                href={profileData.contact.github}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="GitHub"
-                className="navbar-icon-link"
-              >
-                <Github style={{ width: '1.1rem', height: '1.1rem' }} />
-              </a>
+              {profileData.contact.github && (
+                <a
+                  href={profileData.contact.github}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label="GitHub"
+                  className="navbar-icon-link"
+                >
+                  <Github style={{ width: '1.05rem', height: '1.05rem' }} />
+                </a>
+              )}
             </div>
-           
           </div>
         </div>
       )}
