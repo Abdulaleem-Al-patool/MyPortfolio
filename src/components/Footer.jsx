@@ -83,7 +83,7 @@ export default function Footer() {
 
         <div className="footer-bottom-row">
           <div>© {new Date().getFullYear()} {profileData.fullName || profileData.name}. All rights reserved.</div>
-          <div>Engineered with React &amp; Modern Architecture</div>
+
         </div>
       </div>
     </footer>
