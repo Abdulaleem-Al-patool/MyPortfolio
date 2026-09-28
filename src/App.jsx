@@ -28,7 +28,7 @@ export default function App() {
         {/* Animated Background with the 9 signature vertical lines from uploaded design */}
         <AnimatedBackground />
 
-        {/* Fixed Active Navigation Bar */}
+        {/* Modern Premium Floating Glassmorphism Navbar */}
         <Navbar />
 
         <main className="app-main">
@@ -46,10 +46,10 @@ export default function App() {
             <div className="container">
               <div className="top_section reveal-on-scroll">
                 <h2>
-                  Explore my Popular <span className="text-accent">Projects</span>
+                  Featured <span className="text-accent">Projects</span>
                 </h2>
                 <p>
-                  Production systems, clean architecture implementations, and desktop visualizers. Each project includes technical problem statements, approaches, and evaluation metrics.
+                  Production systems, clean architecture, and applied AI applications.
                 </p>
               </div>
               <ProjectGrid />
@@ -67,7 +67,7 @@ export default function App() {
                   Technical <span className="text-accent">Competencies</span>
                 </h2>
                 <p>
-                  Core programming languages, full-stack frameworks, systems engineering practices, and developer tooling.
+                  Core languages, full-stack frameworks, and engineering tooling.
                 </p>
               </div>
               <SkillGroup />

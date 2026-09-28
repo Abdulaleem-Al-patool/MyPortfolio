@@ -1,19 +1,36 @@
-/* About Section - Compact & Dense Engineering Style */
+/* About Section - Modern Glassmorphism Architecture */
 .about {
   padding: 44px 0;
   position: relative;
 }
 
 .about-card-container {
-  background: #040914;
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.28));
+  background: rgba(6, 13, 26, 0.65);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(64, 162, 216, 0.22);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 16px;
-  padding: 34px 40px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(11, 96, 176, 0.15);
+  border-radius: 18px;
+  padding: 38px 44px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09),
+              0 20px 50px rgba(0, 0, 0, 0.55),
+              0 0 32px -4px rgba(64, 162, 216, 0.16);
   gap: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 30%, rgba(64, 162, 216, 0.3) 50%, rgba(255, 255, 255, 0.12) 70%, transparent 100%);
+  pointer-events: none;
 }
 
 .about .div_text {
@@ -26,6 +43,7 @@
   font-weight: 800;
   color: var(--white_color, #F0EDCF);
   line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 
 .about .div_text h2 span {
@@ -42,9 +60,29 @@
 
 .about-p {
   color: var(--p_color, #9DBFD4);
-  line-height: 1.7;
+  line-height: 1.65;
   font-size: 0.95rem;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  max-width: 580px;
+}
+
+.about-highlights-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.about-pill-tag {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: var(--main_color, #40A2D8);
+  background: rgba(64, 162, 216, 0.08);
+  border: 1px solid rgba(64, 162, 216, 0.18);
+  box-shadow: 0 0 12px -2px rgba(64, 162, 216, 0.1);
 }
 
 .about-actions-row {
@@ -58,9 +96,27 @@
 .academic-badge-item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  border-left: 2px solid var(--main_color, #40A2D8);
-  padding-left: 14px;
+  gap: 12px;
+  background: rgba(64, 162, 216, 0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(64, 162, 216, 0.18);
+  border-left: 3px solid var(--main_color, #40A2D8);
+  border-radius: 10px;
+  padding: 10px 16px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+              0 4px 14px rgba(0, 0, 0, 0.25),
+              0 0 16px -3px rgba(64, 162, 216, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academic-badge-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(64, 162, 216, 0.35);
+  background: rgba(64, 162, 216, 0.11);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+              0 6px 18px rgba(0, 0, 0, 0.35),
+              0 0 22px -3px rgba(64, 162, 216, 0.22);
 }
 
 .academic-title {
@@ -89,10 +145,23 @@
   width: 100%;
   max-width: 280px;
   aspect-ratio: 1 / 1.08;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.3));
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(64, 162, 216, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
+              0 18px 42px rgba(0, 0, 0, 0.65),
+              0 0 28px -4px rgba(64, 162, 216, 0.18);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image-wrapper:hover {
+  transform: scale(1.02);
+  border-color: var(--main_color, #40A2D8);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+              0 22px 48px rgba(0, 0, 0, 0.75),
+              0 0 36px -4px rgba(64, 162, 216, 0.28);
 }
 
 .about-portrait {
@@ -108,7 +177,7 @@
   }
   .about-card-container {
     flex-direction: column;
-    padding: 24px 20px;
+    padding: 26px 22px;
     gap: 24px;
   }
   .about .div_text {

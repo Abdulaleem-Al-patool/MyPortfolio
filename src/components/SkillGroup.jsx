@@ -6,6 +6,7 @@ import {
   Layers,
   Terminal,
   Cpu,
+  CheckCircle2,
 } from 'lucide-react';
 import { skillGroups } from '../data/skills.js';
 import './SkillGroup.css';
@@ -14,59 +15,71 @@ export default function SkillGroup() {
   const getCategoryIcon = (id) => {
     switch (id) {
       case 'frontend':
-        return <Globe style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Globe style={{ width: '1.05rem', height: '1.05rem' }} />;
       case 'backend':
-        return <Server style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Server style={{ width: '1.05rem', height: '1.05rem' }} />;
       case 'architecture':
-        return <Layers style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Layers style={{ width: '1.05rem', height: '1.05rem' }} />;
       case 'languages':
-        return <Code style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Code style={{ width: '1.05rem', height: '1.05rem' }} />;
       case 'tools':
-        return <Terminal style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Terminal style={{ width: '1.05rem', height: '1.05rem' }} />;
       default:
-        return <Cpu style={{ width: '1.15rem', height: '1.15rem', color: 'var(--main_color)' }} />;
+        return <Cpu style={{ width: '1.05rem', height: '1.05rem' }} />;
     }
   };
 
   return (
-    <div className="skills-grid reveal-on-scroll">
-      {skillGroups.map((group) => (
-        <div
-          key={group.id}
-          className="skill-group-card"
-        >
-          {/* Header */}
-          <div className="skill-group-header">
-            <div className="skill-group-icon-wrap">
-              {getCategoryIcon(group.id)}
-            </div>
-            <h3 className="skill-group-title">
-              {group.title}
-            </h3>
-          </div>
+    <div className="competencies-modular-matrix reveal-on-scroll">
+      {skillGroups.map((group, index) => {
+        // Distribute span: first 2 groups take 6 cols each, remaining 3 take 4 cols each on desktop
+        const isWide = index < 2;
 
-          <p className="skill-group-desc">
-            {group.description}
-          </p>
-
-          {/* Skill List with Context */}
-          <div className="skill-items-list">
-            {group.skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="skill-item-box"
-              >
-                <div className="skill-item-name">
-                  {skill.name}
-                </div>
-                <div className="skill-item-context">
-                  {skill.context}
-                </div>
+        return (
+          <section
+            key={group.id}
+            className={`competency-section ${isWide ? 'col-span-wide' : 'col-span-standard'}`}
+            aria-labelledby={`competency-${group.id}`}
+          >
+            {/* Modular Header */}
+            <div className="competency-header">
+              <div className="competency-icon-sheen">
+                {getCategoryIcon(group.id)}
               </div>
-            ))}
-          </div>
-        </div>
-      ))}
+              <div className="competency-title-wrap">
+                <h3 id={`competency-${group.id}`} className="competency-title">
+                  {group.title}
+                </h3>
+                <span className="competency-count font-mono">
+                  {group.skills.length} competencies
+                </span>
+              </div>
+            </div>
+
+            {/* Scope Summary */}
+            <p className="competency-desc">
+              {group.description}
+            </p>
+
+            {/* Lightweight Modular Skill Rows (No Nested Card Boxes) */}
+            <div className="competency-skills-list">
+              {group.skills.map((skill) => (
+                <div key={skill.name} className="competency-skill-row">
+                  <div className="skill-dot-indicator" aria-hidden="true" />
+                  <div className="skill-content-block">
+                    <span className="skill-title">
+                      {skill.name}
+                    </span>
+                    <span className="skill-context">
+                      {skill.context}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

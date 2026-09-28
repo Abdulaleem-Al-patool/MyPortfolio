@@ -1,101 +1,215 @@
-.skills-grid {
+/* ==========================================================================
+   Technical Competency Matrix — Lightweight & Modular Sections
+   - Soft seamless Glassmorphism with translucent surfaces
+   - Grouped architectural sections instead of generic cookie-cutter cards
+   - Zero "cards within cards": clean modular rows with subtle hairline dividers
+   - Gentle lighting, almost invisible borders & disciplined hover micro-depth
+   ========================================================================== */
+
+.competencies-modular-matrix {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
 }
 
-@media (min-width: 640px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Domain Span Distribution */
+.col-span-wide {
+  grid-column: span 6;
 }
 
-@media (min-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.col-span-standard {
+  grid-column: span 4;
 }
 
-.skill-group-card {
-  border-radius: 12px;
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.22));
-  background-color: var(--bg_color, #08101C);
-  padding: 1.25rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+/* Modular Section Container */
+.competency-section {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+  border-radius: 14px;
+
+  /* Frosted glass matching About Me glass */
+  background: rgba(6, 13, 26, 0.65);
+  background-image: radial-gradient(
+    ellipse 90% 70% at 50% 0%,
+    rgba(255, 255, 255, 0.04),
+    transparent 70%
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+  /* Border and shadow matching About Me */
+  border: 1px solid rgba(64, 162, 216, 0.22);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.09),
+    0 16px 42px -6px rgba(0, 0, 0, 0.5),
+    0 0 30px -4px rgba(64, 162, 216, 0.16);
+
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
 }
 
-.skill-group-card:hover {
-  border-color: var(--main_color, #40A2D8);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(64, 162, 216, 0.18);
-  transform: translateY(-3px);
+.competency-section:hover {
+  transform: translateY(-2px);
+  border-color: rgba(64, 162, 216, 0.42);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+    0 20px 48px -6px rgba(0, 0, 0, 0.6),
+    0 0 36px -4px rgba(64, 162, 216, 0.24);
 }
 
-.skill-group-header {
+/* Header */
+.competency-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.4rem;
+  gap: 12px;
+  margin-bottom: 6px;
 }
 
-.skill-group-icon-wrap {
+.competency-icon-sheen {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(64, 162, 216, 0.08);
+  border: 1px solid rgba(64, 162, 216, 0.12);
+  color: var(--main_color, #40A2D8);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  background: rgba(11, 96, 176, 0.25);
-  color: var(--main_color, #40A2D8);
-  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.skill-group-card:hover .skill-group-icon-wrap {
-  transform: scale(1.1);
-  background: rgba(64, 162, 216, 0.22);
+.competency-section:hover .competency-icon-sheen {
+  transform: scale(1.05);
+  background: rgba(64, 162, 216, 0.12);
 }
 
-.skill-group-title {
+.competency-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.competency-title {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white_color, #F0EDCF);
+  line-height: 1.2;
 }
 
-.skill-group-desc {
-  font-size: 0.78rem;
+.competency-count {
+  font-size: 0.68rem;
   color: var(--p_color, #9DBFD4);
-  margin-bottom: 0.9rem;
-  line-height: 1.45;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  margin-top: 1px;
 }
 
-.skill-items-list {
+/* Scope Summary */
+.competency-desc {
+  font-size: 0.82rem;
+  color: var(--p_color, #9DBFD4);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* Skill Items List (Clean Rows with Hairline Dividers) */
+.competency-skills-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  margin-top: auto;
 }
 
-.skill-item-box {
+.competency-skill-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.025);
   border-radius: 6px;
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.18));
-  background-color: #040914;
-  padding: 0.55rem 0.8rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skill-item-box:hover {
-  border-color: var(--main_color, #40A2D8);
-  transform: translateX(2px);
+.competency-skill-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateX(3px);
 }
 
-.skill-item-name {
+.skill-dot-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--main_color, #40A2D8);
+  opacity: 0.65;
+  flex-shrink: 0;
+  transform: translateY(-2px);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.competency-skill-row:hover .skill-dot-indicator {
+  opacity: 1;
+  box-shadow: 0 0 6px var(--main_color, #40A2D8);
+}
+
+.skill-content-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.skill-title {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: var(--white_color, #F0EDCF);
+  line-height: 1.25;
+  transition: color 0.2s ease;
+}
+
+.competency-skill-row:hover .skill-title {
   color: var(--main_color, #40A2D8);
 }
 
-.skill-item-context {
-  margin-top: 0.15rem;
-  font-size: 0.72rem;
+.skill-context {
+  font-size: 0.74rem;
   color: var(--p_color, #9DBFD4);
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .col-span-wide,
+  .col-span-standard {
+    grid-column: span 6;
+  }
+
+  /* 5th element spans both columns on 2-col layout */
+  .competency-section:last-child {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 680px) {
+  .competencies-modular-matrix {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .col-span-wide,
+  .col-span-standard,
+  .competency-section:last-child {
+    grid-column: span 1;
+  }
+
+  .competency-section {
+    padding: 18px 20px;
+  }
 }

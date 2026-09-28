@@ -14,14 +14,17 @@ export const profileData = {
 
   // Hero summary
   heroBio:
-    "I build practical software systems and intelligent applications, with a particular focus on Arabic NLP, machine learning, and modern software engineering.",
+    "Building production software systems, intelligent architectures, and modern AI engineering pipelines.",
 
-  // About paragraphs (Section 6.4: Two-paragraph structure)
+  // About summary (Concise & essential)
   about: {
-    paragraph1:
-      "My work sits at the intersection of Software Engineering and Artificial Intelligence. Rather than treating machine learning as an isolated exercise in training models, my goal is building complete, production-ready systems around them — from structured data collection and preprocessing pipelines, to robust backend APIs, intuitive user interfaces, and reliable model deployment.",
-    paragraph2:
-      "My primary areas of focus include backend systems, APIs, data pipelines, Transformers and NLP architectures, Arabic natural language processing, and clean software architecture. I value clear separation of concerns, reproducible workflows, and verifiable test-set metrics over superficial complexity.",
+    summary:
+      "Software Engineer & Applied AI developer bridging machine learning models with robust backend APIs, clean architecture, and responsive user experiences.",
+    highlights: [
+      "Full-Stack Web Systems",
+      "Arabic NLP & Transformers",
+      "Clean Architecture (4 Layers)",
+    ],
   },
 
   // Contact & Social links (Placeholders - edit here)
@@ -47,30 +50,30 @@ export const profileData = {
     {
       id: "systems-around-models",
       number: "01",
-      title: "Systems around models, not just models",
+      title: "Systems around models",
       description:
-        "Building production-grade AI means robust data ingestion pipelines, verified backend inference services, and clean UI orchestration rather than standalone notebooks.",
+        "Robust ingestion pipelines and production APIs rather than standalone notebooks.",
     },
     {
       id: "arabic-nlp-rigor",
       number: "02",
       title: "Rigor in Arabic NLP & Transformers",
       description:
-        "Tackling morphological complexity, dialectal variance, and sequence modeling with structured tokenization, reproducible evaluations, and verified test-set metrics.",
+        "Structured tokenization, dialectal handling, and verifiable test-set evaluations.",
     },
     {
       id: "clean-architecture",
       number: "03",
       title: "Decoupled Clean Architecture",
       description:
-        "Separating domain logic, data models, presentation layers, and external providers ensures systems remain resilient, testable, and maintainable over time.",
+        "Strict separation of domain logic, presentation, and infrastructure for long-term maintainability.",
     },
     {
       id: "reproducible-workflows",
       number: "04",
-      title: "Reproducible workflows & reliability",
+      title: "Reproducible Workflows & Reliability",
       description:
-        "Clear specifications, deterministic builds, and systematic validation guarantee dependable behavior from local development to production deployment.",
+        "Deterministic builds, clear specifications, and systematic validation from development to deployment.",
     },
   ],
 };

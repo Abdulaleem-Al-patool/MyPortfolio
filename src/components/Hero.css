@@ -1,7 +1,14 @@
-/* Hero Section - Centered Layout (Image Top, Text & Actions Underneath) */
+/* ==========================================================================
+   Hero Section — Refined Minimalist Architecture
+   - Centered visual hierarchy with polished typography & spacing
+   - Soft glass portrait integration with ambient diffuse glow
+   - Staggered smooth entrance animation sequence
+   - Subtle hover motion on buttons with disciplined palette adherence
+   ========================================================================== */
+
 .hero {
-  padding-top: 105px;
-  padding-bottom: 48px;
+  padding-top: 110px;
+  padding-bottom: 56px;
   position: relative;
   width: 100%;
 }
@@ -12,45 +19,88 @@
   align-items: center;
   text-align: center;
   gap: 28px;
-  max-width: 820px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-/* Image on Top */
+/* ==========================================================================
+   Profile Image — Soft Glass Integration & Ambient Glow
+   ========================================================================== */
 .hero .div_img {
   width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .hero-portrait-container {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  will-change: transform;
 }
 
+/* Ambient Diffuse Halo behind Portrait */
+.hero-ambient-halo {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(64, 162, 216, 0.18) 0%,
+    rgba(11, 96, 176, 0.06) 50%,
+    transparent 72%
+  );
+  filter: blur(18px);
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Frosted Glass Portrait Frame matching About Me glass */
 .hero-image-frame {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  padding: 5px;
+  background: rgba(6, 13, 26, 0.65);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+  /* Hairline frosted glass rim with soft specular reflection */
+  border: 1px solid rgba(64, 162, 216, 0.28);
+  box-shadow:
+    0 18px 45px -10px rgba(0, 0, 0, 0.65),
+    0 0 32px -4px rgba(64, 162, 216, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
   overflow: hidden;
-  position: relative;
-  border: 3px solid var(--main_color, #40A2D8);
-  background: var(--bg_color, #08101C);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(64, 162, 216, 0.3);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-image-frame:hover {
-  transform: scale(1.03);
-  border-color: var(--white_color, #F0EDCF);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 45px rgba(64, 162, 216, 0.45);
+  transform: scale(1.025);
+  border-color: rgba(64, 162, 216, 0.45);
+  box-shadow:
+    0 24px 52px -10px rgba(0, 0, 0, 0.75),
+    0 0 36px -4px rgba(64, 162, 216, 0.35),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .person-img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
   display: block;
 }
@@ -58,61 +108,85 @@
 .hero-image-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(64, 162, 216, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
   pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 25%,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 65%
+  );
 }
 
-/* Text Block Underneath */
+/* ==========================================================================
+   Hero Content Typography & Visual Hierarchy
+   ========================================================================== */
 .hero .div_Text {
   width: 100%;
-  max-width: 740px;
+  max-width: 720px;
   text-align: center;
 }
 
-.hero .div_Text h4 {
-  color: var(--p_color, #9DBFD4);
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 6px;
+/* Sub-kicker */
+.hero-kicker {
   font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p_color, #9DBFD4);
+  opacity: 0.85;
+  margin-bottom: 8px;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
-.hero .div_Text h1 {
-  font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+/* Primary Name Header */
+.hero-name {
+  font-size: clamp(2.5rem, 5.2vw, 3.6rem);
   line-height: 1.12;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 .hero .accent-name {
   color: var(--main_color, #40A2D8);
-  text-shadow: 0 0 30px rgba(64, 162, 216, 0.35);
+  text-shadow: 0 0 32px rgba(64, 162, 216, 0.25);
 }
 
-.hero .div_Text h2 {
-  font-size: clamp(1.2rem, 2.8vw, 1.75rem);
-  font-weight: 600;
-  line-height: 1.25;
+/* Secondary Role */
+.hero-role {
+  font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.35;
   color: var(--white_color, #F0EDCF);
+  opacity: 0.92;
   margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
-.hero .div_Text p {
+/* Summary Bio */
+.hero-bio {
   margin: 0 auto 28px;
-  font-size: 1.02rem;
-  line-height: 1.7;
+  font-size: 0.96rem;
+  line-height: 1.68;
   color: var(--p_color, #9DBFD4);
-  max-width: 640px;
+  opacity: 0.88;
+  max-width: 620px;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
 
-/* Action Buttons Centered Horizontally */
+/* ==========================================================================
+   Action Buttons & Hover Motion
+   ========================================================================== */
 .hero-actions {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
 .hero-btn-primary {
@@ -120,24 +194,28 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
+  padding: 0.65rem 1.35rem;
   background-color: var(--main_color, #40A2D8);
   color: #000000;
   font-weight: 700;
-  font-size: 0.875rem;
-  border-radius: 6px;
+  font-size: 0.86rem;
+  border-radius: 8px;
   border: 1px solid var(--main_color, #40A2D8);
   text-decoration: none;
   font-family: var(--font-heading);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px rgba(64, 162, 216, 0.25);
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease,
+    filter 0.2s ease;
+  box-shadow: 0 4px 14px rgba(64, 162, 216, 0.22);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
-   background-color:#4fff1e; 
-  box-shadow: 0 0 20px rgba(1, 7, 11, 0.45);
+  filter: brightness(1.05);
+  box-shadow: 0 8px 22px rgba(64, 162, 216, 0.35);
 }
 
 .hero-btn-secondary {
@@ -145,78 +223,124 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.15rem;
-  background-color: rgba(11, 96, 176, 0.15);
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.3));
+  padding: 0.65rem 1.25rem;
+  background-color: rgba(6, 13, 26, 0.65);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(64, 162, 216, 0.22);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 16px -2px rgba(64, 162, 216, 0.14);
   color: var(--white_color, #F0EDCF);
   font-weight: 600;
-  font-size: 0.875rem;
-  border-radius: 6px;
+  font-size: 0.86rem;
+  border-radius: 8px;
   text-decoration: none;
   font-family: var(--font-heading);
-  transition: all 0.2s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .hero-btn-secondary:hover {
-  border-color: var(--main_color, #40A2D8);
-  color: var(--main_color) ;
-  background-color: rgba(64, 162, 216, 0.12);
   transform: translateY(-2px);
+  border-color: rgba(64, 162, 216, 0.42);
+  color: var(--main_color, #40A2D8);
+  background-color: rgba(64, 162, 216, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 24px -2px rgba(64, 162, 216, 0.25);
 }
 
 .hero-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  background-color: rgba(11, 96, 176, 0.15);
-  border: 1px solid var(--border-color, rgba(64, 162, 216, 0.3));
-  color: var(--text-secondary, #9DBFD4);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: rgba(6, 13, 26, 0.65);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(64, 162, 216, 0.22);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 14px -2px rgba(64, 162, 216, 0.14);
+  color: var(--p_color, #9DBFD4);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   cursor: pointer;
 }
 
 .hero-icon-btn:hover {
-  color: var(--main_color, #40A2D8);
-  border-color: var(--main_color, #40A2D8);
-  background-color: rgba(64, 162, 216, 0.12);
   transform: translateY(-2px);
+  color: var(--main_color, #40A2D8);
+  border-color: rgba(64, 162, 216, 0.42);
+  background-color: rgba(64, 162, 216, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 22px -2px rgba(64, 162, 216, 0.25);
 }
 
-/* Responsive Queries */
+/* ==========================================================================
+   Smooth Entrance Sequence Keyframes
+   ========================================================================== */
+@keyframes heroEntranceSequence {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prefers-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-container,
+  .hero-kicker,
+  .hero-name,
+  .hero-role,
+  .hero-bio,
+  .hero-actions {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 @media (max-width: 900px) {
   .hero {
-    padding-top: 86px;
-    padding-bottom: 32px;
+    padding-top: 92px;
+    padding-bottom: 36px;
   }
   .hero-main-flex.hero-centered-layout {
     gap: 22px;
   }
   .hero-portrait-container {
-    width: 190px;
-    height: 190px;
-  }
-  .hero-actions {
-    gap: 10px;
+    width: 180px;
+    height: 180px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-portrait-container {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
   }
   .hero .div_Text h1 {
     font-size: 1.8rem;
   }
-  .hero .div_Text h2 {
+  .hero-role {
     font-size: 1.15rem;
   }
-  .hero .div_Text p {
+  .hero-bio {
     font-size: 0.92rem;
     margin-bottom: 22px;
   }
@@ -225,7 +349,7 @@
   }
   .hero-btn-primary,
   .hero-btn-secondary {
-    padding: 0.55rem 0.95rem;
+    padding: 0.58rem 1.05rem;
     font-size: 0.82rem;
   }
   .hero-icon-btn {
