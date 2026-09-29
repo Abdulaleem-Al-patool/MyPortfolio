@@ -124,7 +124,7 @@ export default function ContactSection() {
                     <Mail style={{ width: '1.05rem', height: '1.05rem' }} />
                   </div>
                   <div className="channel-info">
-                    <span className="channel-label">Email</span>
+                   
                     <span className="channel-value">{profileData.contact.email}</span>
                   </div>
                   <ArrowUpRight className="channel-arrow" style={{ width: '0.95rem', height: '0.95rem' }} />
@@ -143,7 +143,7 @@ export default function ContactSection() {
                     <Github style={{ width: '1.05rem', height: '1.05rem' }} />
                   </div>
                   <div className="channel-info">
-                    <span className="channel-label">GitHub</span>
+                    
                     <span className="channel-value">
                       {profileData.contact.github.replace('https://github.com/', '@')}
                     </span>
@@ -164,7 +164,7 @@ export default function ContactSection() {
                     <Linkedin style={{ width: '1.05rem', height: '1.05rem' }} />
                   </div>
                   <div className="channel-info">
-                    <span className="channel-label">LinkedIn</span>
+                 
                     <span className="channel-value">Ahmed Al-Taweel</span>
                   </div>
                   <ArrowUpRight className="channel-arrow" style={{ width: '0.95rem', height: '0.95rem' }} />
@@ -259,13 +259,13 @@ export default function ContactSection() {
 
                 <div className="form-fields-grid">
                   <div className="form-field-group">
-                    <label htmlFor="contact-full-name" className="field-label">
-                      Full Name <span className="field-required">*</span>
+                    <label htmlFor="contact-full-name" className="field-label"><span className="field-required">* </span>
+                      Full Name 
                     </label>
                     <input
                       id="contact-full-name"
                       type="text"
-                      placeholder="e.g. Sarah Jenkins"
+                      
                       name="Full_name"
                       required
                       value={formData.Full_name}
@@ -275,13 +275,13 @@ export default function ContactSection() {
                   </div>
 
                   <div className="form-field-group">
-                    <label htmlFor="contact-email" className="field-label">
-                      Email Address <span className="field-required">*</span>
+                    <label htmlFor="contact-email" className="field-label"><span className="field-required">* </span>
+                      Email  
                     </label>
                     <input
                       id="contact-email"
                       type="email"
-                      placeholder="e.g. sarah@company.com"
+                      placeholder="example@gmail.com"
                       name="Email"
                       required
                       value={formData.Email}
@@ -297,7 +297,7 @@ export default function ContactSection() {
                     <input
                       id="contact-mobile"
                       type="tel"
-                      placeholder="Optional"
+                     
                       name="Mobile_number"
                       value={formData.Mobile_number}
                       onChange={handleChange}
@@ -312,7 +312,7 @@ export default function ContactSection() {
                     <input
                       id="contact-subject"
                       type="text"
-                      placeholder="e.g. AI System Architecture"
+                    
                       name="Subject"
                       value={formData.Subject}
                       onChange={handleChange}

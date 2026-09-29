@@ -96,7 +96,7 @@
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--white_color, #F0EDCF);
+  color: var(--main_color, #F0EDCF);
   line-height: 1.2;
 }
 
@@ -145,7 +145,7 @@
   height: 5px;
   border-radius: 50%;
   background-color: var(--main_color, #40A2D8);
-  opacity: 0.65;
+  opacity: 1;
   flex-shrink: 0;
   transform: translateY(-2px);
   transition: opacity 0.2s ease, box-shadow 0.2s ease;

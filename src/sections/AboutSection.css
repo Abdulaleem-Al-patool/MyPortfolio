@@ -5,7 +5,7 @@
 }
 
 .about-card-container {
-  background: rgba(6, 13, 26, 0.65);
+  background: rgb(6 13 26 / 34%);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(64, 162, 216, 0.22);
@@ -112,11 +112,8 @@
 
 .academic-badge-item:hover {
   transform: translateY(-2px);
-  border-color: rgba(64, 162, 216, 0.35);
-  background: rgba(64, 162, 216, 0.11);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
-              0 6px 18px rgba(0, 0, 0, 0.35),
-              0 0 22px -3px rgba(64, 162, 216, 0.22);
+
+  box-shadow: 0px 1px 0px 0.1px var(--main_color);
 }
 
 .academic-title {

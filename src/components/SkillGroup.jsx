@@ -50,9 +50,7 @@ export default function SkillGroup() {
                 <h3 id={`competency-${group.id}`} className="competency-title">
                   {group.title}
                 </h3>
-                <span className="competency-count font-mono">
-                  {group.skills.length} competencies
-                </span>
+               
               </div>
             </div>
 

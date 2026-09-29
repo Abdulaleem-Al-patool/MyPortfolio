@@ -27,46 +27,26 @@
 
 /* Floating Frosted Glass Island Container */
 .navbar-container {
-  pointer-events: auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1140px;
-  height: 56px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.25rem 0 0.85rem;
-  border-radius: 9999px;
-
-  /* Translucent frosted glass matching About Me glass */
-  background: rgba(6, 13, 26, 0.65);
-  background-image: radial-gradient(
-    ellipse 90% 120% at 50% -20%,
-    rgba(255, 255, 255, 0.08),
-    transparent 70%
-  );
-
-  /* Optical backdrop blur & saturation matching About Me */
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-
-  /* Border and shadow matching About Me glass */
-  border: 1px solid rgba(64, 162, 216, 0.22);
-  outline: none;
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.09),
-    0 16px 40px -8px rgba(0, 0, 0, 0.55),
-    0 0 32px -4px rgba(64, 162, 216, 0.16);
-
-  transition:
-    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1140px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.25rem 0 0.85rem;
+    border-radius: 9999px;
+    background: oklch(28% 0 0 / .72);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    /* border: 1px solid #00ff882e; */
+    outline: none;
+    box-shadow: 0 4px 18px oklch(0% 0 0 / .07), inset 0 1px 0 oklch(100% 0 0 / .2);
+    /* transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); */
 }
-
 /* Subtle diffuse light sheen */
 .navbar-container::before {
   content: '';
@@ -102,6 +82,10 @@
   text-decoration: none;
   user-select: none;
   z-index: 1;
+}
+.navbar-brand img{
+  width:60px;
+  
 }
 
 .brand-monogram {

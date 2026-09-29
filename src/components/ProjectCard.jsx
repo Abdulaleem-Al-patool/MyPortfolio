@@ -122,7 +122,7 @@ export default function ProjectCard({ project, onSelect }) {
   return (
     <article className="project-showcase-panel" id={project.id}>
       {/* Immersive Product Preview Window */}
-      <div
+      {/* <div
         className="showcase-media-side"
         onClick={() => onSelect(project)}
         role="button"
@@ -130,13 +130,13 @@ export default function ProjectCard({ project, onSelect }) {
         onKeyDown={(e) => e.key === 'Enter' && onSelect(project)}
         aria-label={`View interactive preview of ${project.title}`}
       >
-        {renderVisual()}
-      </div>
+         {renderVisual()} 
+      </div> */}
 
       {/* Editorial Content Breakdown */}
       <div className="showcase-content-side">
         {/* Unboxed Metadata & Category Kicker */}
-        <div className="showcase-category-kicker">
+        {/* <div className="showcase-category-kicker">
           <span>{project.category}</span>
           {project.categories && project.categories.length > 1 && (
             <>
@@ -146,7 +146,7 @@ export default function ProjectCard({ project, onSelect }) {
               </span>
             </>
           )}
-        </div>
+        </div> */}
 
         {/* Title */}
         <h3 className="showcase-title">
@@ -167,7 +167,7 @@ export default function ProjectCard({ project, onSelect }) {
         </p>
 
         {/* Compact Technology Tokens */}
-        <div className="showcase-tech-tokens">
+        {/* <div className="showcase-tech-tokens">
           {project.technologies.slice(0, 5).map((tech) => (
             <span key={tech} className="tech-token">
               {tech}
@@ -178,7 +178,7 @@ export default function ProjectCard({ project, onSelect }) {
               +{project.technologies.length - 5}
             </span>
           )}
-        </div>
+        </div> */}
 
         {/* Refined Case Study Action Trigger */}
         <div className="showcase-action-bar">

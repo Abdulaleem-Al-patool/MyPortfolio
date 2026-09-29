@@ -42,7 +42,7 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* Header */}
         <div className="project-modal-header">
-          <div className="project-modal-categories">
+          {/* <div className="project-modal-categories">
             <span>{project.category}</span>
             {project.categories && project.categories.length > 1 && (
               <>
@@ -52,7 +52,7 @@ export default function ProjectModal({ project, onClose }) {
                 </span>
               </>
             )}
-          </div>
+          </div> */}
           <h2
             id="modal-title"
             className="project-modal-title"

@@ -62,14 +62,7 @@ export default function ServicesSection() {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
 
-                <ul className="service-highlights">
-                  {item.highlights.map((h, i) => (
-                    <li key={i}>
-                      <Sparkles className="highlight-bullet" />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+              
 
                 <a href={item.actionHref} className="btn service-btn">
                   <span>{item.actionText}</span>

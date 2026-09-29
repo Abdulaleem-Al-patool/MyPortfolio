@@ -5,10 +5,11 @@
 
 export const profileData = {
   name: "Ahmed Al-Taweel",
-  FullName:"Ahmed Mufeed Al-Taweel",
+  FullName: "Ahmed Mufeed Al-Taweel",
   role: "Software Developer & AI Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
+  Logo: "assets/Logo.svg",
   tagline:
     "Building complete software systems around models, not just the models themselves.",
 
@@ -41,7 +42,7 @@ export const profileData = {
   assets: {
     photo: "/assets/image.png",
     photoFallback: "/assets/image.png",
-    cv: "/assets/Ahmed-Mufeed-Al-Taweel-CV.pdf",
+    cv: "/assets/Ahmed_Al-Taweel_Resume.pdf",
     cvFilename: "Ahmed-Mufeed-Al-Taweel-CV.pdf",
   },
 

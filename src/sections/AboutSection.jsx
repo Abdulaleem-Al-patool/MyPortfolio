@@ -18,15 +18,7 @@ export default function AboutSection() {
               {profileData.about.summary}
             </p>
 
-            {profileData.about.highlights && (
-              <div className="about-highlights-pills">
-                {profileData.about.highlights.map((item) => (
-                  <span key={item} className="about-pill-tag">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            )}
+           
 
             <div className="about-actions-row">
               <a

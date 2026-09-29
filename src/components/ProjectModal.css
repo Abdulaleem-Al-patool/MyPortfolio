@@ -77,9 +77,9 @@
   transform: rotate(90deg);
 }
 
-.project-modal-header {
+/* .project-modal-header {
   padding-right: 3rem;
-}
+} */
 
 .project-modal-categories {
   display: flex;
@@ -97,7 +97,7 @@
 .project-modal-title {
   margin-top: 0.5rem;
   font-family: var(--font-heading);
-  font-size: 1.85rem;
+  /* font-size: 1.85rem; */
   font-weight: 700;
   color: var(--white_color, #F0EDCF);
 }

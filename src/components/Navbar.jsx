@@ -43,11 +43,8 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Brand / Logo */}
         <a href="#home" className="navbar-brand">
-          <span className="brand-monogram">AT</span>
-          <div className="brand-text-wrap">
-            <span className="brand-name">{profileData.name}</span>
-            <span className="brand-title">Software Engineer</span>
-          </div>
+          <img src={profileData.Logo}></img>
+         
         </a>
 
         {/* Desktop Links */}
