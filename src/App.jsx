@@ -16,6 +16,7 @@ import HowIBuildSection from './sections/HowIBuildSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import Footer from './components/Footer.jsx';
 import { useScrollReveal } from './hooks/useScrollReveal.js';
+
 import './App.css';
 
 export default function App() {
