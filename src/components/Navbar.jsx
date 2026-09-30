@@ -133,7 +133,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="navbar-mobile-menu">
           <div className="navbar-mobile-brand">
-            <span className="brand-monogram">AT</span>
+            <img src={profileData.Logo}></img>
             <span className="brand-name">{profileData.name}</span>
           </div>
 

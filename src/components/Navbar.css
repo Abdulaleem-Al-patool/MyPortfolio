@@ -115,6 +115,7 @@
 }
 
 .brand-name {
+  font-family:  "Milonga", serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white_color, #F0EDCF);
@@ -317,8 +318,12 @@
   color: var(--white_color, #F0EDCF);
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
 }
 
+.navbar-mobile-brand img{
+width:50px;
+}
 .navbar-mobile-links {
   display: flex;
   flex-direction: column;

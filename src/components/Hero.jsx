@@ -69,7 +69,7 @@ export default function Hero() {
       <div className="container">
         <div className="hero-main-flex hero-centered-layout">
           {/* Top: Portrait Image with subtle glow and soft glass integration */}
-          <div className="div_img">
+          {/* <div className="div_img">
             <div className="hero-portrait-container" ref={portraitRef}>
               <div className="hero-ambient-halo" ref={haloRef} aria-hidden="true" />
               <div className="hero-image-frame">
@@ -82,7 +82,7 @@ export default function Hero() {
                 <div className="hero-image-glow" aria-hidden="true" />
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Bottom: Text and Actions */}
           <div className="div_Text">
