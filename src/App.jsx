@@ -16,7 +16,7 @@ import HowIBuildSection from './sections/HowIBuildSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import Footer from './components/Footer.jsx';
 import { useScrollReveal } from './hooks/useScrollReveal.js';
-
+import ParticleBackground from './components/ParticleBackground.jsx'
 import './App.css';
 
 export default function App() {
@@ -28,7 +28,7 @@ export default function App() {
       <div className="app-wrapper">
         {/* Animated Background with the 9 signature vertical lines from uploaded design */}
        
-
+        <ParticleBackground />
         {/* Modern Premium Floating Glassmorphism Navbar */}
         <Navbar />
 

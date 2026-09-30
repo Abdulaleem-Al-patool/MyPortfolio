@@ -30,11 +30,7 @@
 
   /* Frosted glass matching About Me glass */
   background: rgb(6 13 26 / 34%);
-  background-image: radial-gradient(
-    ellipse 90% 70% at 50% 0%,
-    rgba(255, 255, 255, 0.04),
-    transparent 70%
-  );
+
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
 

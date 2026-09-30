@@ -1,0 +1,22 @@
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-fx canvas {
+  display: block;
+}
+
+/* توهج ناعم بلون الثيم + تعتيم الأطراف ليبقى التركيز على المحتوى */
+.bg-fx::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%,
+      color-mix(in srgb, var(--main_color, #40a2d8) 10%, transparent), transparent 70%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
