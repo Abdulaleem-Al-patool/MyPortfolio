@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { ThemeProvider } from './context/ThemeContext.jsx';
-import AnimatedBackground from './components/AnimatedBackground.jsx';
+
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import AboutSection from './sections/AboutSection.jsx';
@@ -27,7 +27,7 @@ export default function App() {
     <ThemeProvider>
       <div className="app-wrapper">
         {/* Animated Background with the 9 signature vertical lines from uploaded design */}
-        <AnimatedBackground />
+       
 
         {/* Modern Premium Floating Glassmorphism Navbar */}
         <Navbar />
