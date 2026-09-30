@@ -134,7 +134,7 @@ export default function Navbar() {
         <div className="navbar-mobile-menu">
           <div className="navbar-mobile-brand">
             <img src={profileData.Logo}></img>
-            <span className="brand-name">{profileData.name}</span>
+           
           </div>
 
           <div className="navbar-mobile-links">

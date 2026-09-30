@@ -9,7 +9,7 @@ export const profileData = {
   role: "Software Developer & Systems Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
-  Logo: "/assets/Logo.svg",
+  Logo: "/assets/Logo_green.svg",
   tagline:
     "Building complete software systems around models, not just the models themselves.",
 

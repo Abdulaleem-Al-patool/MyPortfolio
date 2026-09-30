@@ -84,7 +84,7 @@
   z-index: 1;
 }
 .navbar-brand img{
-  width:60px;
+  width:45px;
   
 }
 
@@ -245,7 +245,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: var(--white_color, #F0EDCF);
+  color: var(--main_color, #F0EDCF);
   background: rgba(255, 255, 255, 0.04);
   border: none;
   cursor: pointer;
@@ -322,7 +322,7 @@
 }
 
 .navbar-mobile-brand img{
-width:50px;
+width:45px;
 }
 .navbar-mobile-links {
   display: flex;
