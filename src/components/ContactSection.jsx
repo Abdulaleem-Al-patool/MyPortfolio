@@ -321,8 +321,8 @@ export default function ContactSection() {
                   </div>
 
                   <div className="form-field-group full-width">
-                    <label htmlFor="contact-message" className="field-label">
-                      Your Message <span className="field-required">*</span>
+                    <label htmlFor="contact-message" className="field-label"><span className="field-required">* </span>
+                      Your Message 
                     </label>
                     <textarea
                       id="contact-message"

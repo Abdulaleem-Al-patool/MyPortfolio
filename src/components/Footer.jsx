@@ -4,86 +4,59 @@ import { profileData } from '../data/profile.js';
 import './Footer.css';
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const { contact } = profileData;
+  const fullName = profileData.FullName || profileData.name;
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const socials = [
+    { key: 'github', href: contact.github, label: 'GitHub', Icon: Github },
+    { key: 'linkedin', href: contact.linkedin, label: 'LinkedIn', Icon: Linkedin },
+    { key: 'facebook', href: contact.facebook, label: 'Facebook', Icon: Facebook },
+    { key: 'instagram', href: contact.instagram, label: 'Instagram', Icon: Instagram },
+  ].filter((s) => s.href);
 
   return (
     <footer className="footer-root">
       <div className="container">
-        <div className="footer-top-row">
-          <div>
-            <div className="footer-name">
-              <span className="footer-accent">&lt;</span>
-              {profileData.name}
-              <span className="footer-accent"> /&gt;</span>
+        <div className="footer-panel">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <a href="#home" className="footer-logo-link" aria-label="Back to home">
+                <img src={profileData.Logo} alt="" className="footer-logo" />
+                <span className="footer-name">{profileData.name}</span>
+              </a>
+              <p className="footer-tagline">{profileData.tagline}</p>
             </div>
-            <div className="footer-role">
-              {profileData.role} · {profileData.positioning}
+
+            <div className="footer-socials">
+              {socials.map(({ key, href, label, Icon }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={label}
+                  className="footer-social-link"
+                >
+                  <Icon style={{ width: '1.05rem', height: '1.05rem' }} />
+                </a>
+              ))}
+
+              <span className="footer-sep" aria-hidden="true" />
+
+              <button type="button" onClick={scrollToTop} className="footer-back-to-top" aria-label="Scroll back to top">
+                <span>Back to top</span>
+                <ArrowUp style={{ width: '0.95rem', height: '0.95rem' }} />
+              </button>
             </div>
           </div>
 
-          {/* Social links & Back to top */}
-          <div className="footer-actions">
-            {profileData.contact.facebook && (
-              <a
-                href={profileData.contact.facebook}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Facebook profile"
-                className="footer-social-link"
-              >
-                <Facebook style={{ width: '1.1rem', height: '1.1rem' }} />
-              </a>
-            )}
-            {profileData.contact.instagram && (
-              <a
-                href={profileData.contact.instagram}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Instagram profile"
-                className="footer-social-link"
-              >
-                <Instagram style={{ width: '1.1rem', height: '1.1rem' }} />
-              </a>
-            )}
-            <a
-              href={profileData.contact.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="GitHub profile"
-              className="footer-social-link"
-            >
-              <Github style={{ width: '1.1rem', height: '1.1rem' }} />
-            </a>
-            {profileData.contact.linkedin && (
-              <a
-                href={profileData.contact.linkedin}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn profile"
-                className="footer-social-link"
-              >
-                <Linkedin style={{ width: '1.1rem', height: '1.1rem' }} />
-              </a>
-            )}
-
-            <div className="footer-sep" aria-hidden="true" />
-
-            <button
-              onClick={scrollToTop}
-              aria-label="Scroll back to top"
-              className="footer-back-to-top"
-            >
-              <span>Back to Top</span>
-              <ArrowUp style={{ width: '1rem', height: '1rem' }} />
-            </button>
+          <div className="footer-bottom-row">
+            <span>
+              © {new Date().getFullYear()} {fullName}. All rights reserved.
+            </span>
           </div>
-        </div>
-
-        <div className="footer-bottom-row">
-          <div>© {new Date().getFullYear()} {profileData.fullName || profileData.name}. All rights reserved.</div>
-
         </div>
       </div>
     </footer>
