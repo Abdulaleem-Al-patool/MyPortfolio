@@ -1,115 +1,174 @@
 /* ==========================================================================
-   Hero Section — Editorial Typography & Responsive Architecture
-   - Desktop: Wide-format editorial layout with balanced horizontal weight
-   - Tablet: Structured vertical balance with cohesive action bar
-   - Mobile: Highly ergonomic, thumb-friendly mobile layout centered in view
+   Hero — the name is the focal point
+   - Huge fluid name; each letter reacts to the pointer / finger
+   - Second word drawn as an outline that fills as you approach it
+   - Same glass surfaces, palette variables and fonts as the rest of the site
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Base Section & Layout
-   -------------------------------------------------------------------------- */
 .hero {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 84px);
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: 124px 0 64px;
+  justify-content: center;
+  padding: 120px 0 96px;
+  touch-action: pan-y;
 }
 
-.hero-editorial {
+/* Soft glow behind the name */
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(900px, 90vw);
+  height: min(420px, 50vh);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--main_color, #40a2d8) 14%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.hero-center {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------
-   1. Name Identifier
+   Status pill (glass, sentence case)
    -------------------------------------------------------------------------- */
-.hero-meta {
-  margin-bottom: 18px;
-  animation: heroEntranceSequence 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 7px 16px;
+  margin-bottom: clamp(18px, 3.5vw, 32px);
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--p_color, #9dbfd4);
+  background: rgba(6, 13, 26, 0.55);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(64, 162, 216, 0.22);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
-.hero-name-label {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--main_color, #40A2D8);
-  opacity: 0.95;
-  text-shadow: 0 0 24px rgba(64, 162, 216, 0.22);
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--main_color, #40a2d8);
+  box-shadow: 0 0 10px var(--main_color, #40a2d8);
 }
 
 /* --------------------------------------------------------------------------
-   2. Main Monumental Headline
+   The name
    -------------------------------------------------------------------------- */
-.hero-headline {
-  font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 6.2vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  margin-bottom: 34px;
-  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-}
-
-.hero-headline-primary {
-  color: var(--white_color, #F0EDCF);
-}
-
-.hero-headline-accent {
-  color: var(--main_color, #40A2D8);
-  font-weight: 700;
-  opacity: 0.95;
-}
-
-/* --------------------------------------------------------------------------
-   3. Content Distribution (Desktop Layout)
-   -------------------------------------------------------------------------- */
-.hero-editorial-footer {
+.hero-name {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 48px;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: clamp(3.2rem, 14.5vw, 8.0rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin: 0;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.hero-bio-container {
-  flex: 1 1 540px;
-  max-width: 560px;
+.hero-name-word {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-letter {
+  --p: 0; /* pointer proximity, 0 → 1, set from JS */
+  display: inline-block;
+  color: color-mix(in srgb, var(--main_color, #40a2d8) calc(var(--p) * 100%), var(--white_color, #fff));
+  transform: translateY(calc(var(--p) * -0.07em)) scale(calc(1 + var(--p) * 0.04));
+  text-shadow: 0 0 calc(var(--p) * 0.4em)
+    color-mix(in srgb, var(--main_color, #40a2d8) 55%, transparent);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease, text-shadow 0.22s ease;
+  animation: heroLetterRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) calc(0.15s + var(--i) * 45ms) backwards;
+  will-change: transform;
+}
+
+/* Second word: outline that fills in near the pointer */
+.hero-name-word.is-outline .hero-letter {
+  color: transparent;
+  -webkit-text-fill-color: color-mix(in srgb, var(--main_color, #40a2d8) calc(var(--p) * 100%), transparent);
+  -webkit-text-stroke: clamp(1.2px, 0.22vw, 2.5px)
+    color-mix(in srgb, var(--main_color, #40a2d8) calc(40% + var(--p) * 60%), var(--white_color, #fff));
+  text-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   Role line (rotating) + bio
+   -------------------------------------------------------------------------- */
+.hero-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 1.6em;
+  margin-top: clamp(18px, 3vw, 30px);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--main_color, #40a2d8);
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.hero-role-text {
+  display: inline-block;
+  animation: heroRoleSwap 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-caret {
+  width: 2px;
+  height: 1.1em;
+  background: var(--main_color, #40a2d8);
+  animation: heroBlink 1s steps(1) infinite;
 }
 
 .hero-bio {
+  max-width: 34rem;
+  margin: 14px 0 0;
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
   line-height: 1.65;
-  color: var(--p_color, #9DBFD4);
-  opacity: 0.92;
-  margin: 0;
-  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  color: var(--p_color, #9dbfd4);
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
 }
 
-.hero-actions-container {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: flex-end;
-  animation: heroEntranceSequence 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
-}
-
+/* --------------------------------------------------------------------------
+   Actions
+   -------------------------------------------------------------------------- */
 .hero-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-secondary-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
+  margin-top: clamp(22px, 3.5vw, 32px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
 }
 
 .hero-social-group {
@@ -118,71 +177,64 @@
   gap: 8px;
 }
 
-/* --------------------------------------------------------------------------
-   4. Buttons & Interactive Styling
-   -------------------------------------------------------------------------- */
-.hero-btn-primary {
+.hero-actions-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(64, 162, 216, 0.25);
+}
+
+.hero-btn-primary,
+.hero-btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.72rem 1.45rem;
-  background-color: var(--main_color, #40A2D8);
-  color: #000000;
-  font-weight: 700;
-  font-size: 0.88rem;
-  border-radius: 8px;
-  border: 1px solid var(--main_color, #40A2D8);
-  text-decoration: none;
+  gap: 0.45rem;
+  height: 40px;
+  padding: 0 1.05rem;
   font-family: var(--font-heading);
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s ease,
-    filter 0.2s ease;
-  box-shadow: 0 4px 14px rgba(64, 162, 216, 0.22);
-  cursor: pointer;
+  font-size: 0.84rem;
+  border-radius: 9px;
+  text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+}
+
+.hero-btn-primary {
+  background-color: var(--main_color, #40a2d8);
+  color: #000;
+  font-weight: 700;
+  border: 1px solid var(--main_color, #40a2d8);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--main_color, #40a2d8) 25%, transparent);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.2s ease;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
-  box-shadow: 0 8px 24px rgba(64, 162, 216, 0.35);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--main_color, #40a2d8) 38%, transparent);
+}
+
+.hero-btn-primary:hover .hero-btn-icon {
+  transform: translateY(2px);
 }
 
 .hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.72rem 1.35rem;
   background-color: rgba(6, 13, 26, 0.65);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(64, 162, 216, 0.22);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 16px -2px rgba(64, 162, 216, 0.14);
-  color: var(--white_color, #F0EDCF);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
+  color: var(--white_color, #fff);
   font-weight: 600;
-  font-size: 0.88rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: var(--font-heading);
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.2s ease,
-    color 0.2s ease,
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
-  cursor: pointer;
-  white-space: nowrap;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
+    color 0.2s ease, background-color 0.2s ease;
 }
 
 .hero-btn-secondary:hover {
   transform: translateY(-2px);
   border-color: var(--main_color);
-  color: var(--main_color, #40A2D8);
-  background-color: rgba(64, 162, 216, 0.12);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 24px -2px rgba(64, 162, 216, 0.25);
+  color: var(--main_color, #40a2d8);
+  background-color: color-mix(in srgb, var(--main_color, #40a2d8) 12%, transparent);
 }
 
 .hero-icon-btn {
@@ -191,51 +243,89 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  color: var(--p_color, #9dbfd4);
   background-color: rgba(6, 13, 26, 0.65);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(64, 162, 216, 0.22);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 14px -2px rgba(64, 162, 216, 0.14);
-  color: var(--p_color, #9DBFD4);
-  text-decoration: none;
-  transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.2s ease,
-    color 0.2s ease,
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
-  cursor: pointer;
-  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
+    color 0.2s ease, background-color 0.2s ease;
 }
 
 .hero-icon-btn:hover {
   transform: translateY(-2px);
   color: var(--main_color);
   border-color: var(--main_color);
-  background-color: rgba(64, 162, 216, 0.12);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 22px -2px rgba(64, 162, 216, 0.25);
+  background-color: color-mix(in srgb, var(--main_color, #40a2d8) 12%, transparent);
 }
 
 .hero-btn-icon {
   width: 0.95rem;
   height: 0.95rem;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
 .hero-icon-svg {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 /* --------------------------------------------------------------------------
-   5. Entrance Animation
+   Scroll cue
    -------------------------------------------------------------------------- */
-@keyframes heroEntranceSequence {
+.hero-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 24px;
+  height: 38px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+  border-radius: 9999px;
+  border: 1px solid rgba(64, 162, 216, 0.3);
+  background: rgba(6, 13, 26, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.2s ease;
+  animation: heroFadeUp 0.8s ease 1.4s both;
+}
+
+.hero-scroll-cue:hover {
+  border-color: var(--main_color, #40a2d8);
+}
+
+.hero-scroll-dot {
+  width: 4px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--main_color, #40a2d8);
+  animation: heroScrollDot 1.8s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes heroLetterRise {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(0.45em) rotate(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -243,210 +333,134 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-meta,
-  .hero-headline,
-  .hero-bio,
-  .hero-actions-container {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
+@keyframes heroRoleSwap {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ==========================================================================
-   6. TABLET SPECIFIC DESIGN (641px - 1024px)
-   - Tailored for tablets: balanced vertical centering, cohesive horizontal action strip
-   ========================================================================== */
-@media (min-width: 641px) and (max-width: 1024px) {
+@keyframes heroBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes heroScrollDot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-status,
+  .hero-letter,
+  .hero-role,
+  .hero-role-text,
+  .hero-bio,
+  .hero-actions,
+  .hero-scroll-cue {
+    animation: none !important;
+  }
+  .hero-caret,
+  .hero-scroll-dot {
+    animation: none !important;
+  }
+  .hero-letter {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+/* Large screens: keep the name and the page in proportion */
+@media (min-width: 1600px) {
+  .hero-name {
+    font-size: 11.5rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
   .hero {
-    min-height: calc(85vh - 72px);
-    display: flex;
-    align-items: center;
-    padding: 104px 0 48px;
+    padding: 108px 0 88px;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .hero {
+    padding: 92px 0 84px;
   }
 
-  .hero-meta {
-    margin-bottom: 14px;
+  .hero-status {
+    font-size: 0.74rem;
+    padding: 6px 12px;
   }
 
-  .hero-name-label {
-    font-size: 1.05rem;
-  }
-
-  .hero-headline {
-    font-size: clamp(2.4rem, 5.2vw, 3.5rem);
-    line-height: 1.08;
-    margin-bottom: 24px;
-  }
-
-  .hero-editorial-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    width: 100%;
-  }
-
-  .hero-bio-container {
-    max-width: 620px;
-  }
-
-  .hero-bio {
-    font-size: 1.08rem;
-    line-height: 1.6;
-  }
-
-  .hero-actions-container {
-    justify-content: flex-start;
-    width: 100%;
+  .hero-name {
+    font-size: clamp(3rem, 17vw, 4.6rem);
   }
 
   .hero-actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .hero-secondary-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .hero-social-group {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 4px;
+    gap: 8px;
   }
 
   .hero-btn-primary,
   .hero-btn-secondary {
-    padding: 0.7rem 1.3rem;
-    font-size: 0.88rem;
-  }
-}
-
-/* ==========================================================================
-   7. MOBILE SPECIFIC DESIGN (<= 640px)
-   - Tailored specifically for mobile phone viewports
-   - Centered vertically on screen, buttons comfortably in the first view
-   - Ergonomic hierarchy: Full primary button, balanced secondary row, touch social buttons
-   ========================================================================== */
-@media (max-width: 640px) {
-  .hero {
-    /* Use svh to ensure perfect fit inside dynamic mobile viewports */
-    min-height: calc(100svh - 70px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 76px 0 20px;
-  }
-
-  .hero-editorial {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero-meta {
-    margin-bottom: 8px;
-  }
-
-  .hero-name-label {
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-  }
-
-  .hero-headline {
-    font-size: clamp(1.9rem, 7.8vw, 2.45rem);
-    line-height: 1.14;
-    letter-spacing: -0.025em;
-    margin-bottom: 12px;
-  }
-
-  .hero-editorial-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-  }
-
-  .hero-bio-container {
-    max-width: 100%;
-  }
-
-  .hero-bio {
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
-  .hero-actions-container {
-    width: 100%;
-    margin-top: 2px;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    width: 100%;
-  }
-
-  /* Mobile Row 1: Full-width high-emphasis primary button */
-  .hero-btn-primary {
-    width: 100%;
-    padding: 0.78rem 1.2rem;
-    font-size: 0.9rem;
-    justify-content: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(64, 162, 216, 0.28);
-  }
-
-  /* Mobile Row 2: Two equal secondary actions side-by-side */
-  .hero-secondary-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9px;
-    width: 100%;
-  }
-
-  .hero-btn-secondary {
-    width: 100%;
-    padding: 0.7rem 0.8rem;
-    font-size: 0.82rem;
-    justify-content: center;
-    border-radius: 10px;
-  }
-
-  /* Mobile Row 3: Social profile links with comfortable touch targets */
-  .hero-social-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding-top: 2px;
+    height: 38px;
+    padding: 0 0.9rem;
+    font-size: 0.8rem;
   }
 
   .hero-icon-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Social icons drop to their own centered row on narrow screens */
+  .hero-actions-divider {
+    display: none;
+  }
+
+  .hero-social-group {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .hero-scroll-cue {
+    bottom: 20px;
   }
 }
 
-/* Extra small mobile screens (iPhone SE, etc.) */
-@media (max-width: 350px) {
+/* Short landscape screens: drop the scroll cue so nothing overlaps */
+@media (max-height: 560px) {
+  .hero-scroll-cue {
+    display: none;
+  }
   .hero {
-    padding: 70px 0 16px;
+    padding: 96px 0 40px;
   }
+}
 
-  .hero-headline {
-    font-size: 1.75rem;
-  }
-
-  .hero-secondary-group {
-    grid-template-columns: 1fr;
+/* Very small phones */
+@media (max-width: 350px) {
+  .hero-name {
+    font-size: 2.7rem;
   }
 }
