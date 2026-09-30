@@ -276,7 +276,7 @@
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
-  pointer-events: auto;
+ 
   z-index: 999;
 
   background: rgba(6, 13, 26, 0.88);
@@ -295,7 +295,41 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  animation: glassMobileFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+/* Closed state */
+.navbar-mobile-menu {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top center;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 0.22s; /* يبقى مرئياً حتى تنتهي حركة الخروج */
+}
+
+/* Open state */
+.navbar-mobile-menu.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+/* لا حاجة للقائمة على الشاشات الكبيرة */
+@media (min-width: 860px) {
+  .navbar-mobile-menu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-mobile-menu {
+    transition: none;
+  }
 }
 
 @keyframes glassMobileFade {

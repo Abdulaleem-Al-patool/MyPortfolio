@@ -130,8 +130,11 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="navbar-mobile-menu">
+ <div
+  id="mobile-menu"
+  className={`navbar-mobile-menu ${mobileMenuOpen ? 'is-open' : ''}`}
+  aria-hidden={!mobileMenuOpen}
+>
           <div className="navbar-mobile-brand">
             <img src={profileData.Logo}></img>
            
@@ -201,7 +204,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      )}
+      
     </header>
   );
 }

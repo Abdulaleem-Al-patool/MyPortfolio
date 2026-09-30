@@ -55,6 +55,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  scrollbar-gutter: stable; /* يحجز مكان الشريط فلا يحدث اهتزاز عند فتح النافذة */
 }
 
 body {
