@@ -120,7 +120,7 @@ export default function ProjectCard({ project, onSelect }) {
   };
 
   return (
-    <article className="project-showcase-panel" id={project.id}>
+    <article className="project-showcase-panel reveal-on-scroll" id={project.id}>
       {/* Immersive Product Preview Window */}
       {/* <div
         className="showcase-media-side"

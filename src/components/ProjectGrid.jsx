@@ -37,7 +37,7 @@ export default function ProjectGrid() {
       </div>
 
       {/* Projects Grid */}
-      <div className="project-grid-cards reveal-on-scroll">
+      <div className="project-grid-cards">
         {filteredProjects.map((project) => (
           <ProjectCard
             key={project.id}

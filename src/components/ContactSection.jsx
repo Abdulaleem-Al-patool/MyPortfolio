@@ -103,9 +103,9 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="contact-main-grid reveal-on-scroll">
+        <div className="contact-main-grid ">
           {/* Left Column: Direct Channels & Social Links (Clean Interactive Rows) */}
-          <div className="contact-channels-panel">
+          <div className="contact-channels-panel reveal-on-scroll">
             <div className="channels-header">
               <h3 className="channels-title">Direct Channels</h3>
               <p className="channels-subtitle">
@@ -229,7 +229,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column: Contact Form (Subtle Glassmorphic Surface) */}
-          <div className="contact-form-panel">
+          <div className="contact-form-panel reveal-on-scroll">
             {status.submitted ? (
               <div className="contact-success-box">
                 <CheckCircle2

@@ -7,7 +7,6 @@ import './Hero.css';
 const ROLES = [
   'Software Developer',
   'Systems Engineer',
-  'Clean Architecture',
   'Applied AI Systems',
 ];
 

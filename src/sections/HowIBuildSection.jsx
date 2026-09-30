@@ -15,11 +15,11 @@ export default function HowIBuildSection() {
           </p>
         </div>
 
-        <div className="principles-grid reveal-on-scroll">
+        <div className="principles-grid ">
           {profileData.principles.map((p, idx) => (
             <div
               key={p.id}
-              className={`principle-card reveal-delay-${(idx % 2) + 1}`}
+              className={`principle-card reveal-on-scroll reveal-delay-${(idx % 2) + 1}`}
             >
               <div className="principle-num">
                 Standard {p.number}

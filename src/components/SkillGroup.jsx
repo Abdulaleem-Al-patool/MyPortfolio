@@ -30,7 +30,7 @@ export default function SkillGroup() {
   };
 
   return (
-    <div className="competencies-modular-matrix reveal-on-scroll">
+    <div className="competencies-modular-matrix">
       {skillGroups.map((group, index) => {
         // Distribute span: first 2 groups take 6 cols each, remaining 3 take 4 cols each on desktop
         const isWide = index < 2;
@@ -38,7 +38,7 @@ export default function SkillGroup() {
         return (
           <section
             key={group.id}
-            className={`competency-section ${isWide ? 'col-span-wide' : 'col-span-standard'}`}
+            className={`competency-section reveal-on-scroll  ${isWide ? 'col-span-wide' : 'col-span-standard'}`}
             aria-labelledby={`competency-${group.id}`}
           >
             {/* Modular Header */}
