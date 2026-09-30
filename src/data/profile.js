@@ -6,10 +6,10 @@
 export const profileData = {
   name: "Ahmed Al-Taweel",
   FullName: "Ahmed Mufeed Al-Taweel",
-  role: "Software Developer & AI Engineer",
+  role: "Software Developer & Systems Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
-  Logo: "assets/Logo.svg",
+  Logo: "/assets/Logo.svg",
   tagline:
     "Building complete software systems around models, not just the models themselves.",
 
