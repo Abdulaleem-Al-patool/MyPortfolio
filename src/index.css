@@ -4,7 +4,7 @@
   /* Palette: #000000, #0B60B0, #40A2D8, #F0EDCF */
 
   --font-heading: 'DM Sans', 'Cairo', sans-serif;
-  --font-body: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', 'Cairo';
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   color-scheme: dark;
