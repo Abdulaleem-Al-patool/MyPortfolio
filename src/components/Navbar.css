@@ -76,51 +76,6 @@
   
 }
 
-.brand-monogram {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--main_color, #40A2D8);
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: -0.02em;
-  box-shadow: 0 0 18px rgba(64, 162, 216, 0.28);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-}
-
-.navbar-brand:hover .brand-monogram {
-  transform: scale(1.06) rotate(-3deg);
-  box-shadow: 0 0 22px rgba(64, 162, 216, 0.42);
-}
-
-.brand-text-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-name {
-  font-family:  "Milonga", serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--white_color, #F0EDCF);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  transition: color 0.2s ease;
-}
-
-.brand-title {
-  font-size: 0.65rem;
-  color: var(--main_color, #9DBFD4);
-  font-family: var(--font-body);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 1px;
-}
-
 /* Desktop Navigation Links */
 .navbar-nav {
   display: none;
@@ -320,17 +275,6 @@
   }
 }
 
-@keyframes glassMobileFade {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 .navbar-mobile-brand {
   display: flex;
   align-items: center;
@@ -393,16 +337,5 @@ width:45px;
   .navbar-container {
     height: 50px;
     padding: 0 0.85rem 0 0.65rem;
-  }
-  .brand-monogram {
-    width: 32px;
-    height: 32px;
-    font-size: 0.82rem;
-  }
-  .brand-name {
-    font-size: 0.95rem;
-  }
-  .brand-title {
-    font-size: 0.6rem;
   }
 }

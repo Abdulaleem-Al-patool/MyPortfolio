@@ -1,22 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
-
 :root {
   /* Palette: #000000, #0B60B0, #40A2D8, #F0EDCF */
 
   --font-heading: 'DM Sans', 'Plus Jakarta Sans', 'Cairo', sans-serif;
   --font-body: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  /* Modern Glassmorphism Design Tokens */
-  --glass-surface: rgba(8, 16, 28, 0.62);
-  --glass-surface-elevated: rgba(10, 22, 38, 0.72);
-  --glass-surface-subtle: rgba(4, 9, 20, 0.52);
-  --glass-border: rgba(64, 162, 216, 0.18);
-  --glass-border-hover: rgba(64, 162, 216, 0.42);
-  --glass-blur: 14px;
-  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.45);
-  --glass-shadow-hover: 0 16px 40px -6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(64, 162, 216, 0.12);
 
   color-scheme: dark;
 }
@@ -58,7 +45,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white_color);
 }
 
-span.accent-text,
 .text-accent {
   color: var(--main_color);
 }
@@ -127,28 +113,6 @@ button {
   transform: translateY(-1px);
   filter: brightness(1.1);
   box-shadow: 0 4px 20px rgba(64, 162, 216, 0.35);
-}
-
-.btn_no_bg {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--white_color);
-  font-weight: 600;
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: color 0.2s ease, transform 0.2s ease;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-.btn_no_bg:hover {
-  color: var(--main_color);
-  transform: translateX(2px);
 }
 
 /* Section top header - Compact spacing */

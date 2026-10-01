@@ -104,34 +104,6 @@
   flex-grow: 1;
 }
 
-.service-highlights {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
-  width: 100%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-top: 1px solid rgba(64, 162, 216, 0.12);
-  padding-top: 14px;
-}
-
-.service-highlights li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: var(--text-primary, #F0EDCF);
-}
-
-.highlight-bullet {
-  width: 14px;
-  height: 14px;
-  color: var(--main_color, #40A2D8);
-  flex-shrink: 0;
-}
-
 .service-btn {
   width: 100%;
   font-size: 0.88rem;
