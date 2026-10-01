@@ -45,11 +45,6 @@
 
   /* Frosted glass matching About Me glass */
   background: rgb(6 13 26 / 34%);
-  /* background-image: radial-gradient(
-    ellipse 90% 70% at 50% 0%,
-    rgba(255, 255, 255, 0.05),
-    transparent 70%
-  ); */
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
 
@@ -200,11 +195,6 @@
 
   /* Frosted glass matching About Me glass */
   background: rgb(6 13 26 / 34%);
-  /* background-image: radial-gradient(
-    ellipse 90% 70% at 50% 0%,
-    rgba(255, 255, 255, 0.05),
-    transparent 70%
-  ); */
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
 
@@ -305,7 +295,6 @@
 
 .form-input:focus,
 .form-textarea:focus {
-  /* border-color: var(--main_color, #40A2D8); */
   background: rgba(6, 14, 26, 0.7);
   box-shadow:
     0 0 0 3px rgba(64, 162, 216, 0.12),

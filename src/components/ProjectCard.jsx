@@ -128,31 +128,10 @@ export default function ProjectCard({ project, onSelect }) {
   id={project.id}
 >
       {/* Immersive Product Preview Window */}
-      {/* <div
-        className="showcase-media-side"
-        onClick={() => onSelect(project)}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === 'Enter' && onSelect(project)}
-        aria-label={`View interactive preview of ${project.title}`}
-      >
-         {renderVisual()} 
-      </div> */}
 
       {/* Editorial Content Breakdown */}
       <div className="showcase-content-side">
         {/* Unboxed Metadata & Category Kicker */}
-        {/* <div className="showcase-category-kicker">
-          <span>{project.category}</span>
-          {project.categories && project.categories.length > 1 && (
-            <>
-              <span aria-hidden="true" className="kicker-separator">·</span>
-              <span className="kicker-secondary">
-                {project.categories.filter((c) => c !== project.category).join(' · ')}
-              </span>
-            </>
-          )}
-        </div> */}
 
         {/* Title */}
         <h3 className="showcase-title">
@@ -173,18 +152,6 @@ export default function ProjectCard({ project, onSelect }) {
         </p>
 
         {/* Compact Technology Tokens */}
-        {/* <div className="showcase-tech-tokens">
-          {project.technologies.slice(0, 5).map((tech) => (
-            <span key={tech} className="tech-token">
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 5 && (
-            <span className="tech-token-more font-mono">
-              +{project.technologies.length - 5}
-            </span>
-          )}
-        </div> */}
 
         {/* Refined Case Study Action Trigger */}
         <div className="showcase-action-bar">
