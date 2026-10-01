@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowUpRight, Terminal, Activity, Layers, Sparkles } from 'lucide-react';
 import './ProjectCard.css';
+import { useRevealOnMount } from '../hooks/useRevealOnMount.js';
 
 export default function ProjectCard({ project, onSelect }) {
+  const revealRef = useRevealOnMount();
   // Render high-fidelity, immersive mini-viewport previews
   const renderVisual = () => {
     switch (project.visualType) {
@@ -120,7 +122,11 @@ export default function ProjectCard({ project, onSelect }) {
   };
 
   return (
-    <article className="project-showcase-panel reveal-on-scroll" id={project.id}>
+<article
+  ref={revealRef}
+  className="project-showcase-panel reveal-on-scroll"
+  id={project.id}
+>
       {/* Immersive Product Preview Window */}
       {/* <div
         className="showcase-media-side"

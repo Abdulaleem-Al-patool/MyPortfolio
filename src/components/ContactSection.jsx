@@ -38,27 +38,60 @@ export default function ContactSection() {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  if (!formData.Full_name || !formData.Email || !formData.message) return;
 
-  const url = profileData.contact.sheetMonkeyFormUrl;
-  if (!url) {
-    setStatus({ submitting: false, submitted: false, error: 'Form is not configured.' });
+  if (!formData.Full_name || !formData.Email || !formData.message) {
     return;
   }
 
-  setStatus({ submitting: true, submitted: false, error: null });
+  const url = profileData.contact.sheetMonkeyFormUrl;
+
+  if (!url) {
+    setStatus({
+      submitting: false,
+      submitted: false,
+      error: 'Form is not configured.',
+    });
+    return;
+  }
+
+  setStatus({
+    submitting: true,
+    submitted: false,
+    error: null,
+  });
 
   try {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
-      body: new URLSearchParams(formData), // no headers needed
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: formData.Full_name,
+        email: formData.Email,
+        mobile: formData.Mobile_number,
+        subject: formData.Subject,
+        message: formData.message,
+      }),
     });
 
-    if (!response.ok) throw new Error(`Request failed (${response.status})`);
+    setStatus({
+      submitting: false,
+      submitted: true,
+      error: null,
+    });
 
-    setStatus({ submitting: false, submitted: true, error: null });
-    setFormData({ Full_name: '', Email: '', Mobile_number: '', Subject: '', message: '' });
+    setFormData({
+      Full_name: '',
+      Email: '',
+      Mobile_number: '',
+      Subject: '',
+      message: '',
+    });
   } catch (err) {
+    console.error('Contact form error:', err);
+
     setStatus({
       submitting: false,
       submitted: false,
@@ -66,7 +99,6 @@ const handleSubmit = async (e) => {
     });
   }
 };
-
   return (
     <section className="contact app-section" id="contact">
       <div className="container">
