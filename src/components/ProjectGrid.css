@@ -39,7 +39,7 @@
 }
 
 .project-filter-btn:hover {
-  color: var(--white_color, #F0EDCF);
+  color: var(--main_color, #F0EDCF);
   background-color: rgba(255, 255, 255, 0.05);
 }
 

@@ -14,7 +14,7 @@ export const filterCategories = [
 export const projects = [
   {
     id: "fwallet",
-    title: "FWallet — Merchant Financial Dashboard",
+    title: "FWallet Financial Dashboard",
     category: "Full-Stack",
     categories: ["Full-Stack", "Clean Architecture"],
     visualType: "ledger",
@@ -31,7 +31,7 @@ export const projects = [
       "Lucide Icons",
       "JWT Architecture",
     ],
-    github: "https://github.com/ahmed-altaweel",
+    github: "https://github.com/ahmed-altaweel/FWallet",
     demo: null,
     architecture:
       "Modular Component Architecture with TanStack React Query for declarative server-state synchronization, React Router for protected navigation gates, and an isolated API client layer decoupling UI from backend endpoints.",
@@ -40,17 +40,33 @@ export const projects = [
     approach:
       "Built against a formal Software Requirements Specification (SRS). Implemented clean API client abstractions, optimistic UI updates via React Query, declarative form validation, authenticated route guards, and granular UI component reuse.",
     results: [
-      { metric: "SRS Compliance", value: "100%", note: "All documented functional modules implemented" },
-      { metric: "Routing Architecture", value: "Protected Gates", note: "JWT-oriented auth context & role validation" },
-      { metric: "State Management", value: "Zero Prop Drilling", note: "Server state managed via TanStack Query cache" },
-      { metric: "Transfer Modes", value: "Multi-Source", note: "Provider-to-provider, bank, and merchant transfers" },
+      {
+        metric: "SRS Compliance",
+        value: "100%",
+        note: "All documented functional modules implemented",
+      },
+      {
+        metric: "Routing Architecture",
+        value: "Protected Gates",
+        note: "JWT-oriented auth context & role validation",
+      },
+      {
+        metric: "State Management",
+        value: "Zero Prop Drilling",
+        note: "Server state managed via TanStack Query cache",
+      },
+      {
+        metric: "Transfer Modes",
+        value: "Multi-Source",
+        note: "Provider-to-provider, bank, and merchant transfers",
+      },
     ],
     challenges:
       "Managing complex form workflows across multi-source transfers, ensuring immediate cache invalidation upon ledger updates, and enforcing accessible keyboard navigation throughout table ledgers.",
   },
   {
     id: "ftool",
-    title: "FTool — File Management Utility",
+    title: "File Management Utility",
     category: "Systems & CLI",
     categories: ["Systems & CLI", "Clean Architecture"],
     visualType: "terminal",
@@ -67,7 +83,7 @@ export const projects = [
       "Filesystem API",
       "Pytest",
     ],
-    github: "https://github.com/ahmed-altaweel",
+    github: "https://github.com/ahmed-altaweel/FTool",
     demo: null,
     architecture:
       "Clean Architecture with 4 distinct decoupled layers: Presentation (CLI parser & formatted output), Application (Use Cases & orchestration), Domain (Entities, file filters, and path rules), and Infrastructure (OS filesystem bindings).",
@@ -76,10 +92,26 @@ export const projects = [
     approach:
       "Architected with pure domain entities independent of operating system details. Implemented safe deletion flags, recursive traversal safeguards, and predictable CLI syntax (e.g. `ftool del --final -r s`). Each use case is individually unit-tested with mock filesystem adapters.",
     results: [
-      { metric: "Architecture Layers", value: "4 Layers", note: "Presentation → Application → Domain → Infra" },
-      { metric: "Separation of Concerns", value: "Strict", note: "Domain rules have zero external I/O dependencies" },
-      { metric: "Command Safety", value: "Confirmation Flags", note: "Safe dry-run preview and explicit delete targets" },
-      { metric: "Testability", value: "100% Mockable", note: "Unit tested with mock filesystem adapters" },
+      {
+        metric: "Architecture Layers",
+        value: "4 Layers",
+        note: "Presentation → Application → Domain → Infra",
+      },
+      {
+        metric: "Separation of Concerns",
+        value: "Strict",
+        note: "Domain rules have zero external I/O dependencies",
+      },
+      {
+        metric: "Command Safety",
+        value: "Confirmation Flags",
+        note: "Safe dry-run preview and explicit delete targets",
+      },
+      {
+        metric: "Testability",
+        value: "100% Mockable",
+        note: "Unit tested with mock filesystem adapters",
+      },
     ],
     challenges:
       "Enforcing strict layer boundaries in Python without framework overhead, and handling cross-platform filesystem permission quirks safely.",
@@ -111,10 +143,26 @@ export const projects = [
     approach:
       "Decoupled the domain calculation logic completely from the PySide6 UI. Implemented a bidirectional step history allowing users to step forward and backward through algorithm iterations, inspect variables at each step, and supply fixed random seeds for reproducible runs.",
     results: [
-      { metric: "Algorithm Types", value: "5 Classes", note: "GCD, Fibonacci, Sorting, Searching, String Matching" },
-      { metric: "Execution Control", value: "Bidirectional", note: "Full Previous / Next step-through controls" },
-      { metric: "Run Reproducibility", value: "Deterministic", note: "Seed-based pseudo-random input generation" },
-      { metric: "Coupling", value: "Decoupled", note: "PySide6 UI communicates via pure state transitions" },
+      {
+        metric: "Algorithm Types",
+        value: "5 Classes",
+        note: "GCD, Fibonacci, Sorting, Searching, String Matching",
+      },
+      {
+        metric: "Execution Control",
+        value: "Bidirectional",
+        note: "Full Previous / Next step-through controls",
+      },
+      {
+        metric: "Run Reproducibility",
+        value: "Deterministic",
+        note: "Seed-based pseudo-random input generation",
+      },
+      {
+        metric: "Coupling",
+        value: "Decoupled",
+        note: "PySide6 UI communicates via pure state transitions",
+      },
     ],
     challenges:
       "Implementing efficient reverse-stepping without recalculating the entire execution trace from scratch for long-running sorting algorithms.",
@@ -147,10 +195,26 @@ export const projects = [
     approach:
       "Engineered automated normalization regex filters, deduplication routines, and balanced taxonomy trees with structured evaluation benchmarking.",
     results: [
-      { metric: "Exact Match", value: "95.70%", note: "On the evaluated test set" },
-      { metric: "Main Category", value: "97.40%", note: "High-level classification accuracy" },
-      { metric: "Dataset Scale", value: "~250K", note: "Cleaned Arabic articles processed" },
-      { metric: "Hierarchy Depth", value: "3 Levels", note: "Main → Subcategory → Fine-grained" },
+      {
+        metric: "Exact Match",
+        value: "95.70%",
+        note: "On the evaluated test set",
+      },
+      {
+        metric: "Main Category",
+        value: "97.40%",
+        note: "High-level classification accuracy",
+      },
+      {
+        metric: "Dataset Scale",
+        value: "~250K",
+        note: "Cleaned Arabic articles processed",
+      },
+      {
+        metric: "Hierarchy Depth",
+        value: "3 Levels",
+        note: "Main → Subcategory → Fine-grained",
+      },
     ],
     challenges:
       "Handling typographical irregularities across different media sources while keeping preprocessing latency under strict limits.",
