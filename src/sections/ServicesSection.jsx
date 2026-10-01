@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Server, Layers, ArrowRight, Sparkles } from 'lucide-react';
+import { Globe, Server, Layers, ArrowRight } from 'lucide-react';
 import './ServicesSection.css';
 
 export default function ServicesSection() {

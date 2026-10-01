@@ -6,7 +6,6 @@ import {
   Layers,
   Terminal,
   Cpu,
-  CheckCircle2,
 } from 'lucide-react';
 import { skillGroups } from '../data/skills.js';
 import './SkillGroup.css';
