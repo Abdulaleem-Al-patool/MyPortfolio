@@ -36,56 +36,36 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.Full_name || !formData.Email || !formData.message) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!formData.Full_name || !formData.Email || !formData.message) return;
 
-    setStatus({ submitting: true, submitted: false, error: null });
+  const url = profileData.contact.sheetMonkeyFormUrl;
+  if (!url) {
+    setStatus({ submitting: false, submitted: false, error: 'Form is not configured.' });
+    return;
+  }
 
-    try {
-      if (profileData.contact.sheetMonkeyFormUrl) {
-        const response = await fetch(profileData.contact.sheetMonkeyFormUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+  setStatus({ submitting: true, submitted: false, error: null });
 
-        if (response.ok) {
-          setStatus({ submitting: false, submitted: true, error: null });
-          setFormData({
-            Full_name: '',
-            Email: '',
-            Mobile_number: '',
-            Subject: '',
-            message: '',
-          });
-          return;
-        }
-      }
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: new URLSearchParams(formData), // no headers needed
+    });
 
-      // Default mailto fallback if endpoint not configured or blocked
-      const mailSubject = encodeURIComponent(
-        formData.Subject || `Inquiry from ${formData.Full_name}`
-      );
-      const mailBody = encodeURIComponent(
-        `Name: ${formData.Full_name}\nEmail: ${formData.Email}\nPhone: ${formData.Mobile_number || 'N/A'}\n\nMessage:\n${formData.message}`
-      );
-      window.location.href = `mailto:${profileData.contact.email}?subject=${mailSubject}&body=${mailBody}`;
-      setStatus({ submitting: false, submitted: true, error: null });
-    } catch (err) {
-      const mailSubject = encodeURIComponent(
-        formData.Subject || `Inquiry from ${formData.Full_name}`
-      );
-      const mailBody = encodeURIComponent(
-        `Name: ${formData.Full_name}\nEmail: ${formData.Email}\nPhone: ${formData.Mobile_number || 'N/A'}\n\nMessage:\n${formData.message}`
-      );
-      window.location.href = `mailto:${profileData.contact.email}?subject=${mailSubject}&body=${mailBody}`;
-      setStatus({ submitting: false, submitted: true, error: null });
-    }
-  };
+    if (!response.ok) throw new Error(`Request failed (${response.status})`);
+
+    setStatus({ submitting: false, submitted: true, error: null });
+    setFormData({ Full_name: '', Email: '', Mobile_number: '', Subject: '', message: '' });
+  } catch (err) {
+    setStatus({
+      submitting: false,
+      submitted: false,
+      error: 'Something went wrong. Please try again or email me directly.',
+    });
+  }
+};
 
   return (
     <section className="contact app-section" id="contact">

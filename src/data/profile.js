@@ -36,6 +36,8 @@ export const profileData = {
     github: "https://github.com/ahmed-altaweel",
     // PLACEHOLDER: Replace with verified LinkedIn profile
     linkedin: "https://www.linkedin.com/in/ahmed-altaweel-5906293a8",
+    sheetMonkeyFormUrl:
+      "https://script.google.com/macros/s/AKfycbyyLNvHCWYqSLk1Xf8toag_oVwlwmK8n6xXHY4mHkaU3DMlYn_RiBbvoa4fvpZSNE32IA/exec",
   },
 
   // Asset paths
