@@ -35,12 +35,21 @@
   pointer-events: none;
 }
 
-.hero-center {
+/* .hero-center {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+} */
+
+.hero-center{
+  display: grid; 
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  
+  text-align: left;
+  align-items: flex-start;
 }
 
 /* --------------------------------------------------------------------------
@@ -49,7 +58,8 @@
 .hero-name {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+align-items: flex-start;
   font-family: var(--font-heading);
   font-size: clamp(3.2rem, 14.5vw, 8.0rem);
   font-weight: 800;
@@ -131,8 +141,9 @@
    -------------------------------------------------------------------------- */
 .hero-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;  
+  /* justify-content: center; */
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: clamp(22px, 3.5vw, 32px);

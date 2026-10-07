@@ -4,8 +4,8 @@
  */
 
 export const profileData = {
-  name: "Ahmed Al-Taweel",
-  FullName: "Ahmed Mufeed Al-Taweel",
+  name: "Abdulaleem Al-patool",
+  FullName: " Abdulaleem Al-patool ",
   role: "Software Developer & Systems Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
@@ -31,19 +31,19 @@ export const profileData = {
   // Contact & Social links (Placeholders - edit here)
   contact: {
     // PLACEHOLDER: Replace with verified contact email
-    email: "ahmedaltweel58@gmail.com",
+    email: "ab0odsoftwar@gmail.com",
     // PLACEHOLDER: Replace with verified GitHub profile
-    github: "https://github.com/ahmed-altaweel",
+    github: "https://github.com/Abdulaleem-Al-patool",
     // PLACEHOLDER: Replace with verified LinkedIn profile
-    linkedin: "https://www.linkedin.com/in/ahmed-altaweel-5906293a8",
+    linkedin: "https://www.linkedin.com/in/abdulaleem",
     sheetMonkeyFormUrl:
       "https://script.google.com/macros/s/AKfycbxZlKApib-otHOxufqj1fa_2B6oZ5ChPrMle0maa9Qr8GL-FRUA-0S7vmWAqWfQ4N7I/exec",
   },
 
   // Asset paths
   assets: {
-    photo: "/assets/image.png",
-    photoFallback: "/assets/image.png",
+    photo: "/assets/Image02.jpg",
+    photoFallback: "/assets/Image02.jpg",
     cv: "/assets/Ahmed_Al-Taweel_Resume.pdf",
     cvFilename: "Ahmed-Mufeed-Al-Taweel-CV.pdf",
   },

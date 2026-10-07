@@ -1,0 +1,97 @@
+.btn-small {
+    position: relative;
+    padding: 0;
+    width: 100px; /* Smaller width */
+    height: 100px; /* Smaller height */
+    border: 1px solid var(--border-color);
+    outline: none;
+    background-color:rgba(6, 13, 26, 0.9);
+    border-radius: 20px; /* Adjusted border-radius */
+    box-shadow:
+      -3px -10px 15px #ffffff,
+      -3px -5px 8px #ffffff,
+      -10px 0px 15px #ffffff,
+      3px 10px 12px rgba(64, 162, 216, 0.15);
+    transition: 0.3s ease-in-out; /* Smooth animation */
+    cursor: pointer;
+  }
+
+  /* Hover animation: Scaling the button and adjusting shadow */
+  .btn-small:hover {
+    transform: scale(1.1); /* Button grows slightly */
+    box-shadow:
+      -3px -15px 20px #ffffff,
+      -3px -10px 10px #ffffff,
+      -10px 0px 15px #ffffff,
+      5px 15px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Active click animation */
+  .btn-small:active {
+    transform: scale(0.95); /* Button shrinks slightly */
+    box-shadow: none; /* Shadow disappears when clicked */
+  }
+
+  .btn-small-content {
+    position: relative;
+    display: grid;
+    padding: 10px; /* Smaller padding */
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+box-shadow:
+  inset 0px -4px 0px rgba(255, 255, 255, 0.06),
+  0px -4px 0px rgba(6, 13, 26, 0.9);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out; /* Smooth animation */
+    z-index: 1;
+  }
+
+  /* Icon hover effect: Floating effect */
+  .btn-small-icon {
+    position: relative;
+    display: flex;
+    transform: translate3d(0px, -2px, 0px);
+    grid-column: 4;
+    align-self: start;
+    justify-self: end;
+    width: 16px; /* Smaller icon size */
+    height: 16px;
+    transition: 0.3s ease-in-out; /* Smooth hover animation */
+  }
+
+  /* Hover effect on icon */
+  .btn-small:hover .btn-small-icon {
+    transform: translateY(-8px); /* Move the icon up slightly on hover */
+  }
+
+  /* Icon styling */
+  .btn-small-icon svg {
+    width: 16px; /* Smaller icon */
+    height: 16px;
+    fill:var(--main_color);
+  }
+
+  /* Text hover effect: Floating effect */
+  .btn-small-text {
+    position: relative;
+    transform: translate3d(0px, -2px, 0px); /* Smaller translation */
+    margin: 0;
+    align-self: end;
+    grid-column: 1 / 5;
+    grid-row: 2;
+    text-align: center;
+    font-size: 16px; /* Smaller font size */
+    background-color:var(--main_color);
+    color: transparent;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: 0.3s ease-in-out;
+  }
+
+  /* Hover effect on text */
+  .btn-small:hover .btn-small-text {
+    transform: translateY(-5px); /* Move the text up slightly on hover */
+  }

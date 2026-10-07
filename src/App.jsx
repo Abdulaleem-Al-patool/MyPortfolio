@@ -8,6 +8,7 @@ import { ThemeProvider } from './context/ThemeContext.jsx';
 
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
+import AsciiPortrait from './components/AsciiPortrait.jsx';
 import AboutSection from './sections/AboutSection.jsx';
 import ServicesSection from './sections/ServicesSection.jsx';
 import ProjectGrid from './components/ProjectGrid.jsx';
@@ -34,8 +35,15 @@ export default function App() {
 
         <main className="app-main">
           {/* Hero Section with Personal Identity & Interactive CLI */}
+         
+
+         
+
+
           <Hero />
 
+
+ <AsciiPortrait />
           {/* Section: About Me & Personal Journey */}
           <AboutSection />
 
