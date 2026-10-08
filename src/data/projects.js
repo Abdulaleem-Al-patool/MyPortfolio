@@ -31,7 +31,7 @@ export const projects = [
       "Lucide Icons",
       "JWT Architecture",
     ],
-    github: "https://github.com/ahmed-altaweel/FWallet",
+    github: "https://github.com/Abdulaleem-Al-patool/FWallet",
     demo: null,
     architecture:
       "Modular Component Architecture with TanStack React Query for declarative server-state synchronization, React Router for protected navigation gates, and an isolated API client layer decoupling UI from backend endpoints.",
@@ -64,57 +64,70 @@ export const projects = [
     challenges:
       "Managing complex form workflows across multi-source transfers, ensuring immediate cache invalidation upon ledger updates, and enforcing accessible keyboard navigation throughout table ledgers.",
   },
-  {
-    id: "ftool",
-    title: "File Management Utility",
+ {
+    id: "safe-rm",
+    title: "Safe-RM — Safe & Recoverable File Deletion",
     category: "Systems & CLI",
-    categories: ["Systems & CLI", "Clean Architecture"],
+    categories: ["Systems & CLI", "Security"],
     visualType: "terminal",
     featured: true,
     shortDescription:
-      "Python command-line file manipulation utility built with 4-layer decoupled Clean Architecture.",
+      "Python CLI tool that replaces `rm` with safe trash-based deletion, risk analysis, and full restore.",
     description:
-      "A command-line file manipulation and management utility developed in Python with strict separation of concerns following Clean Architecture principles (Presentation → Application → Domain → Infrastructure). Designed as an exploration of system architecture and Python packaging.",
+      "A modular command-line file deletion system for Linux that intercepts `rm` and replaces it with a safer workflow: path validation, risk classification, security gating, move-to-trash with UUID tracking, JSON metadata, and one-command restore. Built with a strict separation between scanning, analysis, security, storage, and presentation layers — tested with 20 unit tests.",
     technologies: [
-      "Python 3",
-      "Clean Architecture",
-      "CLI Design",
-      "Argparse",
-      "Filesystem API",
+      "Python 3.12+",
+      "pathlib",
+      "argparse",
+      "shutil",
+      "logging",
+      "JSON Metadata",
+      "UUID Tracking",
       "Pytest",
+      "Entry Points (pyproject.toml)",
     ],
-    github: "https://github.com/ahmed-altaweel/FTool",
+    github: "https://github.com/Abdulaleem-Al-patool/Safe-rm-Original-Copy",
     demo: null,
     architecture:
-      "Clean Architecture with 4 distinct decoupled layers: Presentation (CLI parser & formatted output), Application (Use Cases & orchestration), Domain (Entities, file filters, and path rules), and Infrastructure (OS filesystem bindings).",
+      "Modular layered design with decoupled components: (1) Scanner — extracts filesystem metadata via pathlib/stat, (2) Analyzer — classifies risk into LOW/MEDIUM/HIGH/CRITICAL based on location, type, ownership, and recursive intent, (3) Security Layer — enforces allow/confirm/block decisions and blocks dangerous paths & path traversal, (4) Trash Manager — moves items to ~/.safe-trash with UUID filenames and JSON metadata, (5) Logger — records every operation, and (6) CLI — pure presentation layer using argparse with a `safe-rm` entry point.",
     problem:
-      "Ad-hoc file manipulation scripts are notoriously brittle, mingling filesystem I/O directly with argument parsing and string manipulation, making unit testing and safe rollback virtually impossible.",
+      "The native `rm` command on Linux is unforgiving: it deletes files permanently with no recovery, offers no warning before destroying critical paths like `/etc` or `/boot`, provides no audit trail, and is trivially exploited via path traversal (`../`). A single keystroke can destroy a system.",
     approach:
-      "Architected with pure domain entities independent of operating system details. Implemented safe deletion flags, recursive traversal safeguards, and predictable CLI syntax (e.g. `ftool del --final -r s`). Each use case is individually unit-tested with mock filesystem adapters.",
+      "Built a replacement CLI that keeps `rm`'s ergonomics but adds a gated safety pipeline: scan → analyze → security-check → move-to-trash → log. Every risky path is classified before anything touches the disk. Critical paths (`/`, `/etc`, `/root`, `/proc`, `/sys`, `/dev`, `/boot`) are hard-blocked, high-risk paths require explicit confirmation, and every deleted file is preserved with full metadata (original path, timestamp, size, permissions, inode) enabling lossless restore. Circular safety is enforced by refusing path traversal and never following symlinks. The tool is installed system-wide as a single `safe-rm` command via `pyproject.toml` entry points.",
     results: [
       {
-        metric: "Architecture Layers",
-        value: "4 Layers",
-        note: "Presentation → Application → Domain → Infra",
+        metric: "Modular Components",
+        value: "6 Modules",
+        note: "Scanner · Analyzer · Security · Trash · Logger · CLI",
       },
       {
-        metric: "Separation of Concerns",
-        value: "Strict",
-        note: "Domain rules have zero external I/O dependencies",
+        metric: "Risk Levels",
+        value: "4 Tiers",
+        note: "LOW → MEDIUM → HIGH → CRITICAL with allow/confirm/block gating",
       },
       {
-        metric: "Command Safety",
-        value: "Confirmation Flags",
-        note: "Safe dry-run preview and explicit delete targets",
+        metric: "Recoverability",
+        value: "100% Restore",
+        note: "UUID-based trash with JSON metadata and collision handling",
       },
       {
-        metric: "Testability",
-        value: "100% Mockable",
-        note: "Unit tested with mock filesystem adapters",
+        metric: "Test Coverage",
+        value: "20 Passing Tests",
+        note: "Scanner, analyzer, security, trash ops, Unicode & edge cases",
+      },
+      {
+        metric: "Safety Enforcement",
+        value: "Path Hard-Blocking",
+        note: "Blocks /, /etc, /boot, /usr, /root + path traversal + symlinks",
+      },
+      {
+        metric: "Audit Trail",
+        value: "Full Logging",
+        note: "Every DELETE / RESTORE / BLOCK event timestamped to disk",
       },
     ],
     challenges:
-      "Enforcing strict layer boundaries in Python without framework overhead, and handling cross-platform filesystem permission quirks safely.",
+      "Designing a risk-scoring engine that stays accurate across both user sandboxes and system paths without false positives — while keeping the CLI fast enough to replace `rm` in daily use. Additionally, implementing collision-safe restores (cancel / rename / replace) and preventing symlink-following attacks required careful handling of pathlib internals and stat metadata.",
   },
   {
     id: "algorithm-simulator",

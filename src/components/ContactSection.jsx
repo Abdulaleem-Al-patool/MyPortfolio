@@ -130,7 +130,7 @@ const handleSubmit = async (e) => {
                 <a
                   href={`mailto:${profileData.contact.email}`}
                   className="contact-channel-row"
-                  aria-label={`Email Ahmed at ${profileData.contact.email}`}
+                  aria-label={`Email Abdulaleem at ${profileData.contact.email}`}
                 >
                   <div className="channel-icon-sheen">
                     <Mail style={{ width: '1.05rem', height: '1.05rem' }} />
@@ -177,7 +177,7 @@ const handleSubmit = async (e) => {
                   </div>
                   <div className="channel-info">
                  
-                    <span className="channel-value">Ahmed Al-Taweel</span>
+                    <span className="channel-value">Abdulaleem Al-patool</span>
                   </div>
                   <ArrowUpRight className="channel-arrow" style={{ width: '0.95rem', height: '0.95rem' }} />
                 </a>
@@ -213,7 +213,7 @@ const handleSubmit = async (e) => {
                   </div>
                   <div className="channel-info">
                     <span className="channel-label">Facebook</span>
-                    <span className="channel-value">Ahmed Altweel</span>
+                    <span className="channel-value">Abdulaleem Al-patool</span>
                   </div>
                   <ArrowUpRight className="channel-arrow" style={{ width: '0.95rem', height: '0.95rem' }} />
                 </a>

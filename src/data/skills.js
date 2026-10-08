@@ -1,7 +1,4 @@
-/**
- * Technical Skills Data
- * Grouped strictly into domain categories reflecting Ahmed's real software engineering profile.
- */
+
 
 export const skillGroups = [
   {

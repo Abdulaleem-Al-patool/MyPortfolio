@@ -5,11 +5,11 @@
 
 export const profileData = {
   name: "Abdulaleem Al-patool",
-  FullName: " Abdulaleem Al-patool ",
+  FullName:"Abdulaleem Abdullah Al-patool",
   role: "Software Developer & Systems Engineer",
   status: "IT / CS Student, Ibb University, Yemen",
   positioning: "Software Engineering + Practical AI Systems",
-  Logo: "/assets/Logo_green.svg",
+  Logo: "/assets/Logo.svg",
   tagline:
     "Building complete software systems around models, not just the models themselves.",
 
