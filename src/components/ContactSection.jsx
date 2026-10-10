@@ -232,7 +232,7 @@ const handleSubmit = async (e) => {
                   </div>
                   <div className="channel-info">
                     <span className="channel-label">Instagram</span>
-                    <span className="channel-value">@_v_al_l</span>
+                    <span className="channel-value">ab0odsoftwar</span>
                   </div>
                   <ArrowUpRight className="channel-arrow" style={{ width: '0.95rem', height: '0.95rem' }} />
                 </a>
@@ -372,6 +372,9 @@ const handleSubmit = async (e) => {
                     )}
                   </button>
                 </div>
+                {status.error && (
+  <p role="alert" className="form-error">{status.error}</p>
+)}
               </form>
             )}
           </div>

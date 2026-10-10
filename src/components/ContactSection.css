@@ -24,7 +24,7 @@
   color: var(--main_color, #40A2D8);
   margin-bottom: 6px;
 }
-
+.form-error { color: #ff8a8a; font-size: 0.85rem; margin-top: 10px; }
 /* Two-Column Responsive Layout Grid */
 .contact-main-grid {
   display: grid;
