@@ -44,8 +44,8 @@ export const profileData = {
   assets: {
     photo: "/assets/Image02.jpg",
     photoFallback: "/assets/Image02.jpg",
-    cv: "/assets/Ahmed_Al-Taweel_Resume.pdf",
-    cvFilename: "Ahmed-Mufeed-Al-Taweel-CV.pdf",
+    cv: "/assets/Abdulaleem_Al-Patool_CV.pdf",
+   cvFilename: "Abdulaleem-Al-Patool-CV.pdf",
   },
 
   // Core engineering principles (Section: How I Build)
