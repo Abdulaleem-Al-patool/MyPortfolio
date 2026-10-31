@@ -50,6 +50,7 @@ export default function Footer() {
                 <span>Back to top</span>
                 <ArrowUp style={{ width: '0.95rem', height: '0.95rem' }} />
               </button> <br />
+              
             <SocialButton/>
 
             </div>

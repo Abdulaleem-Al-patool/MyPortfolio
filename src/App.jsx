@@ -47,7 +47,7 @@ export default function App() {
  <AsciiPortrait />
           {/* Section: About Me & Personal Journey */}
           <AboutSection />
-<SocialButton/>
+
           {/* Section: Specialized Engineering Services */}
           <ServicesSection />
 
