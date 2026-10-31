@@ -1,0 +1,353 @@
+/* 
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-main {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 14em;
+}
+
+.social-background {
+  position: absolute;
+  z-index: -1;
+  width: 11em;
+  height: 11em;
+  border-radius: 10px;
+  transform: rotate(90deg);
+  background: linear-gradient(
+    270deg,
+    #03a9f4,
+    #cc39a4,
+    #ffb5d2
+  );
+  box-shadow: inset 0 0 180px 5px #fff;
+  transition: opacity 0.4s ease;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  color: var(--social-color);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.596);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition:
+    margin 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.social-card:nth-of-type(2) {
+  border-top-left-radius: 10px;
+}
+
+.social-card:nth-of-type(4) {
+  border-top-right-radius: 10px;
+}
+
+.social-card:nth-of-type(8) {
+  border-bottom-left-radius: 10px;
+}
+
+.social-card:nth-of-type(10) {
+  border-bottom-right-radius: 10px;
+}
+
+.social-card svg {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s ease;
+}
+
+.social-text {
+  position: absolute;
+  margin: 0;
+  color: #111;
+  font-size: 0.7em;
+  font-weight: bold;
+  letter-spacing: 0.33em;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.social-main:hover .social-background {
+  opacity: 0;
+}
+
+.social-main:hover .social-card {
+  margin: 0.2em;
+  border-radius: 10px;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.social-main:hover .social-card svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.social-main:hover .social-text {
+  opacity: 0;
+}
+
+.social-card:hover {
+  color: #fff;
+  background: var(--social-color) !important;
+  transform: translateY(-3px);
+}
+
+.social-card:focus-visible {
+  outline: 2px solid var(--social-color);
+  outline-offset: 3px;
+}
+
+@media (hover: none) {
+  .social-card {
+    margin: 3px;
+    border-radius: 10px;
+  }
+
+  .social-card svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .social-text,
+  .social-background {
+    opacity: 0;
+  }
+} */
+
+
+
+
+.social-container {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  padding: 70px;
+}
+
+/* الدائرة الرئيسية */
+.social-main {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* خلفية الدائرة */
+.social-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  /* background: linear-gradient(
+    135deg,
+    #03a9f4,
+    #cc39a4,
+    #ffb5d2
+  ); */
+  background-color: #ffffff00;
+  box-shadow: 0 4px 15px rgba(204, 57, 164, 0.25);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* الأيقونات مخفية في البداية */
+.social-main .social-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  color: var(--social-color);
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  text-decoration: none;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translate(-50%, -50%) scale(0.3);
+
+  transition:
+    top 0.4s ease,
+    left 0.4s ease,
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.4s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* حجم الأيقونة */
+.social-card svg {
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+}
+
+/* إخفاء النص */
+.social-text {
+  display: none;
+}
+
+
+/* .social-main:hover .social-background  */
+.social-container:hover .social-main .social-background {
+  transform: scale(0.75);
+}
+
+/* إظهار الأيقونات */
+/* .social-main:hover .social-card */
+.social-container:hover .social-main .social-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* الأيقونة الأولى - أعلى */
+.social-main:hover .social-card:nth-child(2) {
+  top: -45px;
+  left: 20px;
+}
+
+/* الأيقونة الثانية - أعلى اليمين */
+.social-main:hover .social-card:nth-child(3) {
+  top: -22;
+  left: 60px;
+}
+
+/* الأيقونة الثالثة - أسفل اليمين */
+.social-main:hover .social-card:nth-child(4) {
+  top: 23;
+  left:60px;
+}
+
+/* الأيقونة الرابعة - أسفل */
+.social-main:hover .social-card:nth-child(5) {
+  top: 45px;
+  left: 20px;
+}
+
+.social-main:hover .social-card:nth-child(6) {
+  top: 23px;
+  left: -20px;
+}
+
+
+.social-main:hover .social-card:nth-child(7) {
+  top: -22px;
+  left: -20px;
+}
+
+/* تأثير المرور على أيقونة */
+.social-main .social-card:hover {
+  color: #fff;
+  background: var(--social-color);
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+}
+
+/* إمكانية التنقل بلوحة المفاتيح */
+.social-card:focus-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  outline: 2px solid var(--social-color);
+  outline-offset: 3px;
+}
+
+/* الهواتف والأجهزة التي لا تدعم hover */
+@media (hover: none) {
+  .social-container {
+    padding: 65px;
+  }
+
+  .social-main {
+    width: 180px;
+    height: 180px;
+  }
+
+  .social-background {
+    width: 60px;
+    height: 60px;
+    inset: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .social-main .social-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .social-main .social-card:nth-child(2) {
+    top: 0%;
+    left: 50%;
+  }
+
+  .social-main .social-card:nth-child(3) {
+    top: 25%;
+    left: 93%;
+  }
+
+  .social-main .social-card:nth-child(4) {
+    top: 75%;
+    left: 93%;
+  }
+
+  .social-main .social-card:nth-child(5) {
+    top: 100%;
+    left: 50%;
+  }
+
+  .social-main .social-card:nth-child(6) {
+    top: 75%;
+    left: 7%;
+  }
+
+  .social-main .social-card:nth-child(7) {
+    top: 25%;
+    left: 7%;
+  }
+}

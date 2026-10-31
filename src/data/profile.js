@@ -35,7 +35,7 @@ export const profileData = {
     // PLACEHOLDER: Replace with verified GitHub profile
     github: "https://github.com/Abdulaleem-Al-patool",
     // PLACEHOLDER: Replace with verified LinkedIn profile
-    linkedin: "https://www.linkedin.com/in/abdulaleem",
+    linkedin: "https://www.linkedin.com/in/abdulaleem-al-patool-235248376?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     sheetMonkeyFormUrl:
       "https://script.google.com/macros/s/AKfycbw-V_qvim4ai2mIuK-kMVTvTMuWgK5LwxNcg7w_AJL3macbILcLCaR1QC5VQRlRwCfGCg/exec",
   },

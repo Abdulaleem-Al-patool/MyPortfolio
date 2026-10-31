@@ -1,4 +1,5 @@
 import React from 'react';
+import SocialButton from './SocialButton.jsx';
 import { Github, Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
 import { profileData } from '../data/profile.js';
 import './Footer.css';
@@ -48,7 +49,9 @@ export default function Footer() {
               <button type="button" onClick={scrollToTop} className="footer-back-to-top" aria-label="Scroll back to top">
                 <span>Back to top</span>
                 <ArrowUp style={{ width: '0.95rem', height: '0.95rem' }} />
-              </button>
+              </button> <br />
+            <SocialButton/>
+
             </div>
           </div>
 

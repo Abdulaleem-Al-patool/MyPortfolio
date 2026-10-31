@@ -66,7 +66,6 @@ export default function Hero() {
 
         
 
-          {/* The name is the focal point */}
           <h1 className="hero-name" ref={nameRef} aria-label={profileData.name}>
             {words.map((word, wi) => (
               <span

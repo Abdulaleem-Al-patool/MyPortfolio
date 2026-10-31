@@ -12,6 +12,7 @@ import AsciiPortrait from './components/AsciiPortrait.jsx';
 import AboutSection from './sections/AboutSection.jsx';
 import ServicesSection from './sections/ServicesSection.jsx';
 import ProjectGrid from './components/ProjectGrid.jsx';
+import SocialButton from './components/SocialButton.jsx';
 import SkillGroup from './components/SkillGroup.jsx';
 import HowIBuildSection from './sections/HowIBuildSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
@@ -46,7 +47,7 @@ export default function App() {
  <AsciiPortrait />
           {/* Section: About Me & Personal Journey */}
           <AboutSection />
-
+<SocialButton/>
           {/* Section: Specialized Engineering Services */}
           <ServicesSection />
 
