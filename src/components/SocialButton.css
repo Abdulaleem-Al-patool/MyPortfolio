@@ -17,14 +17,27 @@
   isolation: isolate;
 }
 
+/* الدائرة المركزية: زر الفتح والإغلاق */
 .social-background {
   position: absolute;
   inset: 0;
   z-index: -1;
+  display: grid;
+  place-items: center;
+  padding: 0;
   border-radius: 50%;
-  background-color: transparent;
+  border: 1px solid rgba(64, 162, 216, 0.3);
+  background-color: rgba(6, 13, 26, 0.65);
+  color: var(--main_color, #40a2d8);
   box-shadow: 0 4px 15px rgba(204, 57, 164, 0.25);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: transform 0.4s ease;
+}
+
+.social-background:focus-visible {
+  outline: 2px solid var(--main_color, #40a2d8);
+  outline-offset: 3px;
 }
 
 /* كل أيقونة: مخفية في المركز، وتُوزّع على الدائرة بالزاوية --a */
@@ -69,37 +82,38 @@
   height: 55%;
 }
 
-/* الفتح: hover على الحاوية، أو تركيز لوحة المفاتيح على أي أيقونة */
-.social-container:hover .social-card,
-.social-main:focus-within .social-card {
-  --r: var(--ring);
-  --s: 1;
-  opacity: 1;
-  pointer-events: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-.social-container:hover .social-background,
-.social-main:focus-within .social-background {
-  transform: scale(0.75);
-}
-
-/* تأثير المرور على أيقونة (يجب أن يأتي بعد قاعدة الفتح) */
-.social-container .social-card:hover,
-.social-container .social-card:focus-visible {
-  --s: 1.15;
-  color: #fff;
-  background: var(--social-color);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.18);
-  z-index: 2;
-}
-
 .social-card:focus-visible {
   outline: 2px solid var(--social-color);
   outline-offset: 3px;
 }
 
-/* أجهزة اللمس: الأيقونات مفتوحة دائماً، بحجم مناسب للّمس */
+/* ===== أجهزة بمؤشر (ماوس): الفتح بـ hover أو تركيز لوحة المفاتيح ===== */
+@media (hover: hover) {
+  .social-container:hover .social-card,
+  .social-main:focus-within .social-card {
+    --r: var(--ring);
+    --s: 1;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  .social-container:hover .social-background,
+  .social-main:focus-within .social-background {
+    transform: scale(0.75);
+  }
+
+  .social-container .social-card:hover,
+  .social-container .social-card:focus-visible {
+    --s: 1.15;
+    color: #fff;
+    background: var(--social-color);
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.18);
+    z-index: 2;
+  }
+}
+
+/* ===== أجهزة اللمس: الفتح والإغلاق بالضغط (كلاس is-open) ===== */
 @media (hover: none) {
   .social-container {
     --ring: 66px;
@@ -108,7 +122,7 @@
     padding: 56px;
   }
 
-  .social-card {
+  .social-container.is-open .social-card {
     --r: var(--ring);
     --s: 1;
     opacity: 1;
@@ -116,7 +130,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   }
 
-  .social-background {
+  .social-container.is-open .social-background {
     transform: scale(0.75);
   }
 }
